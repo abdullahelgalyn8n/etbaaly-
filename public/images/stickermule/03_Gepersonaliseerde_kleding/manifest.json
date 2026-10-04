@@ -1,0 +1,399 @@
+{
+  "category_name": "Gepersonaliseerde kleding",
+  "category_title": "Gepersonaliseerde kleding | Gratis verzending",
+  "category_description": "Custom t-shirts, hoodies, hats, and more printed with your design on premium, comfortable materials. Free shipping and fast turnaround.",
+  "category_assets": [
+    {
+      "title": "Custom t-shirts with logos being worn by people",
+      "url": "https://storage.googleapis.com/sm-content/core/products/productCategories/custom-apparel/gallery_1",
+      "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\00_Category_Overview\\hero_gallery_1_Custom_t-shirts_with_logos_being_worn_by_people.jpg",
+      "size": 2287959
+    },
+    {
+      "title": "DTF sticker applied on a t-shirt",
+      "url": "https://storage.googleapis.com/sm-content/core/products/productCategories/custom-apparel/gallery_2",
+      "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\00_Category_Overview\\hero_gallery_2_DTF_sticker_applied_on_a_t-shirt.jpg",
+      "size": 837084
+    },
+    {
+      "title": "Custom hat being worn by a person",
+      "url": "https://storage.googleapis.com/sm-content/core/products/productCategories/custom-apparel/gallery_3",
+      "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\00_Category_Overview\\hero_gallery_3_Custom_hat_being_worn_by_a_person.jpg",
+      "size": 1132943
+    },
+    {
+      "title": "Meta Video Thumbnail",
+      "url": "https://embed-ssl.wistia.com/deliveries/55c28b31ca190751767c47b674e17735.jpg?image_crop_resized=960x540",
+      "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\00_Category_Overview\\meta_video_thumbnail.jpg",
+      "size": 248383
+    },
+    {
+      "title": "Related: Textielstickers",
+      "url": "https://storage.googleapis.com/sm-content/core/products/products/fabric-stickers/thumbnail",
+      "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\00_Category_Overview\\related_Textielstickers.jpg",
+      "size": 1608254
+    },
+    {
+      "title": "Related: Transferstickers (kleur)",
+      "url": "https://storage.googleapis.com/sm-content/core/products/products/printed-transfer-stickers/thumbnail",
+      "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\00_Category_Overview\\related_Transferstickers__kleur_.jpg",
+      "size": 905170
+    },
+    {
+      "title": "Related: Acryl pins",
+      "url": "https://storage.googleapis.com/sm-content/core/products/products/acrylic-pins/thumbnail",
+      "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\00_Category_Overview\\related_Acryl_pins.jpg",
+      "size": 247208
+    }
+  ],
+  "products": [
+    {
+      "index_number": 1,
+      "id": "big-and-tall-t-shirts",
+      "name": "Oversized t-shirts",
+      "permalink": "oversized-t-shirts",
+      "permalink_id": "big-and-tall-t-shirts",
+      "description": "Maak van ieder ontwerp een gepersonaliseerd oversized t-shirt, verkrijgbaar in de maten 3XL tot 7XL. De full colour bedrukte t-shirts zijn van 100% katoen en worden in de VS gemaakt. Geen minimum bestelling en gratis verzending.",
+      "folder": "01_big-and-tall-t-shirts_oversized-t-shirts",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/big-and-tall-t-shirts/index",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\01_big-and-tall-t-shirts_oversized-t-shirts\\01_index_big-and-tall-t-shirts.webp",
+          "size": 15698
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/big-and-tall-t-shirts/cover",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\01_big-and-tall-t-shirts_oversized-t-shirts\\02_cover_big-and-tall-t-shirts.webp",
+          "size": 61068
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/big-and-tall-t-shirts/cart",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\01_big-and-tall-t-shirts_oversized-t-shirts\\04_cart_big-and-tall-t-shirts.webp",
+          "size": 15698
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/big-and-tall-t-shirts/share",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\01_big-and-tall-t-shirts_oversized-t-shirts\\05_share_social_big-and-tall-t-shirts.jpg",
+          "size": 295798
+        },
+        {
+          "type": "gallery_1",
+          "title": "Man wearing a white custom big and tall t-shirt with a printed logo outside a coffee shop",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/big-and-tall-t-shirts/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\01_big-and-tall-t-shirts_oversized-t-shirts\\06_gallery_1_Man_wearing_a_white_custom_big_and_tall_t-shirt_with_a_printed_logo_outside_a_coffee_shop.jpg",
+          "size": 295640
+        },
+        {
+          "type": "gallery_2",
+          "title": "Man on a city street wearing a black custom big and tall t-shirt with a full-color print",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/big-and-tall-t-shirts/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\01_big-and-tall-t-shirts_oversized-t-shirts\\07_gallery_2_Man_on_a_city_street_wearing_a_black_custom_big_and_tall_t-shirt_with_a_full-color_print.jpg",
+          "size": 64319
+        },
+        {
+          "type": "gallery_3",
+          "title": "White big and tall t-shirt with a printed design laid flat on a wood table",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/big-and-tall-t-shirts/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\01_big-and-tall-t-shirts_oversized-t-shirts\\08_gallery_3_White_big_and_tall_t-shirt_with_a_printed_design_laid_flat_on_a_wood_table.jpg",
+          "size": 86299
+        }
+      ],
+      "gallery_title": "Een shirt dat (bij) je past",
+      "gallery_desc": "Onze oversized t-shirts zijn gemaakt van 100% zacht katoen en hebben geen label. Kies uit de kleuren zwart of wit en kies een maat - van 3XL tot 7XL. Je ontwerp wordt full colour afgedrukt met duurzame en bestendige inkt. Snel geproduceerd en verzonden."
+    },
+    {
+      "index_number": 2,
+      "id": "custom-hats",
+      "name": "Gepersonaliseerde petten",
+      "permalink": "gepersonaliseerde-petten",
+      "permalink_id": "custom-hats",
+      "description": "Maak van je eigen ontwerp een gepersonaliseerde pet. Onze klassieke Amerikaanse truckerspetten worden in full colour bedrukt, en hebben een verstelbare sluiting plus een achterkant van ademend gaas.",
+      "folder": "02_custom-hats_gepersonaliseerde-petten",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hats/index",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\02_custom-hats_gepersonaliseerde-petten\\01_index_custom-hats.png",
+          "size": 42607
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hats/cover",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\02_custom-hats_gepersonaliseerde-petten\\02_cover_custom-hats.webp",
+          "size": 63300
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hats/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\02_custom-hats_gepersonaliseerde-petten\\03_cover2x_highres_custom-hats.webp",
+          "size": 558778
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hats/cart",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\02_custom-hats_gepersonaliseerde-petten\\04_cart_custom-hats.png",
+          "size": 24639
+        },
+        {
+          "type": "gallery_1",
+          "title": "custom-hats-01",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hats/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\02_custom-hats_gepersonaliseerde-petten\\06_gallery_1_custom-hats-01.webp",
+          "size": 202094
+        },
+        {
+          "type": "gallery_2",
+          "title": "custom-hats-02",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hats/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\02_custom-hats_gepersonaliseerde-petten\\07_gallery_2_custom-hats-02.webp",
+          "size": 1244932
+        },
+        {
+          "type": "gallery_3",
+          "title": "custom-hats-03",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hats/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\02_custom-hats_gepersonaliseerde-petten\\08_gallery_3_custom-hats-03.webp",
+          "size": 101228
+        }
+      ],
+      "gallery_title": "Jouw en ons hoofddoel",
+      "gallery_desc": "Wij zorgen ervoor dat je eenvoudig bij ons kunt bestellen. Als je eenmaal je ontwerp hebt geüpload, sturen we je een gratis online proefdruk, zodat je precies weet hoe je gepersonaliseerde pet er uit komt te zien. Bovendien bieden we bij elke bestelling een geweldige klantenservice en gratis snelle levering. Dus of het nou voor een teamuitje is, een reclamecampagne of voor de lol, wij houden jouw en ons hoofd koel!"
+    },
+    {
+      "index_number": 3,
+      "id": "custom-hoodies",
+      "name": "Gepersonaliseerde hoodies",
+      "permalink": "gepersonaliseerde-hoodies",
+      "permalink_id": "custom-hoodies",
+      "description": "Laat de wereld je ontwerp zien zonder zelf kou te hoeven lijden. Onze bedrukte hoodies zijn zacht, duurzaam en ideaal voor dagelijks gebruik. Je illustratie wordt full colour gedrukt en blijft lekker lang goed.",
+      "folder": "03_custom-hoodies_gepersonaliseerde-hoodies",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hoodies/index",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\03_custom-hoodies_gepersonaliseerde-hoodies\\01_index_custom-hoodies.png",
+          "size": 89242
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hoodies/cart",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\03_custom-hoodies_gepersonaliseerde-hoodies\\04_cart_custom-hoodies.png",
+          "size": 39631
+        },
+        {
+          "type": "gallery_1",
+          "title": "custom-hoodies-01",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hoodies/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\03_custom-hoodies_gepersonaliseerde-hoodies\\06_gallery_1_custom-hoodies-01.jpg",
+          "size": 603119
+        },
+        {
+          "type": "gallery_2",
+          "title": "custom-hoodies-02",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hoodies/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\03_custom-hoodies_gepersonaliseerde-hoodies\\07_gallery_2_custom-hoodies-02.jpg",
+          "size": 209535
+        },
+        {
+          "type": "gallery_3",
+          "title": "custom-hoodies-03",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-hoodies/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\03_custom-hoodies_gepersonaliseerde-hoodies\\08_gallery_3_custom-hoodies-03.jpg",
+          "size": 180119
+        }
+      ],
+      "gallery_title": "Warm en comfortabel",
+      "gallery_desc": "Onze hoodies worden gemaakt van 50/50 gemengd katoen met luchtgesponnen garen voor maximale zachtheid en warmte. Elke hoodie heeft een ruime capuchon en een klassieke pasvorm, zodat je ze makkelijk over andere kleding kunt dragen. Comfortabel op de bank, op weg naar de sportschool of als het buiten koud begint te worden."
+    },
+    {
+      "index_number": 4,
+      "id": "custom-t-shirts",
+      "name": "Bedrukte t-shirts",
+      "permalink": "t-shirts-bedrukken",
+      "permalink_id": "custom-t-shirts",
+      "description": "Maak van je ontwerp een full colour bedrukt t-shirt. We doen niet aan minimumbestellingen, dus profiteer van onze snelle productie en bezorging en koop meteen je zachte en comfortabele t-shirt van 100% katoen.",
+      "folder": "04_custom-t-shirts_t-shirts-bedrukken",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-t-shirts/index",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\04_custom-t-shirts_t-shirts-bedrukken\\01_index_custom-t-shirts.png",
+          "size": 27975
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-t-shirts/cover",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\04_custom-t-shirts_t-shirts-bedrukken\\02_cover_custom-t-shirts.png",
+          "size": 7175
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-t-shirts/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\04_custom-t-shirts_t-shirts-bedrukken\\03_cover2x_highres_custom-t-shirts.png",
+          "size": 7175
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-t-shirts/cart",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\04_custom-t-shirts_t-shirts-bedrukken\\04_cart_custom-t-shirts.png",
+          "size": 27975
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-t-shirts/share",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\04_custom-t-shirts_t-shirts-bedrukken\\05_share_social_custom-t-shirts.jpg",
+          "size": 196023
+        },
+        {
+          "type": "gallery_1",
+          "title": "custom-t-shirts-01",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-t-shirts/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\04_custom-t-shirts_t-shirts-bedrukken\\06_gallery_1_custom-t-shirts-01.jpg",
+          "size": 179884
+        },
+        {
+          "type": "gallery_2",
+          "title": "custom-t-shirts-02",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-t-shirts/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\04_custom-t-shirts_t-shirts-bedrukken\\07_gallery_2_custom-t-shirts-02.jpg",
+          "size": 179792
+        },
+        {
+          "type": "gallery_3",
+          "title": "custom-t-shirts-03",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/custom-t-shirts/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\04_custom-t-shirts_t-shirts-bedrukken\\08_gallery_3_custom-t-shirts-03.jpg",
+          "size": 253175
+        }
+      ],
+      "gallery_title": "Stijl en comfort. Jouw ontwerp.",
+      "gallery_desc": "Onze bedrukte t-shirts zijn gemaakt van 100% katoen, zonder etiket en lekker zacht voor extra comfort. Kies uit 7 kleuren en een breed assortiment maten (van kindermaten tot XXL). Je t-shirts bedrukken we in full colour met duurzame en kleurvaste inkt, en worden snel verzonden."
+    },
+    {
+      "index_number": 5,
+      "id": "dtf-transfers",
+      "name": "DTF-transfers",
+      "permalink": "dtf-transfers",
+      "permalink_id": "dtf-transfers",
+      "description": "Ontwerp je eigen kleding en accessoires met onze gepersonaliseerde DTF-transfers (Direct To Film). Strijk eenvoudig prachtige full colour illustraties op bijna alle soorten stof en maak unieke t-shirts, hoodies en sweaters.",
+      "folder": "05_dtf-transfers_dtf-transfers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/dtf-transfers/index",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\05_dtf-transfers_dtf-transfers\\01_index_dtf-transfers.png",
+          "size": 72118
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/dtf-transfers/cover",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\05_dtf-transfers_dtf-transfers\\02_cover_dtf-transfers.webp",
+          "size": 73402
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/dtf-transfers/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\05_dtf-transfers_dtf-transfers\\03_cover2x_highres_dtf-transfers.webp",
+          "size": 200464
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/dtf-transfers/cart",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\05_dtf-transfers_dtf-transfers\\04_cart_dtf-transfers.png",
+          "size": 32590
+        },
+        {
+          "type": "gallery_1",
+          "title": "DTF transfers gallery image 1",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/dtf-transfers/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\05_dtf-transfers_dtf-transfers\\06_gallery_1_DTF_transfers_gallery_image_1.webp",
+          "size": 138848
+        },
+        {
+          "type": "gallery_2",
+          "title": "DTF transfers gallery image 2",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/dtf-transfers/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\05_dtf-transfers_dtf-transfers\\07_gallery_2_DTF_transfers_gallery_image_2.webp",
+          "size": 88710
+        },
+        {
+          "type": "gallery_3",
+          "title": "DTF transfers gallery image 3",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/dtf-transfers/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\05_dtf-transfers_dtf-transfers\\08_gallery_3_DTF_transfers_gallery_image_3.webp",
+          "size": 132168
+        }
+      ],
+      "gallery_title": "Maak je eigen mode",
+      "gallery_desc": "Met DTF-transfers op maat vul je in een handomdraai je kledingkast. Je hebt geen speciale apparatuur nodig, en we hebben het bestelproces snel en eenvoudig gehouden. Kies afmeting en hoeveelheid, en reken af. Je ontvangt vlak na je bestelling een online proefdruk, zodat je kunt zien hoe je DTF-transfers zullen worden. Je kunt net zolang wijzigingen aanvragen tot je helemaal tevreden bent. Elke bestelling wordt gratis binnen 4 dagen verzonden."
+    },
+    {
+      "index_number": 6,
+      "id": "heavyweight-t-shirts",
+      "name": "Heavyweight t-shirts",
+      "permalink": "heavyweight-t-shirts",
+      "permalink_id": "heavyweight-t-shirts",
+      "description": "Maak van je ontwerp eenvoudig een heavyweight t-shirt op maat - zonder minimum bestelling, en gratis snel bezorgd. Onze t-shirts kunnen full colour worden bedrukt, en zijn gemaakt van stevig katoen voor een extra comfortabel gevoel.",
+      "folder": "06_heavyweight-t-shirts_heavyweight-t-shirts",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/heavyweight-t-shirts/index",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\06_heavyweight-t-shirts_heavyweight-t-shirts\\01_index_heavyweight-t-shirts.webp",
+          "size": 11946
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/heavyweight-t-shirts/cover",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\06_heavyweight-t-shirts_heavyweight-t-shirts\\02_cover_heavyweight-t-shirts.webp",
+          "size": 58912
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/heavyweight-t-shirts/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\06_heavyweight-t-shirts_heavyweight-t-shirts\\03_cover2x_highres_heavyweight-t-shirts.webp",
+          "size": 158352
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/heavyweight-t-shirts/cart",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\06_heavyweight-t-shirts_heavyweight-t-shirts\\04_cart_heavyweight-t-shirts.webp",
+          "size": 11946
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/heavyweight-t-shirts/share",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\06_heavyweight-t-shirts_heavyweight-t-shirts\\05_share_social_heavyweight-t-shirts.jpg",
+          "size": 196023
+        },
+        {
+          "type": "gallery_1",
+          "title": "heavyweight-t-shirts-01",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/heavyweight-t-shirts/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\06_heavyweight-t-shirts_heavyweight-t-shirts\\06_gallery_1_heavyweight-t-shirts-01.jpg",
+          "size": 240632
+        },
+        {
+          "type": "gallery_2",
+          "title": "heavyweight-t-shirts-02",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/heavyweight-t-shirts/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\06_heavyweight-t-shirts_heavyweight-t-shirts\\07_gallery_2_heavyweight-t-shirts-02.jpg",
+          "size": 329005
+        },
+        {
+          "type": "gallery_3",
+          "title": "heavyweight-t-shirts-03",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/heavyweight-t-shirts/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\03_Gepersonaliseerde_kleding\\Products\\06_heavyweight-t-shirts_heavyweight-t-shirts\\08_gallery_3_heavyweight-t-shirts-03.jpg",
+          "size": 302787
+        }
+      ],
+      "gallery_title": "Je ontzettend stevige ontwerp",
+      "gallery_desc": "Onze heavyweight t-shirts op maat voelen steviger aan en dragen lekker makkelijk, keer op keer weer. Kies een zwart of wit exemplaar en je maat. De full colour afbeelding wordt gedrukt met duurzame en bestendige inkt. En bovendien snel geproduceerd en verzonden."
+    }
+  ]
+}

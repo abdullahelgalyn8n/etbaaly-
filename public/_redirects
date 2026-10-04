@@ -1,0 +1,4 @@
+# Cloudflare Pages 301 Redirects for SEO migration
+/offerings/ /services/ 301
+/offerings/:slug/ /services/:slug/ 301
+/offerings/* /services/:splat 301

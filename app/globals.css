@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-lateef), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --color-brand-red: #c93b41;
+  --color-brand-red-light: #e04b4f;
+  --color-brand-red-dark: #ba3239;
+}
+
+:root {
+  --background: #f8f9fa;
+  --foreground: #111215;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --muted-text: #4b5563;
+  --brand-red: #c93b41;
+}
+
+.dark {
+  --background: #1d1d1d;
+  --foreground: #ffffff;
+  --card-bg: #242424;
+  --card-surface-2: #2b2b2b;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --muted-text: #a8abb4;
+  --brand-red: #c93b41;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-lateef), -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+.dark body,
+.dark {
+  background-color: #1d1d1d;
+}
+
+/* Custom scrollbars with brand red */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #2f2f2f;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c93b41;
+}
+
+/* Brand Red Button Gradient & Glow */
+.btn-crimson {
+  background: linear-gradient(135deg, #e04b4f 0%, #c93b41 50%, #ba3239 100%);
+  box-shadow: 0 4px 20px rgba(201, 59, 65, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn-crimson:hover {
+  background: linear-gradient(135deg, #e75050 0%, #d84242 50%, #c93b41 100%);
+  box-shadow: 0 6px 25px rgba(201, 59, 65, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Glass Pill Badges - Adaptive for Light and Dark Modes */
+.badge-crimson {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #c93b41;
+  box-shadow: 0 1px 2px rgba(201, 59, 65, 0.06);
+}
+
+.dark .badge-crimson {
+  background-color: rgba(80, 20, 24, 0.7);
+  border: 1px solid rgba(224, 75, 79, 0.35);
+  color: #e85d61;
+  box-shadow: none;
+}
+
+.dark-pill {
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #111215;
+}
+
+.dark .dark-pill {
+  background-color: rgba(36, 36, 36, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+/* Skeleton Shimmer Animation (RTL & LTR friendly, GPU-accelerated) */
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.animate-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translate3d(100%, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: skeleton-shimmer 1.8s infinite ease-in-out;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.dark .animate-shimmer::after {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.09) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+

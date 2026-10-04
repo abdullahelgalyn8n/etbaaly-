@@ -1,0 +1,21 @@
+# A.Z Agency - LLM Discovery Index
+> A.Z Agency is a premier digital engineering and creative media agency based in Egypt and serving the Gulf region. Specializing in Technical SEO, Motion Graphics & Visual Production, Branding & Print Design, AI & n8n Hyper-Automation, and Modern High-Speed Web Development.
+
+## Overview & Core Capabilities
+- Website: https://azagency.online
+- Direct Contact: 01022598473 / info@azagency.online
+- Geographic Focus: Egypt, Saudi Arabia, UAE, and GCC region.
+
+## Main Service Offerings
+- [Branding & Print Design](https://azagency.online/services/branding-print/): Comprehensive brand guidelines, packaging design, corporate profiles, and CMYK print prep.
+- [Motion Graphics & Visual Media](https://azagency.online/services/motion-graphics/): 2D/3D Explainer videos, social ads, animated brand identities, and professional voiceover.
+- [High-Speed Web Development](https://azagency.online/services/modern-web-dev/): Next.js 16 Edge architecture, 0$ serverless Cloudflare Pages hosting, and ultra-fast Core Web Vitals.
+- [Technical SEO & AEO](https://azagency.online/services/technical-seo/): Enterprise audit, Core Web Vitals 100/100, JSON-LD Schema architecture, Zero-Click and AI overview optimization.
+- [AI & n8n Automation](https://azagency.online/services/ai-automation/): Custom AI agents, autonomous workflow automation, CRM/database synchronization, and customer service bots.
+
+## Pages Index
+- [Home](https://azagency.online/): Overview of digital transformation services and key metrics.
+- [Services & Offerings](https://azagency.online/services/): In-depth service breakdowns and deliverables.
+- [About Us & Story](https://azagency.online/about/): Background, values (Innovation, Collaboration, Empowerment), and industry sectors.
+- [Contact & Consultation](https://azagency.online/contact/): Intake form and direct contact info.
+- [Digital Insights Blog](https://azagency.online/blog/): Technical articles and guides.

@@ -1,0 +1,134 @@
+{
+  "root_directory": "G:/مسودة عملاء/stickermule",
+  "total_files": 608,
+  "total_size_mb": 75.0,
+  "categories": {
+    "01_Homepage": {
+      "files_count": 42,
+      "size_mb": 1.27,
+      "subfolders": {
+        ".": 0,
+        "category_tiles": 14,
+        "hero_and_branding": 8,
+        "navigation_icons": 20
+      }
+    },
+    "02_Stickers_op_maat": {
+      "files_count": 200,
+      "size_mb": 23.56,
+      "subfolders": {
+        ".": 2,
+        "00_Category_Overview": 9,
+        "00_Category_Overview\\navigation_icons": 20,
+        "01_All_Products_Thumbnails": 19,
+        "Products": 0,
+        "Products\\01_310_bumperstickers": 8,
+        "Products\\02_315_vierkante-stickers": 8,
+        "Products\\03_316_ronde-stickers": 8,
+        "Products\\04_317_uitgesneden-stickers": 8,
+        "Products\\05_318_rechthoekige-stickers": 8,
+        "Products\\06_319_ovale-stickers": 8,
+        "Products\\07_320_stickers-ronde-hoek": 8,
+        "Products\\08_322_stickervellen": 8,
+        "Products\\09_323_stickers-met-gestanste-toplaag": 8,
+        "Products\\10_999_transparante-stickers": 8,
+        "Products\\11_economy-stickers_voordelige-stickers": 8,
+        "Products\\12_fabric-stickers_textielstickers": 7,
+        "Products\\13_glitter-stickers_glitter-stickers": 8,
+        "Products\\14_holographic-stickers_hologram-stickers": 8,
+        "Products\\15_static-clings_statische-stickers": 8,
+        "Products\\16_sticker-packs_stickersets": 7,
+        "Products\\17_transfer_transferstickers": 8,
+        "Products\\18_vinyl-lettering_vinylbelettering": 8,
+        "Products\\19_window_raamstickers": 8
+      }
+    },
+    "03_Gepersonaliseerde_kleding": {
+      "files_count": 56,
+      "size_mb": 13.99,
+      "subfolders": {
+        ".": 1,
+        "00_Category_Overview": 7,
+        "01_All_Products_Thumbnails": 6,
+        "Products": 0,
+        "Products\\01_big-and-tall-t-shirts_oversized-t-shirts": 7,
+        "Products\\02_custom-hats_gepersonaliseerde-petten": 7,
+        "Products\\03_custom-hoodies_gepersonaliseerde-hoodies": 5,
+        "Products\\04_custom-t-shirts_t-shirts-bedrukken": 8,
+        "Products\\05_dtf-transfers_dtf-transfers": 7,
+        "Products\\06_heavyweight-t-shirts_heavyweight-t-shirts": 8
+      }
+    },
+    "04_Gepersonaliseerde_acrylproducten": {
+      "files_count": 63,
+      "size_mb": 8.84,
+      "subfolders": {
+        ".": 1,
+        "00_Category_Overview": 10,
+        "01_All_Products_Thumbnails": 6,
+        "Products": 0,
+        "Products\\01_acrylic-charms_acryl-bedeltjes": 8,
+        "Products\\02_acrylic-magnets_acryl-magneten": 7,
+        "Products\\03_acrylic-pins_acryl-pins": 8,
+        "Products\\04_acrylic-signs_acryl-borden": 8,
+        "Products\\05_custom-keychains_gepersonaliseerde-sleutelhanger": 8,
+        "Products\\06_die-cut-acrylic-signs_contourgesneden-acryl-borden": 7
+      }
+    },
+    "05_Verpakking_op_maat": {
+      "files_count": 51,
+      "size_mb": 7.5,
+      "subfolders": {
+        ".": 1,
+        "00_Category_Overview": 8,
+        "01_All_Products_Thumbnails": 5,
+        "Products": 0,
+        "Products\\01_bubble-mailers_luchtkussen-enveloppen": 8,
+        "Products\\02_label-dispenser_etiket-dispenser": 5,
+        "Products\\03_pkg-tp_verpakkingstape": 8,
+        "Products\\04_pm_plastic-enveloppen": 8,
+        "Products\\05_Pouches_stazakken": 8
+      }
+    },
+    "06_Etiketten_op_maat": {
+      "files_count": 142,
+      "size_mb": 13.8,
+      "subfolders": {
+        ".": 1,
+        "00_Category_Overview": 11,
+        "01_All_Products_Thumbnails": 15,
+        "Products": 0,
+        "Products\\01_clear-rl_transparante-etiketten-op-rol": 8,
+        "Products\\02_CRL_ronde-etiketten-op-rol": 8,
+        "Products\\03_csrl_uitgesneden-etiketten": 8,
+        "Products\\04_label-dispenser_etiket-dispenser": 5,
+        "Products\\05_orl_ovalen-etiketten-op-rol": 8,
+        "Products\\06_paper-labels_papieren-etiketten": 6,
+        "Products\\07_rcrl_etiketten-met-ronde-hoek": 8,
+        "Products\\08_rrl_rechthoekige-etiketten-op-rol": 8,
+        "Products\\09_sheet-labels-circle_ronde-etiketten-op-vellen": 8,
+        "Products\\10_sheet-labels-die-cut_uitgesneden-etiketten-op-vellen": 8,
+        "Products\\11_sheet-labels-oval_ovale-etiketten-op-vellen": 8,
+        "Products\\12_sheet-labels-rectangle_rechthoekige-etiketten-op-vellen": 8,
+        "Products\\13_sheet-labels-rounded-corner_etiketten-met-ronde-hoek-op-vellen": 8,
+        "Products\\14_sheet-labels-square_vierkante-etiketten-op-vellen": 8,
+        "Products\\15_srl_vierkante-etiketten-op-rol": 8
+      }
+    },
+    "07_Buttons_op_maat": {
+      "files_count": 54,
+      "size_mb": 6.04,
+      "subfolders": {
+        ".": 1,
+        "00_Category_Overview": 8,
+        "01_All_Products_Thumbnails": 5,
+        "Products": 0,
+        "Products\\01_acrylic-pins_acryl-pins": 8,
+        "Products\\02_crb1_ronde-buttons-25-mm": 8,
+        "Products\\03_crb125_ronde-buttons-32-mm": 8,
+        "Products\\04_crb150_ronde-buttons-38-mm": 8,
+        "Products\\05_crb225_ronde-buttons-57-mm": 8
+      }
+    }
+  }
+}

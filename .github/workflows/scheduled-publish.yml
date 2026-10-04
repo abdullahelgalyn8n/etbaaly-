@@ -1,0 +1,77 @@
+name: Scheduled Content Publisher & SEO Indexer
+
+on:
+  schedule:
+    # Runs daily at 06:00 UTC (09:00 AM Cairo Local Time)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab anytime
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-publish:
+    name: Build, Publish Scheduled Articles & Ping Indexers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Check for Due Articles & Trigger Cloudflare Build
+        id: check_schedule
+        run: |
+          NEW_ARTICLES=$(node -e "
+            const fs = require('fs');
+            const content = fs.readFileSync('data/actionsArticles.ts', 'utf8');
+            const dates = [...content.matchAll(/publishDate:\s*[\"']([^\"']+)[\"']/g)].map(m => m[1]);
+            const today = new Date().toISOString().slice(0, 10);
+            const due = dates.filter(d => d.startsWith(today));
+            console.log(due.length);
+          ")
+          echo "Found $NEW_ARTICLES articles due today."
+          echo "due_count=$NEW_ARTICLES" >> $GITHUB_OUTPUT
+
+          if [ "$NEW_ARTICLES" -gt 0 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "trigger_deploy=true" >> $GITHUB_OUTPUT
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "chore(schedule): release scheduled article on $(date +'%Y-%m-%d') [skip actions]"
+            git push origin main
+            echo "Cloudflare Pages deployment triggered successfully via git push!"
+          else
+            echo "trigger_deploy=false" >> $GITHUB_OUTPUT
+            echo "No new articles due today. Skipping deployment trigger."
+          fi
+
+      - name: Build Next.js App
+        run: npm run build
+
+      - name: Verify Build
+        run: |
+          echo "=== Build Output Directory ==="
+          ls -lh .next/
+
+      - name: Notify Search Engines (Sitemap Ping)
+        if: steps.check_schedule.outputs.trigger_deploy == 'true'
+        run: |
+          echo "Waiting 60 seconds for Cloudflare build to propagate..."
+          sleep 60
+          echo "Pinging Search Engines for newly published articles..."
+          # Ping Google Sitemap
+          curl -s -o /dev/null -w "Google Sitemap Ping HTTP Status: %{http_code}\n" "https://www.google.com/ping?sitemap=https://etbaaly.azagency.online/sitemap.xml" || true
+          # Ping Bing Sitemap
+          curl -s -o /dev/null -w "Bing Sitemap Ping HTTP Status: %{http_code}\n" "https://www.bing.com/ping?sitemap=https://etbaaly.azagency.online/sitemap.xml" || true
+          echo "Search engines notified successfully!"

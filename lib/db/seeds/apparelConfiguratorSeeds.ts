@@ -1,0 +1,126 @@
+import { VisualConfigurator } from "../types";
+
+export const apparelConfigurators: VisualConfigurator[] = [
+  {
+    id: "cfg-cotton-tshirt",
+    name: "تيشيرت أوفر سايز قطن 100% (Custom T-Shirt)",
+    productId: "prod-cotton-tshirt",
+    style: "style1",
+    canvasWidth: 1000,
+    canvasHeight: 1000,
+    basePrice: 280,
+    views: [
+      { id: "v-front", name: "الصدر الأمامي (Front Chest)", canvasWidth: 1000, canvasHeight: 1000 },
+      { id: "v-back", name: "الظهر والكتف (Back View)", canvasWidth: 1000, canvasHeight: 1000 },
+      { id: "v-pocket", name: "جيب الصدر واللوجو (Pocket View)", canvasWidth: 1000, canvasHeight: 1000 },
+    ],
+    hotspots: [
+      { id: "hs-ts-1", viewId: "v-front", x: 50, y: 45, title: "منطقة طباعة اللوجو/الصورة", targetGroupId: "grp-tshirt-placement" },
+      { id: "hs-ts-2", viewId: "v-front", x: 50, y: 78, title: "نص البراند والشعار", targetGroupId: "grp-tshirt-text" },
+    ],
+    groups: [
+      {
+        id: "grp-tshirt-color",
+        title: "لون التيشيرت الأساسي (T-Shirt Color)",
+        controlType: "color",
+        required: true,
+        multiple: false,
+        initialState: "open",
+        options: [
+          { id: "opt-tc-black", name: "أسود فاحم", controlType: "color", colorHex: "#111111", priceAdd: 0, activeOnLoad: true, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+          { id: "opt-tc-white", name: "أبيض ناصع", controlType: "color", colorHex: "#FFFFFF", priceAdd: 0, activeOnLoad: false, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+          { id: "opt-tc-red", name: "أحمر قرمزي A.Z", controlType: "color", colorHex: "#C93B41", priceAdd: 10, activeOnLoad: false, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+          { id: "opt-tc-beige", name: "بيج كافيه", controlType: "color", colorHex: "#D4C4B5", priceAdd: 10, activeOnLoad: false, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+          { id: "opt-tc-olive", name: "زيتي داكن", controlType: "color", colorHex: "#2E3B32", priceAdd: 10, activeOnLoad: false, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+        ],
+      },
+      {
+        id: "grp-tshirt-placement",
+        title: "موضع ومساحة الطباعة (Print Placement)",
+        controlType: "icon",
+        required: false,
+        multiple: false,
+        initialState: "open",
+        options: [
+          { id: "opt-tp-chest-a4", name: "طباعة منتصف الصدر (A4)", controlType: "icon", iconUrl: "👕", priceAdd: 0, activeOnLoad: true, x: 50, y: 45, width: 55, height: 55, zIndex: 2, viewId: "v-front" },
+          { id: "opt-tp-chest-a3", name: "طباعة كاملة مكبرة على الصدر (A3)", controlType: "icon", iconUrl: "🔥", priceAdd: 35, activeOnLoad: false, x: 50, y: 45, width: 70, height: 70, zIndex: 2, viewId: "v-front" },
+          { id: "opt-tp-pocket", name: "لوجو صغير على الجيب الأيسر (10x10 cm)", controlType: "icon", iconUrl: "📌", priceAdd: 0, activeOnLoad: false, x: 35, y: 38, width: 25, height: 25, zIndex: 2, viewId: "v-front" },
+          { id: "opt-tp-back", name: "طباعة على الظهر بالكامل", controlType: "icon", iconUrl: "🔙", priceAdd: 40, activeOnLoad: false, x: 50, y: 45, width: 65, height: 65, zIndex: 2, viewId: "v-back" },
+        ],
+      },
+      {
+        id: "grp-tshirt-text",
+        title: "كتابة اسم البراند أو العبارة (Brand Text Slot)",
+        controlType: "inline_text",
+        required: false,
+        multiple: false,
+        initialState: "open",
+        options: [
+          { id: "opt-tt-text", name: "اسم البراند أو الشعار النصي", controlType: "inline_text", priceAdd: 10, activeOnLoad: false, x: 50, y: 78, width: 60, height: 15, zIndex: 3, viewId: "v-front", description: "أدخل النص أو الشعار المخصص." },
+        ],
+      },
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: "cfg-winter-hoodie",
+    name: "هودي شتوي مبطن ميلتون ثقيل (Winter Hoodie)",
+    productId: "prod-winter-hoodie",
+    style: "style1",
+    canvasWidth: 1000,
+    canvasHeight: 1000,
+    basePrice: 490,
+    views: [
+      { id: "v-front", name: "الصدر والجيب الكنغر (Front View)", canvasWidth: 1000, canvasHeight: 1000 },
+      { id: "v-back", name: "الظهر والكابيشون (Back & Hood)", canvasWidth: 1000, canvasHeight: 1000 },
+      { id: "v-sleeve", name: "الأكمام (Sleeve Details)", canvasWidth: 1000, canvasHeight: 1000 },
+    ],
+    hotspots: [
+      { id: "hs-hd-1", viewId: "v-front", x: 50, y: 46, title: "مساحة تصميم الصدر الأمامي", targetGroupId: "grp-hoodie-print" },
+      { id: "hs-hd-2", viewId: "v-front", x: 50, y: 78, title: "عبارة أو تطريز مخصص", targetGroupId: "grp-hoodie-text" },
+    ],
+    groups: [
+      {
+        id: "grp-hoodie-color",
+        title: "لون قماش الهودي الميلتون (Hoodie Color)",
+        controlType: "color",
+        required: true,
+        multiple: false,
+        initialState: "open",
+        options: [
+          { id: "opt-hc-black", name: "أسود كلاسيك", controlType: "color", colorHex: "#181818", priceAdd: 0, activeOnLoad: true, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+          { id: "opt-hc-grey", name: "رمادي ميلانج", controlType: "color", colorHex: "#8A8D91", priceAdd: 0, activeOnLoad: false, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+          { id: "opt-hc-navy", name: "كحلي داكن", controlType: "color", colorHex: "#1A2536", priceAdd: 15, activeOnLoad: false, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+          { id: "opt-hc-maroon", name: "مارون نبيتي", controlType: "color", colorHex: "#6B1D24", priceAdd: 15, activeOnLoad: false, x: 50, y: 50, width: 90, height: 90, zIndex: 1, viewId: "v-front" },
+        ],
+      },
+      {
+        id: "grp-hoodie-print",
+        title: "موضع الطباعة والتطريز (Print Area)",
+        controlType: "icon",
+        required: false,
+        multiple: false,
+        initialState: "open",
+        options: [
+          { id: "opt-hp-chest", name: "طباعة الصدر الأمامية (28x20 cm)", controlType: "icon", iconUrl: "🧥", priceAdd: 0, activeOnLoad: true, x: 50, y: 46, width: 50, height: 50, zIndex: 2, viewId: "v-front" },
+          { id: "opt-hp-embroidery", name: "تطريز بارز عالي الكثافة (Embossed Embroidery)", controlType: "icon", iconUrl: "🧵", priceAdd: 45, activeOnLoad: false, x: 50, y: 46, width: 45, height: 45, zIndex: 2, viewId: "v-front" },
+          { id: "opt-hp-back", name: "طباعة جرافيك خلفي كبير على الظهر", controlType: "icon", iconUrl: "🎨", priceAdd: 50, activeOnLoad: false, x: 50, y: 45, width: 65, height: 65, zIndex: 2, viewId: "v-back" },
+        ],
+      },
+      {
+        id: "grp-hoodie-text",
+        title: "كتابة عبارة أو اسم مخصص (Custom Text)",
+        controlType: "inline_text",
+        required: false,
+        multiple: false,
+        initialState: "open",
+        options: [
+          { id: "opt-ht-text", name: "عبارة أو نص مخصص", controlType: "inline_text", priceAdd: 15, activeOnLoad: false, x: 50, y: 78, width: 60, height: 15, zIndex: 3, viewId: "v-front", description: "أدخل النص المطلوب طباعته." },
+        ],
+      },
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+];

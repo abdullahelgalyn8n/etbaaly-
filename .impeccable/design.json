@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-15T00:00:00.000Z",
+  "title": "Design System: Etbaaly - إطبعلي",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Crimson Red",
+        "canonical": "#c93b41",
+        "tonalRamp": [
+          "#4a0e11",
+          "#75181c",
+          "#a0242a",
+          "#c93b41",
+          "#e04b4f",
+          "#eb7175",
+          "#f4a4a7",
+          "#fde8e9"
+        ]
+      },
+      "primary-light": {
+        "role": "primary",
+        "displayName": "Crimson Light",
+        "canonical": "#e04b4f"
+      },
+      "primary-dark": {
+        "role": "primary",
+        "displayName": "Crimson Dark",
+        "canonical": "#ba3239"
+      },
+      "neutral-dark": {
+        "role": "neutral",
+        "displayName": "Charcoal Dark",
+        "canonical": "#1d1d1d",
+        "tonalRamp": [
+          "#111111",
+          "#1d1d1d",
+          "#242424",
+          "#2b2b2b",
+          "#4a4a4a",
+          "#757575",
+          "#a0a0a0",
+          "#f8f9fa"
+        ]
+      },
+      "neutral-light": {
+        "role": "neutral",
+        "displayName": "Crisp Light",
+        "canonical": "#f8f9fa"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Hero",
+        "purpose": "Hero headers and high-impact category banners"
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Section titles and modal headings"
+      },
+      "body": {
+        "displayName": "Body Text",
+        "purpose": "Standard paragraph text and descriptions"
+      }
+    },
+    "shadows": [
+      {
+        "name": "crimson-glow",
+        "value": "0 4px 20px rgba(201, 59, 65, 0.35)",
+        "purpose": "Primary crimson action button glow"
+      },
+      {
+        "name": "crimson-glow-hover",
+        "value": "0 6px 25px rgba(201, 59, 65, 0.5)",
+        "purpose": "Hover state elevation"
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for transitions"
+      },
+      {
+        "name": "skeleton-sweep",
+        "value": "1.8s infinite ease-in-out",
+        "purpose": "Zero-CLS shimmer loader"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Crimson Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Tactile crimson gradient button with inset light and shadow glow",
+      "html": "<button class=\"ds-btn-crimson\">طلب عرض سعر فوري</button>",
+      "css": ".ds-btn-crimson { background: linear-gradient(135deg, #e04b4f 0%, #c93b41 50%, #ba3239 100%); color: #ffffff; padding: 12px 28px; border-radius: 10px; font-weight: 700; font-family: sans-serif; border: none; box-shadow: 0 4px 20px rgba(201, 59, 65, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2); cursor: pointer; transition: all 0.2s ease; } .ds-btn-crimson:hover { background: linear-gradient(135deg, #e75050 0%, #d84242 50%, #c93b41 100%); box-shadow: 0 6px 25px rgba(201, 59, 65, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3); transform: translateY(-1px); }"
+    },
+    {
+      "name": "Crimson Glass Badge",
+      "kind": "chip",
+      "description": "Pill badge for status and highlights",
+      "html": "<span class=\"ds-badge-crimson\">طباعة فاخرة</span>",
+      "css": ".ds-badge-crimson { display: inline-flex; align-items: center; padding: 4px 14px; border-radius: 9999px; font-size: 14px; font-weight: 700; background-color: #fef2f2; border: 1px solid #fecaca; color: #c93b41; box-shadow: 0 1px 2px rgba(201, 59, 65, 0.06); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Master Print Atelier",
+    "overview": "Etbaaly's visual system evokes the tactile, tangible precision of high-end printmaking and luxury packaging. It balances industrial manufacturing capability with boutique agency aesthetics.",
+    "keyCharacteristics": [
+      "Crimson Accents: High-energy brand red used purposefully on interactive levers.",
+      "Dual Surface Logic: Seamless dark mode (#1d1d1d) and light mode (#f8f9fa).",
+      "Tactile Card & Pill Architecture: Layered elevation with subtle glass borders.",
+      "RTL Fluidity: Arabic typography with generous line heights."
+    ],
+    "rules": [
+      {
+        "name": "The 10% Crimson Rule",
+        "body": "Crimson Red is a deliberate accent; it must never exceed 10% of any viewport's surface area.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dual Surface Rule",
+        "body": "Every card and surface token must explicitly resolve in both light and dark mode without losing border definition.",
+        "section": "colors"
+      },
+      {
+        "name": "The Crisp Arabic Rendering Rule",
+        "body": "Avoid artificial bolding filters on Lateef; rely on clean font weights to maintain vector sharpness.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Canvas Depth Rule",
+        "body": "Dark backgrounds remain flat (#1d1d1d); elevation is communicated through step-up tonal surfaces and hairline borders.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do maintain RTL direction and right-aligned text hierarchy across all components.",
+      "Do implement shimmer skeleton screens (loading.tsx) on every dynamic route.",
+      "Do use .btn-crimson for main conversion actions."
+    ],
+    "donts": [
+      "Don't use pure black (#000000) for dark backgrounds; use Charcoal (#1d1d1d).",
+      "Don't introduce competing accent colors.",
+      "Don't allow layout shift on asset load; always set explicit image dimensions."
+    ]
+  }
+}

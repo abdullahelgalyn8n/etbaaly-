@@ -1,0 +1,1267 @@
+{
+  "category_name": "Stickers op maat",
+  "category_title": "Stickers op maat | Gratis verzending",
+  "category_description": "Gepersonaliseerde stickers van premium vinyl, gedrukt in elke vorm en formaat. Snel geleverd met gratis verzending en rappe productietijd.",
+  "category_assets": [
+    {
+      "title": "Custom sticker applied to climbing helmet",
+      "url": "https://storage.googleapis.com/sm-content/core/products/productCategories/custom-stickers/gallery_1",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\category_hero_1_Custom_sticker_applied_to_climbing_helmet.jpg",
+      "size": 440570
+    },
+    {
+      "title": "Custom sticker of grilled cheese sandwich",
+      "url": "https://storage.googleapis.com/sm-content/core/products/productCategories/custom-stickers/gallery_2",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\category_hero_2_Custom_sticker_of_grilled_cheese_sandwich.jpg",
+      "size": 329712
+    },
+    {
+      "title": "Custom stickers on Macbook laptop",
+      "url": "https://storage.googleapis.com/sm-content/core/products/productCategories/custom-stickers/gallery_3",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\category_hero_3_Custom_stickers_on_Macbook_laptop.jpg",
+      "size": 158723
+    },
+    {
+      "title": "Schema Custom Stickers",
+      "url": "https://cdn.stickermule.com/content/shared/assets/schema/custom-stickers.png",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\category_schema_custom_stickers.png",
+      "size": 335049
+    },
+    {
+      "title": "Category Meta Video Thumbnail",
+      "url": "https://embed-ssl.wistia.com/deliveries/126ecdd793f937e4d1dd458d1d48fb3f.jpg?image_crop_resized=960x540",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\category_meta_video_thumbnail.jpg",
+      "size": 118105
+    },
+    {
+      "title": "Size Reference Guide",
+      "url": "https://storage.googleapis.com/sm-content/support/11133866-f764-4132-8f99-95ad91ee12f0",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\sticker_size_reference_guide.jpg",
+      "size": 205208
+    },
+    {
+      "title": "Related: Vinylstickers",
+      "url": "https://storage.googleapis.com/sm-content/core/products/productAliases/vinyl-stickers/thumbnail",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\related_Vinylstickers.jpg",
+      "size": 88770
+    },
+    {
+      "title": "Related: Bumperstickers",
+      "url": "https://storage.googleapis.com/sm-content/core/products/products/310/thumbnail",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\related_Bumperstickers.jpg",
+      "size": 161199
+    },
+    {
+      "title": "Related: Autostickers",
+      "url": "https://storage.googleapis.com/sm-content/core/products/productAliasCategories/car-decals/thumbnail",
+      "path": "G:/مسودة عملاء/stickermule\\00_Category_Overview\\related_Autostickers.jpg",
+      "size": 46949
+    }
+  ],
+  "products": [
+    {
+      "index_number": 1,
+      "id": "310",
+      "name": "Bumperstickers",
+      "permalink": "bumperstickers",
+      "permalink_id": "bumper-stickers",
+      "description": "Bumperstickers op maat met verwijderbaar kleefmiddel, ideaal voor auto's en vrachtwagens. Geef je eigen tekst of ontwerp weer in full colour. Dik, duurzaam vinyl dat je stickers beschermt tegen krassen, water en zonlicht.",
+      "folder": "01_310_bumperstickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/310/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\01_310_bumperstickers\\01_index_310.png",
+          "size": 41812
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/310/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\01_310_bumperstickers\\02_cover_310.webp",
+          "size": 47482
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/310/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\01_310_bumperstickers\\03_cover2x_highres_310.webp",
+          "size": 103078
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/310/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\01_310_bumperstickers\\04_cart_310.png",
+          "size": 41812
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/310/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\01_310_bumperstickers\\05_share_social_310.jpg",
+          "size": 246388
+        },
+        {
+          "type": "gallery_1",
+          "title": "Custom bumper stickers on car",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/310/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\01_310_bumperstickers\\06_gallery_1_Custom_bumper_stickers_on_car.webp",
+          "size": 29162
+        },
+        {
+          "type": "gallery_2",
+          "title": "Custom bumper sticker on rear of car",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/310/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\01_310_bumperstickers\\07_gallery_2_Custom_bumper_sticker_on_rear_of_car.webp",
+          "size": 16828
+        },
+        {
+          "type": "gallery_3",
+          "title": "Custom bumper stickers on car bumper",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/310/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\01_310_bumperstickers\\08_gallery_3_Custom_bumper_stickers_on_car_bumper.webp",
+          "size": 15596
+        }
+      ],
+      "gallery_title": "Bestand tegen wind, weersinvloeden en hoge snelheden",
+      "gallery_desc": "Bedrukt op dik en duurzaam vinyl met een matte afwerking blijven onze bumperstickers op maat langer goed dan je motor. De stickers zijn gemaakt voor off-roadavonturen, roadtrips en hoge snelheden, en voorzien van een laminaatlaag ter bescherming tegen vuil, krassen, regen en zonlicht.\n\nBestel je gepersonaliseerde stickers van topkwaliteit online en ontvang ze binnen enkele dagen bij jou thuis! Koop onze gave verwijderbare bumperstickers vanaf 10 stuks, klein formaat of groot formaat, tot maximaal 914 mm × 610 mm."
+    },
+    {
+      "index_number": 2,
+      "id": "315",
+      "name": "Vierkante stickers",
+      "permalink": "vierkante-stickers",
+      "permalink_id": "square-stickers",
+      "description": "Met vierkante stickers op maat kun je gemakkelijk en snel je bedrijf, merk of evenement promoten. Dik, duurzaam vinyl dat je stickers beschermt tegen krassen, water en zonlicht.",
+      "folder": "02_315_vierkante-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/315/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\02_315_vierkante-stickers\\01_index_315.png",
+          "size": 27739
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/315/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\02_315_vierkante-stickers\\02_cover_315.webp",
+          "size": 53506
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/315/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\02_315_vierkante-stickers\\03_cover2x_highres_315.webp",
+          "size": 132780
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/315/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\02_315_vierkante-stickers\\04_cart_315.png",
+          "size": 27739
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/315/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\02_315_vierkante-stickers\\05_share_social_315.jpg",
+          "size": 237148
+        },
+        {
+          "type": "gallery_1",
+          "title": "children holding up custom printed square stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/315/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\02_315_vierkante-stickers\\06_gallery_1_children_holding_up_custom_printed_square_stickers.webp",
+          "size": 19494
+        },
+        {
+          "type": "gallery_2",
+          "title": "washing custom square stickers on a water bottle",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/315/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\02_315_vierkante-stickers\\07_gallery_2_washing_custom_square_stickers_on_a_water_bottle.webp",
+          "size": 22662
+        },
+        {
+          "type": "gallery_3",
+          "title": "custom square stickers placed on a guitar",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/315/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\02_315_vierkante-stickers\\08_gallery_3_custom_square_stickers_placed_on_a_guitar.webp",
+          "size": 14158
+        }
+      ],
+      "gallery_title": "Klassieke vierkante stickers",
+      "gallery_desc": "Vierkante stickers op maat zijn perfect voor bedrijven en persoonlijk gebruik. Promoot je merk, gebruik ze als etiket op je producten of personaliseer je spullen. Dankzij het veelzijdige ontwerp en duurzame materiaal blijven ze op de meeste oppervlakken zitten, waardoor je creativiteit of boodschap extra opvalt!"
+    },
+    {
+      "index_number": 3,
+      "id": "316",
+      "name": "Ronde stickers",
+      "permalink": "ronde-stickers",
+      "permalink_id": "circle-stickers",
+      "description": "Met ronde stickers op maat kun je gemakkelijk en snel je bedrijf, merk of evenement promoten. Dik, duurzaam vinyl dat je stickers beschermt tegen krassen, water en zonlicht.",
+      "folder": "03_316_ronde-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/316/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\03_316_ronde-stickers\\01_index_316.png",
+          "size": 85545
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/316/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\03_316_ronde-stickers\\02_cover_316.webp",
+          "size": 49668
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/316/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\03_316_ronde-stickers\\03_cover2x_highres_316.webp",
+          "size": 105620
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/316/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\03_316_ronde-stickers\\04_cart_316.png",
+          "size": 39118
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/316/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\03_316_ronde-stickers\\05_share_social_316.jpg",
+          "size": 448446
+        },
+        {
+          "type": "gallery_1",
+          "title": "Custom circle stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/316/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\03_316_ronde-stickers\\06_gallery_1_Custom_circle_stickers.webp",
+          "size": 27800
+        },
+        {
+          "type": "gallery_2",
+          "title": "Circle sticker on a water bottle",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/316/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\03_316_ronde-stickers\\07_gallery_2_Circle_sticker_on_a_water_bottle.webp",
+          "size": 35674
+        },
+        {
+          "type": "gallery_3",
+          "title": "Various custom circle stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/316/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\03_316_ronde-stickers\\08_gallery_3_Various_custom_circle_stickers.webp",
+          "size": 26592
+        }
+      ],
+      "gallery_title": "Ronde stickers op maat",
+      "gallery_desc": "Elke ronde sticker wordt gedrukt op duurzaam vinyl, met een fraaie matte afwerking voor een professionele uitstraling. Bestel minimaal 10 ronde stickers, of profiteer van kortingen bij grote bestellingen. Sticker Mule is dé plek op internet voor je stickers op maat, dankzij een eenvoudig bestelproces, snelle productietijd en gratis verzending."
+    },
+    {
+      "index_number": 4,
+      "id": "317",
+      "name": "Uitgesneden stickers",
+      "permalink": "uitgesneden-stickers",
+      "permalink_id": "die-cut-stickers",
+      "description": "Met uitgesneden stickers op maat kun je gemakkelijk en snel je bedrijf, merk of evenement promoten. Ze zijn ideaal voor op je laptop of waterfles, en gemaakt van dik, duurzaam vinyl dat je stickers beschermt tegen krassen, water en zonlicht. Ze kunnen zelfs in de vaatwasser.",
+      "folder": "04_317_uitgesneden-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/317/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\04_317_uitgesneden-stickers\\01_index_317.png",
+          "size": 44519
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/317/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\04_317_uitgesneden-stickers\\02_cover_317.webp",
+          "size": 63162
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/317/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\04_317_uitgesneden-stickers\\03_cover2x_highres_317.webp",
+          "size": 124522
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/317/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\04_317_uitgesneden-stickers\\04_cart_317.png",
+          "size": 44519
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/317/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\04_317_uitgesneden-stickers\\05_share_social_317.jpg",
+          "size": 204953
+        },
+        {
+          "type": "gallery_1",
+          "title": "Custom die cut stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/317/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\04_317_uitgesneden-stickers\\06_gallery_1_Custom_die_cut_stickers.webp",
+          "size": 28102
+        },
+        {
+          "type": "gallery_2",
+          "title": "Die cut lettering stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/317/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\04_317_uitgesneden-stickers\\07_gallery_2_Die_cut_lettering_stickers.webp",
+          "size": 19518
+        },
+        {
+          "type": "gallery_3",
+          "title": "dog-shaped die cut stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/317/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\04_317_uitgesneden-stickers\\08_gallery_3_dog-shaped_die_cut_stickers.webp",
+          "size": 24944
+        }
+      ],
+      "gallery_title": "Stickers in vormen op maat",
+      "gallery_desc": "Elke uitgesneden sticker is van topkwaliteit, en wordt gedrukt op dik en duurzaam vinyl met een matte afwerking. Het resultaat? Premium stickers - dat voel je, en dat zie je. Bestel slechts 10 stickers tegelijk, of bespaar geld door uitgesneden stickers op maat in bulk te bestellen. Dankzij het snelle bestelproces, de snelle productietijd en gratis verzending is Sticker Mule dé favoriete plek op internet voor stickers op maat."
+    },
+    {
+      "index_number": 5,
+      "id": "318",
+      "name": "Rechthoekige stickers",
+      "permalink": "rechthoekige-stickers",
+      "permalink_id": "rectangle-stickers",
+      "description": "Met rechthoekige stickers op maat kun je gemakkelijk en snel je bedrijf, merk of evenement promoten. Dik, duurzaam vinyl dat je stickers beschermt tegen krassen, water en zonlicht.",
+      "folder": "05_318_rechthoekige-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/318/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\05_318_rechthoekige-stickers\\01_index_318.png",
+          "size": 28392
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/318/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\05_318_rechthoekige-stickers\\02_cover_318.webp",
+          "size": 55178
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/318/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\05_318_rechthoekige-stickers\\03_cover2x_highres_318.webp",
+          "size": 111432
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/318/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\05_318_rechthoekige-stickers\\04_cart_318.png",
+          "size": 28392
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/318/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\05_318_rechthoekige-stickers\\05_share_social_318.jpg",
+          "size": 250622
+        },
+        {
+          "type": "gallery_1",
+          "title": "Straight-edge style with rectangle stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/318/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\05_318_rechthoekige-stickers\\06_gallery_1_Straight-edge_style_with_rectangle_stickers.webp",
+          "size": 21070
+        },
+        {
+          "type": "gallery_2",
+          "title": "Variety of custom rectangle stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/318/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\05_318_rechthoekige-stickers\\07_gallery_2_Variety_of_custom_rectangle_stickers.webp",
+          "size": 24862
+        },
+        {
+          "type": "gallery_3",
+          "title": "Red rectangle sickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/318/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\05_318_rechthoekige-stickers\\08_gallery_3_Red_rectangle_sickers.webp",
+          "size": 15286
+        }
+      ],
+      "gallery_title": "Rechthoekige stickers, rechttoe rechtaan",
+      "gallery_desc": "Onze rechthoekige stickers op maat worden full colour en met een matte afwerking afgedrukt op duurzaam vinyl. Hierdoor zien ze er super gelikt uit. Gratis verzending, gratis proefdrukken en een snelle productietijd zorgen voor een betaalbare, nauwkeurige en tijdige levering van je promotiestickers."
+    },
+    {
+      "index_number": 6,
+      "id": "319",
+      "name": "Ovale stickers",
+      "permalink": "ovale-stickers",
+      "permalink_id": "oval-stickers",
+      "description": "Met ovale stickers op maat kun je gemakkelijk en snel je bedrijf, merk of evenement promoten. Dik, duurzaam vinyl dat je stickers beschermt tegen krassen, water en zonlicht.",
+      "folder": "06_319_ovale-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/319/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\06_319_ovale-stickers\\01_index_319.png",
+          "size": 38240
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/319/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\06_319_ovale-stickers\\02_cover_319.webp",
+          "size": 60982
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/319/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\06_319_ovale-stickers\\03_cover2x_highres_319.webp",
+          "size": 158982
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/319/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\06_319_ovale-stickers\\04_cart_319.png",
+          "size": 38240
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/319/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\06_319_ovale-stickers\\05_share_social_319.jpg",
+          "size": 203703
+        },
+        {
+          "type": "gallery_1",
+          "title": "Custom oval stickers on laptop",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/319/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\06_319_ovale-stickers\\06_gallery_1_Custom_oval_stickers_on_laptop.webp",
+          "size": 15942
+        },
+        {
+          "type": "gallery_2",
+          "title": "Custom oval stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/319/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\06_319_ovale-stickers\\07_gallery_2_Custom_oval_stickers.webp",
+          "size": 14436
+        },
+        {
+          "type": "gallery_3",
+          "title": "Custom oval stickers on packaging",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/319/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\06_319_ovale-stickers\\08_gallery_3_Custom_oval_stickers_on_packaging.webp",
+          "size": 20352
+        }
+      ],
+      "gallery_title": "Veelzijdige stickers voor elke gelegenheid",
+      "gallery_desc": "Ovale stickers op maat bieden een snelle en gemakkelijke manier om je bedrijf, merk of evenement te promoten. Onze duurzame vinylstickers zijn gelamineerd, ze zijn weerbestendig en perfect voor je waterfles, laptop of om verpakkingen te verzegelen. Ovale stickers zijn zo veelzijdig dat je ze overal wilt gebruiken."
+    },
+    {
+      "index_number": 7,
+      "id": "320",
+      "name": "Stickers met ronde hoek",
+      "permalink": "stickers-ronde-hoek",
+      "permalink_id": "rounded-corner-stickers",
+      "description": "Met stickers op maat met ronde hoeken kun je gemakkelijk en snel je bedrijf, evenement of merk promoten. Dik, duurzaam vinyl dat je stickers beschermt tegen krassen, water en zon.",
+      "folder": "07_320_stickers-ronde-hoek",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/320/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\07_320_stickers-ronde-hoek\\01_index_320.png",
+          "size": 29154
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/320/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\07_320_stickers-ronde-hoek\\02_cover_320.webp",
+          "size": 52136
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/320/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\07_320_stickers-ronde-hoek\\03_cover2x_highres_320.webp",
+          "size": 125418
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/320/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\07_320_stickers-ronde-hoek\\04_cart_320.png",
+          "size": 29154
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/320/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\07_320_stickers-ronde-hoek\\05_share_social_320.jpg",
+          "size": 198207
+        },
+        {
+          "type": "gallery_1",
+          "title": "proudly displaying a custom rounded corner sticker for dolly",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/320/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\07_320_stickers-ronde-hoek\\06_gallery_1_proudly_displaying_a_custom_rounded_corner_sticker_for_dolly.jpg",
+          "size": 389529
+        },
+        {
+          "type": "gallery_2",
+          "title": "applying a rounded corner sticker to a laptop",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/320/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\07_320_stickers-ronde-hoek\\07_gallery_2_applying_a_rounded_corner_sticker_to_a_laptop.jpg",
+          "size": 429392
+        },
+        {
+          "type": "gallery_3",
+          "title": "custom rounded corner sticker of a rocky mountain folks festival",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/320/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\07_320_stickers-ronde-hoek\\08_gallery_3_custom_rounded_corner_sticker_of_a_rocky_mountain_folks_festival.jpg",
+          "size": 519116
+        }
+      ],
+      "gallery_title": "Op zoek naar stickers met ronde hoek?",
+      "gallery_desc": "Onze gepersonaliseerde stickers met ronde hoek zijn perfect voor bedrijven en persoonlijk gebruik. Promoot je merk, plak ze op je producten of geef je spullen wat extra glamour. Toon je creativiteit en deel je boodschap op een leuke en duurzame manier dankzij de vriendelijke ronde hoeken en het stevige vinyl."
+    },
+    {
+      "index_number": 8,
+      "id": "322",
+      "name": "Stickervellen",
+      "permalink": "stickervellen",
+      "permalink_id": "sticker-sheets",
+      "description": "Met stickervellen op maat kun je verschillende ontwerpen op één vel laten drukken. Pas de hele pagina aan en plaats stickers waar je maar wilt.",
+      "folder": "08_322_stickervellen",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/322/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\08_322_stickervellen\\01_index_322.png",
+          "size": 58450
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/322/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\08_322_stickervellen\\02_cover_322.webp",
+          "size": 69364
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/322/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\08_322_stickervellen\\03_cover2x_highres_322.webp",
+          "size": 160070
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/322/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\08_322_stickervellen\\04_cart_322.png",
+          "size": 58450
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/322/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\08_322_stickervellen\\05_share_social_322.jpg",
+          "size": 249072
+        },
+        {
+          "type": "gallery_1",
+          "title": "custom stickers sheets",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/322/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\08_322_stickervellen\\06_gallery_1_custom_stickers_sheets.webp",
+          "size": 55880
+        },
+        {
+          "type": "gallery_2",
+          "title": "customized stickers sheets",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/322/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\08_322_stickervellen\\07_gallery_2_customized_stickers_sheets.webp",
+          "size": 20516
+        },
+        {
+          "type": "gallery_3",
+          "title": "cute custom stickers sheets",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/322/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\08_322_stickervellen\\08_gallery_3_cute_custom_stickers_sheets.webp",
+          "size": 16702
+        }
+      ],
+      "gallery_title": "Premium, vinyl stickervellen",
+      "gallery_desc": "Selecteer om te bestellen een grootte en een aantal, upload je illustratie en reken af. Binnen enkele uren sturen we je een online proefdruk met de afdruk en uitsnede van elke sticker op je vel. Je kunt gratis wijzigingen aanvragen aan de proefdruk totdat je tevreden bent. Makkelijk te bestellen en snelle verzending. Sticker Mule is de favoriete plek op het internet voor stickervellen op maat."
+    },
+    {
+      "index_number": 9,
+      "id": "323",
+      "name": "Stickers met gestanste toplaag",
+      "permalink": "stickers-met-gestanste-toplaag",
+      "permalink_id": "kiss-cut-stickers",
+      "description": "Stickers op maat met gestanste toplaag zijn eenvoudig van de achterzijde los te maken. Je kunt zowel de rand als de stickers laten bedrukken. Gemaakt van duurzaam vinyl dat beschermt tegen krassen, hitte, water en zonlicht.",
+      "folder": "09_323_stickers-met-gestanste-toplaag",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/323/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\09_323_stickers-met-gestanste-toplaag\\01_index_323.png",
+          "size": 27578
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/323/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\09_323_stickers-met-gestanste-toplaag\\02_cover_323.webp",
+          "size": 50848
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/323/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\09_323_stickers-met-gestanste-toplaag\\03_cover2x_highres_323.webp",
+          "size": 112214
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/323/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\09_323_stickers-met-gestanste-toplaag\\04_cart_323.png",
+          "size": 27578
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/323/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\09_323_stickers-met-gestanste-toplaag\\05_share_social_323.jpg",
+          "size": 232477
+        },
+        {
+          "type": "gallery_1",
+          "title": "holding up kiss cut stickers with customized backing to peel off from",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/323/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\09_323_stickers-met-gestanste-toplaag\\06_gallery_1_holding_up_kiss_cut_stickers_with_customized_backing_to_peel_off_from.jpg",
+          "size": 477604
+        },
+        {
+          "type": "gallery_2",
+          "title": "custom kiss cut stickers for a pizza company",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/323/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\09_323_stickers-met-gestanste-toplaag\\07_gallery_2_custom_kiss_cut_stickers_for_a_pizza_company.jpg",
+          "size": 577411
+        },
+        {
+          "type": "gallery_3",
+          "title": "giving out custom kiss cut stickers for a fun graduation giveaway",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/323/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\09_323_stickers-met-gestanste-toplaag\\08_gallery_3_giving_out_custom_kiss_cut_stickers_for_a_fun_graduation_giveaway.jpg",
+          "size": 348100
+        }
+      ],
+      "gallery_title": "Topstickers met gestanste toplaag",
+      "gallery_desc": "Onze stickers met gestanste toplaag zijn ideaal om je merk te promoten, ter decoratie of om je producten te personaliseren, en perfect voor zowel bedrijven als persoonlijk gebruik. We snijden de stickers zeer nauwkeurig uit, en voorzien ze van een eenvoudig te verwijderen achtervel. Makkelijk bestellen, snelle productie en gratis verzending - Sticker Mule is dé favoriet op internet voor stickers met gestanste toplaag."
+    },
+    {
+      "index_number": 10,
+      "id": "999",
+      "name": "Transparante stickers",
+      "permalink": "transparante-stickers",
+      "permalink_id": "clear-stickers",
+      "description": "Transparante stickers op maat worden gedrukt met witte inkt achter je ontwerp, om ze doorschijnend te maken. Ze zijn ideaal voor ramen, flessen, als productetiket of gewoon om je stickers een unieke look te geven.",
+      "folder": "10_999_transparante-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/999/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\10_999_transparante-stickers\\01_index_999.png",
+          "size": 45890
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/999/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\10_999_transparante-stickers\\02_cover_999.webp",
+          "size": 33770
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/999/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\10_999_transparante-stickers\\03_cover2x_highres_999.webp",
+          "size": 81016
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/999/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\10_999_transparante-stickers\\04_cart_999.png",
+          "size": 45890
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/999/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\10_999_transparante-stickers\\05_share_social_999.jpg",
+          "size": 180661
+        },
+        {
+          "type": "gallery_1",
+          "title": "clear-stickers-image-1",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/999/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\10_999_transparante-stickers\\06_gallery_1_clear-stickers-image-1.webp",
+          "size": 26924
+        },
+        {
+          "type": "gallery_2",
+          "title": "Custom clear stickers and cat",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/999/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\10_999_transparante-stickers\\07_gallery_2_Custom_clear_stickers_and_cat.webp",
+          "size": 36620
+        },
+        {
+          "type": "gallery_3",
+          "title": "Custom clear stickers on popcorn container",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/999/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\10_999_transparante-stickers\\08_gallery_3_Custom_clear_stickers_on_popcorn_container.webp",
+          "size": 21888
+        }
+      ],
+      "gallery_title": "De beste stickers, dat is helder",
+      "gallery_desc": "De transparante stickers van Sticker Mule zijn gemaakt van een transparant vinyl dat volgens jouw exacte specificaties kan worden bedrukt en gesneden. Onze transparante stickers zijn gedrukt op hoogwaardig vinyl met een sterk kleefmiddel en zijn waterbestendig, krasbestendig en buitengewoon duurzaam."
+    },
+    {
+      "index_number": 11,
+      "id": "economy-stickers",
+      "name": "Voordelige stickers",
+      "permalink": "voordelige-stickers",
+      "permalink_id": "economy-stickers",
+      "description": "Gegarandeerd de laagste prijs op het internet.",
+      "folder": "11_economy-stickers_voordelige-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/economy-stickers/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\11_economy-stickers_voordelige-stickers\\01_index_economy-stickers.png",
+          "size": 51243
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/economy-stickers/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\11_economy-stickers_voordelige-stickers\\02_cover_economy-stickers.webp",
+          "size": 68654
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/economy-stickers/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\11_economy-stickers_voordelige-stickers\\03_cover2x_highres_economy-stickers.webp",
+          "size": 163576
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/economy-stickers/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\11_economy-stickers_voordelige-stickers\\04_cart_economy-stickers.png",
+          "size": 51243
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/economy-stickers/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\11_economy-stickers_voordelige-stickers\\05_share_social_economy-stickers.jpg",
+          "size": 820741
+        },
+        {
+          "type": "gallery_1",
+          "title": "Economy stickers gallery image 1",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/economy-stickers/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\11_economy-stickers_voordelige-stickers\\06_gallery_1_Economy_stickers_gallery_image_1.jpg",
+          "size": 782723
+        },
+        {
+          "type": "gallery_2",
+          "title": "Economy stickers gallery image 2",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/economy-stickers/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\11_economy-stickers_voordelige-stickers\\07_gallery_2_Economy_stickers_gallery_image_2.jpg",
+          "size": 586515
+        },
+        {
+          "type": "gallery_3",
+          "title": "Economy stickers gallery image 3",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/economy-stickers/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\11_economy-stickers_voordelige-stickers\\08_gallery_3_Economy_stickers_gallery_image_3.jpg",
+          "size": 721405
+        }
+      ],
+      "gallery_title": "Als goedkoop geen duurkoop is",
+      "gallery_desc": "Goede raad is duur, onze voordelige stickers niet. Stuur ons een ontwerp in willekeurige vorm, en wij maken er gepersonaliseerde stickers van. Verkrijgbaar vanaf 10 stuks, maar hoe meer je bestelt, hoe goedkoper je uit bent. Makkelijk bestellen, snelle productie en gratis verzending - wij zorgen ervoor dat je stickers betaalbaar blijven."
+    },
+    {
+      "index_number": 12,
+      "id": "fabric-stickers",
+      "name": "Textielstickers",
+      "permalink": "textielstickers",
+      "permalink_id": "fabric-stickers",
+      "description": "Textielstickers op maat worden gemaakt van een duurzaam soort stof, die niet alleen lekker aanvoelt maar er ook nog eens geweldig uitziet. Onze unieke stickers zijn ideaal voor op je laptop of rugzak, en blijven tijdelijk zitten op kleding.",
+      "folder": "12_fabric-stickers_textielstickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/fabric-stickers/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\12_fabric-stickers_textielstickers\\01_index_fabric-stickers.png",
+          "size": 84529
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/fabric-stickers/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\12_fabric-stickers_textielstickers\\02_cover_fabric-stickers.jpg",
+          "size": 255890
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/fabric-stickers/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\12_fabric-stickers_textielstickers\\03_cover2x_highres_fabric-stickers.jpg",
+          "size": 706527
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/fabric-stickers/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\12_fabric-stickers_textielstickers\\04_cart_fabric-stickers.png",
+          "size": 84529
+        },
+        {
+          "type": "gallery_1",
+          "title": "Fabric stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/fabric-stickers/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\12_fabric-stickers_textielstickers\\06_gallery_1_Fabric_stickers.jpg",
+          "size": 257582
+        },
+        {
+          "type": "gallery_2",
+          "title": "Fabric stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/fabric-stickers/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\12_fabric-stickers_textielstickers\\07_gallery_2_Fabric_stickers.jpg",
+          "size": 258512
+        },
+        {
+          "type": "gallery_3",
+          "title": "Fabric stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/fabric-stickers/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\12_fabric-stickers_textielstickers\\08_gallery_3_Fabric_stickers.jpg",
+          "size": 415849
+        }
+      ],
+      "gallery_title": "Geef ze van katoen",
+      "gallery_desc": "Om je stickers te bestellen, selecteer je eerst de afmetingen en hoeveelheid, waarna je je illustratie kunt uploaden. Kort na het afrekenen ontvang je een online proefdruk van je textielsticker. Je kunt net zolang wijzigingen aanvragen tot je helemaal tevreden bent. Elke sticker wordt gedrukt op een sterk soort stof voorzien van een stevige plaklaag."
+    },
+    {
+      "index_number": 13,
+      "id": "glitter-stickers",
+      "name": "Glitter stickers",
+      "permalink": "glitter-stickers",
+      "permalink_id": "glitter-stickers",
+      "description": "Geef glans aan je ontwerpen met onze glitter stickers op maat. Transformeer alledaagse voorwerpen als je laptop, waterfles of telefoonhoesje in iets... schitterends.",
+      "folder": "13_glitter-stickers_glitter-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/glitter-stickers/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\13_glitter-stickers_glitter-stickers\\01_index_glitter-stickers.png",
+          "size": 203867
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/glitter-stickers/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\13_glitter-stickers_glitter-stickers\\02_cover_glitter-stickers.webp",
+          "size": 74404
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/glitter-stickers/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\13_glitter-stickers_glitter-stickers\\03_cover2x_highres_glitter-stickers.webp",
+          "size": 263488
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/glitter-stickers/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\13_glitter-stickers_glitter-stickers\\04_cart_glitter-stickers.png",
+          "size": 203867
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/glitter-stickers/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\13_glitter-stickers_glitter-stickers\\05_share_social_glitter-stickers.jpg",
+          "size": 202353
+        },
+        {
+          "type": "gallery_1",
+          "title": "Personalized glitter stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/glitter-stickers/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\13_glitter-stickers_glitter-stickers\\06_gallery_1_Personalized_glitter_stickers.webp",
+          "size": 41516
+        },
+        {
+          "type": "gallery_2",
+          "title": "Die cut glitter stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/glitter-stickers/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\13_glitter-stickers_glitter-stickers\\07_gallery_2_Die_cut_glitter_stickers.webp",
+          "size": 18882
+        },
+        {
+          "type": "gallery_3",
+          "title": "Custom glitter stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/glitter-stickers/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\13_glitter-stickers_glitter-stickers\\08_gallery_3_Custom_glitter_stickers.webp",
+          "size": 21210
+        }
+      ],
+      "gallery_title": "Twinkel, twinkel, kleine sticker",
+      "gallery_desc": "Glitter stickers geven je bedrijf of merknaam extra glans. Geef elk product of oppervlak een regenboogeffect en glimmende textuur met onze glitter stickers op maat. Gewoon schitterend!"
+    },
+    {
+      "index_number": 14,
+      "id": "holographic-stickers",
+      "name": "Hologram stickers",
+      "permalink": "hologram-stickers",
+      "permalink_id": "holographic-stickers",
+      "description": "Met hologram stickers op maat kun je gemakkelijk en snel je bedrijf, merk of evenement promoten. Holografisch vinyl heeft een opvallend regenboogeffect dat verandert afhankelijk van het licht en perspectief.",
+      "folder": "14_holographic-stickers_hologram-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/holographic-stickers/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\14_holographic-stickers_hologram-stickers\\01_index_holographic-stickers.png",
+          "size": 103961
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/holographic-stickers/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\14_holographic-stickers_hologram-stickers\\02_cover_holographic-stickers.webp",
+          "size": 65530
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/holographic-stickers/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\14_holographic-stickers_hologram-stickers\\03_cover2x_highres_holographic-stickers.webp",
+          "size": 158848
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/holographic-stickers/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\14_holographic-stickers_hologram-stickers\\04_cart_holographic-stickers.png",
+          "size": 103961
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/holographic-stickers/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\14_holographic-stickers_hologram-stickers\\05_share_social_holographic-stickers.jpg",
+          "size": 215344
+        },
+        {
+          "type": "gallery_1",
+          "title": "Personalized holographic stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/holographic-stickers/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\14_holographic-stickers_hologram-stickers\\06_gallery_1_Personalized_holographic_stickers.webp",
+          "size": 27768
+        },
+        {
+          "type": "gallery_2",
+          "title": "Die cut holographic sticker",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/holographic-stickers/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\14_holographic-stickers_hologram-stickers\\07_gallery_2_Die_cut_holographic_sticker.webp",
+          "size": 21324
+        },
+        {
+          "type": "gallery_3",
+          "title": "Custom round holographic stickers",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/holographic-stickers/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\14_holographic-stickers_hologram-stickers\\08_gallery_3_Custom_round_holographic_stickers.webp",
+          "size": 19014
+        }
+      ],
+      "gallery_title": "Holo allemaal!",
+      "gallery_desc": "Kies om te bestellen een grootte en een aantal, en upload je illustratie. Kort na het afrekenen ontvang je een online proefdruk om je te laten zien hoe je hologram stickers eruit komen te zien. Je kunt de proefdruk gratis laten wijzigen totdat je tevreden bent. Elke sticker wordt gedrukt op premium hologram vinyl met een permanente lijmlaag en glanzende afwerking. Ze zijn gecoat met een beschermende laag tegen vervaging, krassen, scheuren en water."
+    },
+    {
+      "index_number": 15,
+      "id": "static-clings",
+      "name": "Statische raamstickers",
+      "permalink": "statische-stickers",
+      "permalink_id": "static-clings",
+      "description": "Statische raamstickers op maat hechten zich stevig vast aan elk glazen oppervlak zonder het gebruik van een kleeflaag. Elke statische raamsticker kan volledig in kleur worden afgedrukt en gesneden in elke gewenste vorm en grootte.",
+      "folder": "15_static-clings_statische-stickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/static-clings/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\15_static-clings_statische-stickers\\01_index_static-clings.png",
+          "size": 32520
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/static-clings/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\15_static-clings_statische-stickers\\02_cover_static-clings.webp",
+          "size": 35758
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/static-clings/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\15_static-clings_statische-stickers\\03_cover2x_highres_static-clings.webp",
+          "size": 80778
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/static-clings/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\15_static-clings_statische-stickers\\04_cart_static-clings.png",
+          "size": 32520
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/static-clings/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\15_static-clings_statische-stickers\\05_share_social_static-clings.jpg",
+          "size": 183456
+        },
+        {
+          "type": "gallery_1",
+          "title": "Window clings on storefront",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/static-clings/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\15_static-clings_statische-stickers\\06_gallery_1_Window_clings_on_storefront.webp",
+          "size": 30142
+        },
+        {
+          "type": "gallery_2",
+          "title": "Window cling advertising",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/static-clings/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\15_static-clings_statische-stickers\\07_gallery_2_Window_cling_advertising.webp",
+          "size": 14366
+        },
+        {
+          "type": "gallery_3",
+          "title": "Window cling on window",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/static-clings/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\15_static-clings_statische-stickers\\08_gallery_3_Window_cling_on_window.webp",
+          "size": 15520
+        }
+      ],
+      "gallery_title": "Lostrekken en vastplakken, keer op keer",
+      "gallery_desc": "Onze statische raamstickers zijn gemaakt van een hoogwaardig wit vinyl en doen het fantastisch op elk raam. Voor het beste resultaat breng je de niet-bedrukte zijde aan op het glas. Gebruik statische raamstickers op maat voor tijdelijke promoties, openingstijden tijdens de vakantie, of in de auto voor parkeervergunningen en lidmaatschapskaarten."
+    },
+    {
+      "index_number": 16,
+      "id": "sticker-packs",
+      "name": "Stickersets",
+      "permalink": "stickersets",
+      "permalink_id": "sticker-packs",
+      "description": "Met gepersonaliseerde stickersets kun je diverse stickerontwerpen samenvoegen tot een handig pakketje. De stickers worden verpakt in een hersluitbaar zakje met ponsgat en kraftpapieren achterzijde.",
+      "folder": "16_sticker-packs_stickersets",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/sticker-packs/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\16_sticker-packs_stickersets\\01_index_sticker-packs.png",
+          "size": 165613
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/sticker-packs/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\16_sticker-packs_stickersets\\02_cover_sticker-packs.webp",
+          "size": 49148
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/sticker-packs/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\16_sticker-packs_stickersets\\03_cover2x_highres_sticker-packs.webp",
+          "size": 121128
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/sticker-packs/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\16_sticker-packs_stickersets\\04_cart_sticker-packs.png",
+          "size": 165613
+        },
+        {
+          "type": "gallery_1",
+          "title": "Sticker packs",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/sticker-packs/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\16_sticker-packs_stickersets\\06_gallery_1_Sticker_packs.png",
+          "size": 939198
+        },
+        {
+          "type": "gallery_2",
+          "title": "Sticker packs",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/sticker-packs/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\16_sticker-packs_stickersets\\07_gallery_2_Sticker_packs.png",
+          "size": 882073
+        },
+        {
+          "type": "gallery_3",
+          "title": "Sticker packs",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/sticker-packs/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\16_sticker-packs_stickersets\\08_gallery_3_Sticker_packs.png",
+          "size": 820688
+        }
+      ],
+      "gallery_title": "Gepersonaliseerde stickersets",
+      "gallery_desc": "Om te bestellen selecteer je een hoeveelheid en upload je de illustraties. Kort na het afrekenen ontvang je een online proefdruk. Je kunt gratis wijzigingen aanvragen, net zolang tot je helemaal tevreden bent. Elke sticker wordt op stevig vinyl gedrukt, met permanente lijm en een beschermende laminaatlaag tegen krassen en water."
+    },
+    {
+      "index_number": 17,
+      "id": "transfer",
+      "name": "Transferstickers",
+      "permalink": "transferstickers",
+      "permalink_id": "transfer-stickers",
+      "description": "Met transferstickers op maat kun je de meest complexe full colour ontwerpen toepassen. Elke sticker is gemaakt van duurzaam materiaal en ideaal voor gebruik binnen en buiten.",
+      "folder": "17_transfer_transferstickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/transfer/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\17_transfer_transferstickers\\01_index_transfer.png",
+          "size": 23718
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/transfer/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\17_transfer_transferstickers\\02_cover_transfer.webp",
+          "size": 36220
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/transfer/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\17_transfer_transferstickers\\03_cover2x_highres_transfer.webp",
+          "size": 101764
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/transfer/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\17_transfer_transferstickers\\04_cart_transfer.png",
+          "size": 23718
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/transfer/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\17_transfer_transferstickers\\05_share_social_transfer.jpg",
+          "size": 178149
+        },
+        {
+          "type": "gallery_1",
+          "title": "transfer-stickers-image-1",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/transfer/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\17_transfer_transferstickers\\06_gallery_1_transfer-stickers-image-1.jpg",
+          "size": 782499
+        },
+        {
+          "type": "gallery_2",
+          "title": "transfer-stickers-image-2",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/transfer/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\17_transfer_transferstickers\\07_gallery_2_transfer-stickers-image-2.jpg",
+          "size": 179437
+        },
+        {
+          "type": "gallery_3",
+          "title": "transfer-stickers-image-3",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/transfer/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\17_transfer_transferstickers\\08_gallery_3_transfer-stickers-image-3.jpg",
+          "size": 251660
+        }
+      ],
+      "gallery_title": "Versier ramen en gladde oppervlakken",
+      "gallery_desc": "Dankzij ons unieke productieproces krijg jij binnen recordtijd de beste transferstickers. Elke sticker wordt geleverd met een beschermende transfertape. Hiermee breng je je ontwerp eenvoudig aan op elk glad oppervlak."
+    },
+    {
+      "index_number": 18,
+      "id": "vinyl-lettering",
+      "name": "Vinylbelettering",
+      "permalink": "vinylbelettering",
+      "permalink_id": "vinyl-lettering",
+      "description": "Met vinylbelettering op maat kun je je bedrijfsnaam, openingstijden of andere informatie eenvoudig aanbrengen op je deur, raam of muur. Typ gewoon een tekst, kies een stijl en voeg het ontwerp toe aan de winkelwagen.",
+      "folder": "18_vinyl-lettering_vinylbelettering",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/vinyl-lettering/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\18_vinyl-lettering_vinylbelettering\\01_index_vinyl-lettering.png",
+          "size": 27471
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/vinyl-lettering/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\18_vinyl-lettering_vinylbelettering\\02_cover_vinyl-lettering.jpg",
+          "size": 104777
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/vinyl-lettering/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\18_vinyl-lettering_vinylbelettering\\03_cover2x_highres_vinyl-lettering.jpg",
+          "size": 104777
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/vinyl-lettering/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\18_vinyl-lettering_vinylbelettering\\04_cart_vinyl-lettering.png",
+          "size": 27471
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/vinyl-lettering/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\18_vinyl-lettering_vinylbelettering\\05_share_social_vinyl-lettering.jpg",
+          "size": 104777
+        },
+        {
+          "type": "gallery_1",
+          "title": "Vinyl lettering applied to rear car window",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/vinyl-lettering/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\18_vinyl-lettering_vinylbelettering\\06_gallery_1_Vinyl_lettering_applied_to_rear_car_window.jpg",
+          "size": 45249
+        },
+        {
+          "type": "gallery_2",
+          "title": "Vinyl lettering on window",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/vinyl-lettering/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\18_vinyl-lettering_vinylbelettering\\07_gallery_2_Vinyl_lettering_on_window.jpg",
+          "size": 61403
+        },
+        {
+          "type": "gallery_3",
+          "title": "Vinyl lettering applied to mugs",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/vinyl-lettering/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\18_vinyl-lettering_vinylbelettering\\08_gallery_3_Vinyl_lettering_applied_to_mugs.jpg",
+          "size": 66690
+        }
+      ],
+      "gallery_title": "Breng je belettering met precisie aan.",
+      "gallery_desc": "Met vinylbelettering heb je zo de naam van je bedrijf op je winkelpui, en personaliseer je in een handomdraai je producten, boot of auto. Breng de belettering eenvoudig aan op elk glad oppervlak door het achtervel te verwijderen en stevig over elke letter te wrijven. Trek dan voorzichtig de transfertape los en bewonder je ontwerp."
+    },
+    {
+      "index_number": 19,
+      "id": "window",
+      "name": "Raamstickers",
+      "permalink": "raamstickers",
+      "permalink_id": "front-adhesive-stickers",
+      "description": "Raamstickers hebben aan de voorzijde een kleeflaag, zodat ze aan de binnenkant van een raam kunnen worden geplakt. Ideaal voor winkeletalages, bedrijven en logo's voor lidmaatschapskaarten en de toerismebranche.",
+      "folder": "19_window_raamstickers",
+      "files": [
+        {
+          "type": "index",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/window/index",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\19_window_raamstickers\\01_index_window.png",
+          "size": 41862
+        },
+        {
+          "type": "cover",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/window/cover",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\19_window_raamstickers\\02_cover_window.webp",
+          "size": 37670
+        },
+        {
+          "type": "cover2x",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/window/cover2x",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\19_window_raamstickers\\03_cover2x_highres_window.webp",
+          "size": 86708
+        },
+        {
+          "type": "cart",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/window/cart",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\19_window_raamstickers\\04_cart_window.png",
+          "size": 41862
+        },
+        {
+          "type": "share",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/window/share",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\19_window_raamstickers\\05_share_social_window.jpg",
+          "size": 148635
+        },
+        {
+          "type": "gallery_1",
+          "title": "Custom front adhesive sticker inside business window",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/window/gallery_1",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\19_window_raamstickers\\06_gallery_1_Custom_front_adhesive_sticker_inside_business_window.webp",
+          "size": 38878
+        },
+        {
+          "type": "gallery_2",
+          "title": "Custom front adhesive stickers inside business window",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/window/gallery_2",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\19_window_raamstickers\\07_gallery_2_Custom_front_adhesive_stickers_inside_business_window.webp",
+          "size": 15328
+        },
+        {
+          "type": "gallery_3",
+          "title": "Custom front adhesive stickers inside car window",
+          "url": "https://storage.googleapis.com/sm-content/core/products/products/window/gallery_3",
+          "path": "G:/مسودة عملاء/stickermule\\Products\\19_window_raamstickers\\08_gallery_3_Custom_front_adhesive_stickers_inside_car_window.webp",
+          "size": 22172
+        }
+      ],
+      "gallery_title": "Hoogwaardige raamstickers voor elk bedrijf",
+      "gallery_desc": "Op maat betekent professioneel. En door jou ontworpen raamstickers op maat laten zien dat je bedrijf een blijvertje is. Maak van elk ontwerp, afbeelding, logo of tekst raamstickers van hoogwaardig vinyl, met een kleeflaag aan de voorzijde om op de binnenkant van het raam van je kantoor of winkel te plakken. Je klanten kunnen de kwaliteit eraan aflezen."
+    }
+  ]
+}
