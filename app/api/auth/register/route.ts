@@ -7,33 +7,48 @@ export async function POST(request: NextRequest) {
     const { username, email, password, fullName, phone, companyName, taxNumber, commercialReg, address } = body;
 
     const trimmedFullName = fullName?.trim();
-    const trimmedUsername = username?.trim().toLowerCase();
+    const rawUsername = username?.trim().toLowerCase();
     const trimmedEmail = email?.trim().toLowerCase();
     const trimmedPhone = phone?.trim();
     const cleanPassword = password?.trim();
 
-    // 1. Strict Validation
-    if (!trimmedFullName || !trimmedUsername || !trimmedEmail || !trimmedPhone || !cleanPassword) {
+    // 1. Core Validation (Only essential fields are mandatory)
+    if (!trimmedFullName || !trimmedEmail || !trimmedPhone || !cleanPassword) {
       return NextResponse.json(
-        { error: "يرجى تعبئة كافة الحقول الإلزامية: الاسم بالكامل، اسم المستخدم، رقم الهاتف، البريد الإلكتروني، وكلمة المرور." },
+        { error: "يرجى تعبئة الحقول الأساسية: الاسم بالكامل، البريد الإلكتروني، رقم الهاتف، وكلمة المرور." },
         { status: 400 }
       );
     }
 
-    // Username format validation (alphanumeric, underscores, at least 3 chars)
-    const usernameRegex = /^[a-zA-Z0-9_]{3,30}$/;
-    if (!usernameRegex.test(trimmedUsername)) {
+    if (cleanPassword.length < 6) {
       return NextResponse.json(
-        { error: "اسم المستخدم يجب أن يحتوي على حروف إنجليزية وأرقام أو شرطة سفلية (_) فقط، ومن 3 إلى 30 حرفاً." },
+        { error: "كلمة المرور يجب أن لا تقل عن 6 أحرف أو أرقام." },
         { status: 400 }
       );
     }
 
-    // Phone format validation (Egyptian / general 10-15 digits)
+    // Auto-generate username from email if not provided
+    let finalUsername = rawUsername;
+    if (!finalUsername) {
+      const emailBase = trimmedEmail.split("@")[0].replace(/[^a-zA-Z0-9_]/g, "_").slice(0, 18);
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      finalUsername = `${emailBase || "user"}_${randomSuffix}`.toLowerCase();
+    } else {
+      // Validate custom username format
+      const usernameRegex = /^[a-zA-Z0-9_]{3,30}$/;
+      if (!usernameRegex.test(finalUsername)) {
+        return NextResponse.json(
+          { error: "اسم المستخدم يجب أن يحتوي على حروف إنجليزية وأرقام أو شرطة سفلية (_) فقط، ومن 3 إلى 30 حرفاً." },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Phone format validation (Egyptian / general 8-15 digits)
     const phoneClean = trimmedPhone.replace(/[\s-]/g, "");
     if (!/^(\+?20|0)?1[0125][0-9]{8}$/.test(phoneClean) && phoneClean.length < 8) {
       return NextResponse.json(
-        { error: "يرجى إدخال رقم هاتف صحيح للتواصل والمتابعة." },
+        { error: "يرجى إدخال رقم هاتف صحيح للتواصل ومتابعة الطلبات." },
         { status: 400 }
       );
     }
@@ -41,7 +56,7 @@ export async function POST(request: NextRequest) {
     const userId = `usr-${Date.now()}`;
     const newUser = {
       id: userId,
-      username: trimmedUsername,
+      username: finalUsername,
       email: trimmedEmail,
       password_hash: cleanPassword,
       role: "client",
@@ -61,19 +76,13 @@ export async function POST(request: NextRequest) {
         const existingUsers = await sql`
           SELECT id, email, username, phone FROM users 
           WHERE LOWER(email) = ${trimmedEmail} 
-             OR LOWER(username) = ${trimmedUsername}
+             OR LOWER(username) = ${finalUsername}
              OR phone = ${phoneClean}
           LIMIT 1
         `;
 
         if (existingUsers && existingUsers.length > 0) {
           const match = existingUsers[0];
-          if (match.username?.toLowerCase() === trimmedUsername) {
-            return NextResponse.json(
-              { error: "اسم المستخدم هذا مسجل بالفعل، يرجى اختيار اسم مستخدم آخر." },
-              { status: 409 }
-            );
-          }
           if (match.email?.toLowerCase() === trimmedEmail) {
             return NextResponse.json(
               { error: "البريد الإلكتروني هذا مستخدم بالفعل، يرجى تسجيل الدخول بدلاً من ذلك." },
@@ -85,6 +94,17 @@ export async function POST(request: NextRequest) {
               { error: "رقم الهاتف هذا مسجل مسبقاً، يرجى تسجيل الدخول أو استخدام رقمك الحالي." },
               { status: 409 }
             );
+          }
+          if (match.username?.toLowerCase() === finalUsername) {
+            if (rawUsername) {
+              return NextResponse.json(
+                { error: "اسم المستخدم هذا مسجل بالفعل، يرجى اختيار اسم مستخدم آخر." },
+                { status: 409 }
+              );
+            } else {
+              // If auto-generated conflicted, append timestamp to make it unique
+              newUser.username = `${finalUsername}_${Date.now().toString().slice(-4)}`;
+            }
           }
         }
 

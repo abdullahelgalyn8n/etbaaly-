@@ -47,7 +47,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const parsed = JSON.parse(savedUser);
         setUser(parsed);
         if (parsed.role === "admin" || parsed.email?.includes("admin")) {
-          fetch("/api/auth/session", {
+          fetch("/api/auth/session/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(parsed),
@@ -72,7 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async ({ email, password, role }: { email: string; password?: string; role?: "admin" | "client" }) => {
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch("/api/auth/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password: password || "123456", role }),
@@ -93,7 +93,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("etbaaly_user_session");
-    fetch("/api/auth/logout", { method: "POST" }).catch(() => {});
+    fetch("/api/auth/logout/", { method: "POST" }).catch(() => {});
   };
 
   const switchRole = (newRole: "admin" | "client") => {

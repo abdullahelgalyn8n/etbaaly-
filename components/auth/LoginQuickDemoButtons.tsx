@@ -9,6 +9,7 @@ interface LoginQuickDemoButtonsProps {
   activeRole: "client" | "admin";
   onQuickClientLogin: () => void;
   onQuickAdminLogin: () => void;
+  onSwitchToRegister?: () => void;
 }
 
 export function LoginQuickDemoButtons({
@@ -16,6 +17,7 @@ export function LoginQuickDemoButtons({
   activeRole,
   onQuickClientLogin,
   onQuickAdminLogin,
+  onSwitchToRegister,
 }: LoginQuickDemoButtonsProps) {
   return (
     <div className="pt-4 border-t border-slate-100 dark:border-white/[0.08] space-y-2.5 relative z-10">
@@ -48,15 +50,25 @@ export function LoginQuickDemoButtons({
       <div className="pt-3 text-center text-xs text-slate-600 dark:text-slate-400 font-medium">
         {activeRole === "client" ? (
           <span>
-            ليس لديك حساب لشركتك بعد؟{" "}
-            <Link href="/register" className="text-[#c93b41] font-bold hover:underline">
-              فتح حساب شركة مجاناً
-            </Link>
+            ليس لديك حساب بعد؟{" "}
+            {onSwitchToRegister ? (
+              <button
+                type="button"
+                onClick={onSwitchToRegister}
+                className="text-[#c93b41] font-bold hover:underline cursor-pointer"
+              >
+                إنشاء حساب عميل أو شركة جديدة مجاناً
+              </button>
+            ) : (
+              <Link href="/register/" className="text-[#c93b41] font-bold hover:underline">
+                إنشاء حساب مجاناً
+              </Link>
+            )}
           </span>
         ) : (
           <span>
             هل تواجه مشكلة في صلاحيات الإدارة؟{" "}
-            <Link href="/contact" className="text-[#c93b41] font-bold hover:underline">
+            <Link href="/contact/" className="text-[#c93b41] font-bold hover:underline">
               التواصل مع المسؤول التقني
             </Link>
           </span>

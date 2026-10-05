@@ -11,6 +11,7 @@ interface DashboardProfileTabProps {
 export default function DashboardProfileTab({ user, updateProfile }: DashboardProfileTabProps) {
   const [companyName, setCompanyName] = useState(user?.company_name || "");
   const [fullName, setFullName] = useState(user?.full_name || "");
+  const [username, setUsername] = useState(user?.username || "");
   const [phone, setPhone] = useState(user?.phone || "");
   const [taxNumber, setTaxNumber] = useState(user?.tax_number || "");
   const [address, setAddress] = useState(user?.address || "");
@@ -21,6 +22,7 @@ export default function DashboardProfileTab({ user, updateProfile }: DashboardPr
     updateProfile({
       company_name: companyName,
       full_name: fullName,
+      username,
       phone,
       tax_number: taxNumber,
       address,
@@ -66,21 +68,7 @@ export default function DashboardProfileTab({ user, updateProfile }: DashboardPr
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-              رقم التسجيل الضريبي (9 أرقام):
-            </label>
-            <input
-              type="text"
-              required
-              value={taxNumber}
-              onChange={(e) => setTaxNumber(e.target.value)}
-              placeholder="748-291-832"
-              className="w-full px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-[#141518] border border-slate-200 dark:border-white/[0.08] text-xs font-mono font-medium text-slate-900 dark:text-white focus:outline-none focus:border-[#c93b41]"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-              اسم المسؤول المفوض:
+              اسم المسؤول المفوض بالكامل: <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -91,12 +79,27 @@ export default function DashboardProfileTab({ user, updateProfile }: DashboardPr
               className="w-full px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-[#141518] border border-slate-200 dark:border-white/[0.08] text-xs font-medium text-slate-900 dark:text-white focus:outline-none focus:border-[#c93b41]"
             />
           </div>
+
+          <div>
+            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+              اسم المستخدم (Username): <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              required
+              dir="ltr"
+              value={username}
+              onChange={(e) => setUsername(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ""))}
+              placeholder="ahmed_99"
+              className="w-full px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-[#141518] border border-slate-200 dark:border-white/[0.08] text-xs font-mono font-medium text-slate-900 dark:text-white focus:outline-none focus:border-[#c93b41]"
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-              رقم الهاتف للتواصل وإشعارات الشحن:
+              رقم الهاتف للتواصل وإشعارات الشحن والواتساب: <span className="text-red-500">*</span>
             </label>
             <input
               type="tel"
@@ -119,6 +122,19 @@ export default function DashboardProfileTab({ user, updateProfile }: DashboardPr
               className="w-full px-3.5 py-3 rounded-xl bg-slate-100 dark:bg-[#191a1e] border border-slate-200 dark:border-white/[0.05] text-xs font-medium text-slate-500 cursor-not-allowed"
             />
           </div>
+        </div>
+
+        <div>
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+            رقم التسجيل الضريبي (اختياري / للشركات):
+          </label>
+          <input
+            type="text"
+            value={taxNumber}
+            onChange={(e) => setTaxNumber(e.target.value)}
+            placeholder="748-291-832"
+            className="w-full px-3.5 py-3 rounded-xl bg-slate-50 dark:bg-[#141518] border border-slate-200 dark:border-white/[0.08] text-xs font-mono font-medium text-slate-900 dark:text-white focus:outline-none focus:border-[#c93b41]"
+          />
         </div>
 
         <div>
