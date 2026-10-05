@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "etbaaly",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2025-09-01",
+  "compatibility_date": "2026-09-01",
   "compatibility_flags": [
     "nodejs_compat",
     "global_fetch_strictly_public"
@@ -20,6 +20,7 @@
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://etbaaly.azagency.online",
     "NEXT_PUBLIC_SUPABASE_URL": "https://dvkbfckmtovvoybnytix.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR2a2JmY2ttdG92dm95Ym55dGl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExMjY0MTQsImV4cCI6MjEwNjcwMjQxNH0.3pjMpvxWjJC6KOn1_zlSfMG6ZrsrjiUJrc-QfIqC59k",
     "NEXT_PUBLIC_FB_PIXEL_ID": "1630628135121340"
   }
 }
