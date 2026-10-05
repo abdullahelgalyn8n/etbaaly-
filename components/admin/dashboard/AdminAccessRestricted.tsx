@@ -22,13 +22,12 @@ export default function AdminAccessRestricted({ onLoginAsAdmin }: AdminAccessRes
           يجب تسجيل الدخول بصلاحيات مدير الموقع للوصول إلى أدوات التحكم في خطوط الإنتاج والطباعة واستوديو القوالب.
         </p>
         <div className="pt-2 flex flex-col gap-2.5">
-          <button
-            type="button"
-            onClick={onLoginAsAdmin}
-            className="btn-crimson w-full py-3 px-4 text-white text-xs font-bold rounded-xl shadow-md cursor-pointer"
+          <Link
+            href="/login/?redirect=/admin/"
+            className="btn-crimson w-full py-3 px-4 text-white text-xs font-bold rounded-xl shadow-md text-center"
           >
-            تسجيل الدخول الفوري كمدير (Admin)
-          </button>
+            الانتقال إلى صفحة تسجيل الدخول
+          </Link>
           <Link
             href="/dashboard"
             className="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 dark:bg-[#1a1c20] dark:hover:bg-[#202227] text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl transition-colors text-center"

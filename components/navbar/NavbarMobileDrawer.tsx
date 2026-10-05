@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, User, Building2, ShieldCheck, Image as ImageIcon, ShoppingBag } from "lucide-react";
 import AZLogo from "@/components/AZLogo";
 import { trackEvent } from "@/lib/fpixel";
+import { useAuth } from "@/context/AuthContext";
 
 interface NavLinkItem {
   name: string;
@@ -26,6 +27,7 @@ export default function NavbarMobileDrawer({
   isAuthenticated,
   whatsappInstantPrintUrl,
 }: NavbarMobileDrawerProps) {
+  const { isAdmin } = useAuth();
   if (!isOpen) return null;
 
   return (
@@ -60,33 +62,35 @@ export default function NavbarMobileDrawer({
         </a>
 
         {isAuthenticated ? (
-          <div className="grid grid-cols-2 gap-2">
+          <div className={`grid ${isAdmin ? "grid-cols-2" : "grid-cols-1"} gap-2`}>
             <Link
               href="/dashboard"
               onClick={() => setIsOpen(false)}
               className="py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-[#1a1c20] text-center text-xs font-bold text-slate-900 dark:text-white flex items-center justify-center gap-1.5"
             >
               <Building2 className="w-3.5 h-3.5 text-[#c93b41]" />
-              <span>لوحة العميل</span>
+              <span>لوحة التحكم (حسابي)</span>
             </Link>
 
-            <Link
-              href="/admin"
-              onClick={() => setIsOpen(false)}
-              className="py-2.5 px-3 rounded-xl bg-red-500/10 text-center text-xs font-bold text-[#c93b41] border border-red-500/20 flex items-center justify-center gap-1.5"
-            >
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>أدمن الموقع</span>
-            </Link>
+            {isAdmin && (
+              <Link
+                href="/admin"
+                onClick={() => setIsOpen(false)}
+                className="py-2.5 px-3 rounded-xl bg-red-500/10 text-center text-xs font-bold text-[#c93b41] border border-red-500/20 flex items-center justify-center gap-1.5"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>لوحة الإدارة</span>
+              </Link>
+            )}
           </div>
         ) : (
           <Link
             href="/login"
             onClick={() => setIsOpen(false)}
-            className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-[#1a1c20] text-center text-xs font-bold text-slate-900 dark:text-white flex items-center justify-center gap-1.5"
+            className="w-full py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-[#1a1c20] text-center text-xs font-bold text-slate-900 dark:text-white flex items-center justify-center gap-1.5"
           >
             <User className="w-3.5 h-3.5 text-[#c93b41]" />
-            <span>تسجيل الدخول (عميل / أدمن)</span>
+            <span>تسجيل الدخول / حساب جديد</span>
           </Link>
         )}
 

@@ -1,21 +1,27 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { AdminTopBar } from "./shell/AdminTopBar";
 import { AdminSidebar } from "./shell/AdminSidebar";
-import AdminAccessRestricted from "./dashboard/AdminAccessRestricted";
 import { AdminNotificationProvider } from "@/context/AdminNotificationContext";
 import { NotificationToast } from "./notifications/NotificationToast";
 
 export default function WPAdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { user, isAuthenticated, isAdmin, switchRole, logout, isLoading } = useAuth();
+  const router = useRouter();
+  const { user, isAuthenticated, isAdmin, logout, isLoading } = useAuth();
 
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeOrdersCount, setActiveOrdersCount] = useState(3);
+
+  useEffect(() => {
+    if (!isLoading && (!isAuthenticated || !isAdmin)) {
+      router.replace(`/login/?redirect=${encodeURIComponent(pathname || "/admin/")}`);
+    }
+  }, [isLoading, isAuthenticated, isAdmin, pathname, router]);
 
   useEffect(() => {
     if (!isAdmin) return;
@@ -30,16 +36,13 @@ export default function WPAdminShell({ children }: { children: React.ReactNode }
       .catch(() => {});
   }, [isAdmin]);
 
-  if (isLoading) {
+  if (isLoading || !isAuthenticated || !isAdmin) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#f8f9fa] dark:bg-[#1d1d1d]">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#f8f9fa] dark:bg-[#1d1d1d] gap-3">
         <div className="w-8 h-8 border-3 border-[#c93b41] border-t-transparent rounded-full animate-spin" />
+        <span className="text-xs font-bold text-slate-500">جاري التحقق والتوجيه لصفحة تسجيل الدخول...</span>
       </div>
     );
-  }
-
-  if (!isAuthenticated || !isAdmin) {
-    return <AdminAccessRestricted onLoginAsAdmin={() => switchRole("admin")} />;
   }
 
   // If viewing the Visual Product Configurator Studio, render standalone fullscreen
