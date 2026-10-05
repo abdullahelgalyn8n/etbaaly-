@@ -94,6 +94,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
     localStorage.removeItem("etbaaly_user_session");
     fetch("/api/auth/logout/", { method: "POST" }).catch(() => {});
+    if (typeof window !== "undefined") {
+      if (window.location.pathname.startsWith("/admin") || window.location.pathname.startsWith("/dashboard")) {
+        window.location.href = "/login/";
+      }
+    }
   };
 
   const switchRole = (newRole: "admin" | "client") => {

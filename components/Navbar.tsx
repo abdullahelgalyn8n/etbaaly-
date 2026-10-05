@@ -33,9 +33,10 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "الرئيسية", href: "/" },
-    { name: "خدمات الطباعة والتغليف", href: "/services/" },
     { name: "معرض المنتجات", href: "/products/" },
-    { name: "المدونة والمقالات", href: "/blog/" },
+    { name: "خدمات الطباعة والتغليف", href: "/services/" },
+    { name: "تتبع طلبك", href: "/track/" },
+    { name: "المدونة", href: "/blog/" },
     { name: "تواصل معنا", href: "/contact/" },
   ];
 

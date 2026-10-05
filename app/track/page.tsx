@@ -1,12 +1,24 @@
 import React, { Suspense } from "react";
+import type { Metadata } from "next";
 import OrderTracker from "@/components/OrderTracker";
 import { Truck, ShieldCheck, Clock } from "lucide-react";
 import { TrackTimelineSkeleton, TrackDetailsSkeleton } from "@/components/Skeleton";
+import { siteConfig } from "@/data/siteConfig";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "تتبع شحنة وأمر الطباعة مباشرة | إطبعلي - Etbaaly",
   description:
     "تتبع مباشر لحالة أمر شغل الطباعة ومراحل الإنتاج (فحص الملفات، الطباعة الأوفست، التشطيب، والشحن) لجميع محافظات مصر.",
+  alternates: {
+    canonical: `${siteConfig.url}/track/`,
+  },
+  openGraph: {
+    title: "تتبع شحنة وأمر الطباعة مباشرة | إطبعلي - Etbaaly",
+    description:
+      "تتبع مباشر لحالة أمر شغل الطباعة ومراحل الإنتاج (فحص الملفات، الطباعة الأوفست، التشطيب، والشحن) لجميع محافظات مصر.",
+    url: `${siteConfig.url}/track/`,
+    type: "website",
+  },
 };
 
 export default function TrackPage() {

@@ -1,11 +1,30 @@
 import React from "react";
+import type { Metadata } from "next";
 import PODProductsGallery from "@/components/PODProductsGallery";
 import { Sparkles, Palette, Truck, ShieldCheck, Layers } from "lucide-react";
 import Link from "next/link";
+import { siteConfig } from "@/data/siteConfig";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "معرض منتجات الطباعة عند الطلب واليونيفورم | إطبعلي - Etbaaly",
   description: "تصفح كتالوج منتجات الطباعة عند الطلب: تيشيرتات قطن، هودي شتوي، مجات حرارية، توت باج، كابات مطرزة، ستيكرات ونوت بوك جاهزة للطلب الفوري وبدء التنفيذ.",
+  alternates: {
+    canonical: `${siteConfig.url}/products/`,
+  },
+  openGraph: {
+    title: "معرض منتجات الطباعة عند الطلب واليونيفورم | إطبعلي - Etbaaly",
+    description: "تصفح كتالوج منتجات الطباعة عند الطلب: تيشيرتات قطن، هودي شتوي، مجات حرارية، توت باج، كابات مطرزة، ستيكرات ونوت بوك جاهزة للطلب الفوري وبدء التنفيذ.",
+    url: `${siteConfig.url}/products/`,
+    type: "website",
+    images: [
+      {
+        url: `${siteConfig.url}/images/brand-hero-business.webp`,
+        width: 1200,
+        height: 630,
+        alt: "معرض منتجات إطبعلي للطباعة والتغليف",
+      },
+    ],
+  },
 };
 
 export default function ProductsPage() {

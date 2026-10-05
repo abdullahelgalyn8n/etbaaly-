@@ -2,12 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, User, Building2, ShieldCheck, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, User, Image as ImageIcon } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import CartNavButton from "@/components/cart/CartNavButton";
 import AZLogo from "@/components/AZLogo";
 import { trackEvent } from "@/lib/fpixel";
 import { useAuth } from "@/context/AuthContext";
+import UserNavMenu from "./UserNavMenu";
 
 interface NavbarDesktopActionsProps {
   isAuthenticated: boolean;
@@ -41,40 +42,12 @@ export default function NavbarDesktopActions({
 
       {/* Auth / Accounts Navigation */}
       {isAuthenticated ? (
-        <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-[#1a1c20] border border-slate-200 dark:border-white/[0.08] p-1 rounded-full">
-          <Link
-            href="/dashboard"
-            className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full transition-all ${
-              pathname.startsWith("/dashboard")
-                ? "bg-[#c93b41] text-white shadow-xs"
-                : "text-slate-800 dark:text-slate-200 hover:text-[#c93b41]"
-            }`}
-            title="لوحة تحكم العميل والشركات"
-          >
-            <Building2 className="w-3.5 h-3.5" />
-            <span>{user?.username ? `@${user.username}` : "حسابي"}</span>
-          </Link>
-
-          {isAdmin && (
-            <Link
-              href="/admin"
-              className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full transition-all ${
-                pathname.startsWith("/admin")
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs"
-                  : "text-slate-700 dark:text-slate-300 hover:text-red-500"
-              }`}
-              title="لوحة تحكم إدارة الموقع (Admin Portal)"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-red-500" />
-              <span>لوحة الإدارة</span>
-            </Link>
-          )}
-        </div>
+        <UserNavMenu user={user} isAdmin={isAdmin} pathname={pathname} />
       ) : (
         <div className="flex items-center">
           <Link
             href="/login"
-            className="flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 hover:text-[#c93b41] bg-slate-100 dark:bg-[#1a1c20] border border-slate-200 dark:border-white/[0.08] px-3.5 py-2 rounded-full transition-all shadow-xs"
+            className="flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 hover:text-[#c93b41] bg-slate-100 dark:bg-[#1a1c20] border border-slate-200 dark:border-white/[0.08] px-4 py-2 rounded-full transition-all shadow-xs"
             title="تسجيل الدخول إلى حسابك"
           >
             <User className="w-3.5 h-3.5 text-[#c93b41]" />

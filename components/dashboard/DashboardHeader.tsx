@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Building2, PlusCircle, Printer, Sparkles, ExternalLink } from "lucide-react";
+import { Building2, PlusCircle, Sparkles, LogOut } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 interface DashboardHeaderProps {
   user: any;
@@ -14,9 +15,9 @@ interface DashboardHeaderProps {
 export default function DashboardHeader({
   user,
   isAdmin,
-  switchRole,
   ordersCount,
 }: DashboardHeaderProps) {
+  const { logout } = useAuth();
   return (
     <div className="bg-white dark:bg-[#1e2026] border border-slate-200 dark:border-white/[0.08] rounded-3xl p-6 sm:p-8 shadow-xs relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#c93b41]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -54,25 +55,23 @@ export default function DashboardHeader({
           </Link>
 
           {isAdmin && (
-            <>
-              <Link
-                href="/admin/products/configurator/"
-                className="px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-[#141518] dark:hover:bg-[#252830] text-slate-900 dark:text-white border border-slate-200 dark:border-white/[0.08] transition-all cursor-pointer"
-              >
-                <Sparkles className="w-4 h-4 text-[#c93b41]" />
-                <span>استوديو المهيئات والطبقات 🎨</span>
-              </Link>
-
-              <button
-                type="button"
-                onClick={switchRole}
-                className="px-3 py-2 rounded-xl text-xs font-bold text-[#c93b41] hover:bg-red-50 dark:hover:bg-red-950/30 border border-red-200 dark:border-red-900/40 transition-colors cursor-pointer"
-                title="التبديل إلى لوحة المشرف"
-              >
-                لوحة الأدمن ⚡
-              </button>
-            </>
+            <Link
+              href="/admin"
+              className="px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-md transition-all cursor-pointer"
+            >
+              <span>لوحة الإدارة ⚡</span>
+            </Link>
           )}
+
+          <button
+            type="button"
+            onClick={logout}
+            className="px-3.5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-1.5 bg-red-50 hover:bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/40 transition-colors cursor-pointer"
+            title="تسجيل الخروج من الحساب"
+          >
+            <LogOut className="w-4 h-4 text-red-500" />
+            <span>تسجيل الخروج</span>
+          </button>
         </div>
       </div>
     </div>
