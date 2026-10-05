@@ -5,7 +5,45 @@ import { generateAdminToken } from "@/lib/auth/adminGuard";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, password, role: requestedRole } = body;
+    const { email, password, role: requestedRole, botToken } = body;
+
+    // Bot Verification Guard
+    if (!botToken) {
+      return NextResponse.json(
+        { error: "يرجى تأكيد التحقق من أنك لست برنامج روبوت قبل المتابعة." },
+        { status: 400 }
+      );
+    }
+
+    // Cloudflare Turnstile Server Verification (if secret configured)
+    if (process.env.TURNSTILE_SECRET_KEY && typeof botToken === "string" && !botToken.startsWith("bvt_")) {
+      try {
+        const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `secret=${encodeURIComponent(process.env.TURNSTILE_SECRET_KEY)}&response=${encodeURIComponent(botToken)}`,
+        });
+        const verifyData: any = await verifyRes.json();
+        if (!verifyData.success) {
+          return NextResponse.json(
+            { error: "فشل التحقق الأمني من Cloudflare Turnstile، يرجى المحاولة مرة أخرى." },
+            { status: 400 }
+          );
+        }
+      } catch (err) {
+        console.warn("Turnstile siteverify error:", err);
+      }
+    } else if (typeof botToken === "string" && botToken.startsWith("bvt_")) {
+      const parts = botToken.split("_");
+      const tokenTime = parseInt(parts[1], 10);
+      const now = Date.now();
+      if (isNaN(tokenTime) || tokenTime > now + 60000 || now - tokenTime > 15 * 60 * 1000) {
+        return NextResponse.json(
+          { error: "انتهت صلاحية رمز التحقق الأمني، يرجى إعادة النقر على 'أنا لست روبوت'." },
+          { status: 400 }
+        );
+      }
+    }
 
     if (!email || !password) {
       return NextResponse.json(

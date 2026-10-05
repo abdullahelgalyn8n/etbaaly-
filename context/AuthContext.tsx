@@ -25,7 +25,7 @@ interface AuthContextType {
   authModalTab: "login" | "register" | "sample";
   openAuthModal: (tab?: "login" | "register" | "sample") => void;
   closeAuthModal: () => void;
-  login: (credentials: { email: string; password?: string; role?: "admin" | "client" }) => Promise<boolean>;
+  login: (credentials: { email: string; password?: string; role?: "admin" | "client"; botToken?: string }) => Promise<boolean>;
   logout: () => void;
   updateProfile: (data: Partial<UserProfile>) => void;
   switchRole: (role: "admin" | "client") => void;
@@ -70,12 +70,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsAuthModalOpen(false);
   };
 
-  const login = async ({ email, password, role }: { email: string; password?: string; role?: "admin" | "client" }) => {
+  const login = async ({ email, password, role, botToken }: { email: string; password?: string; role?: "admin" | "client"; botToken?: string }) => {
     try {
       const res = await fetch("/api/auth/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password: password || "123456", role }),
+        body: JSON.stringify({ email, password: password || "123456", role, botToken }),
       });
       const data = await res.json();
       if (data.success && data.user) {

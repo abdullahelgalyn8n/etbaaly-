@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { X, Lock, Mail, ArrowLeft, Sparkles } from "lucide-react";
 import AuthModalRegisterFields from "@/components/auth/AuthModalRegisterFields";
+import { BotVerification } from "@/components/auth/BotVerification";
 
 export default function AuthModal() {
   const { isAuthModalOpen, closeAuthModal, login } = useAuth();
@@ -14,6 +15,7 @@ export default function AuthModal() {
   const [phone, setPhone] = useState("");
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
+  const [botToken, setBotToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLocalDev, setIsLocalDev] = useState(false);
@@ -34,6 +36,11 @@ export default function AuthModal() {
 
   const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!botToken) {
+      setError("يرجى النقر على مربع التحقق الأمني (أنا لست برنامج روبوت) قبل المتابعة.");
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -59,7 +66,7 @@ export default function AuthModal() {
         }
       }
 
-      const success = await login({ email, password });
+      const success = await login({ email, password, botToken });
       if (!success) {
         setError("بيانات الدخول غير صحيحة، يرجى المحاولة مرة أخرى.");
       } else {
@@ -178,13 +185,23 @@ export default function AuthModal() {
             </div>
           </div>
 
+          {/* Bot Verification Guard */}
+          <BotVerification
+            onVerified={(token) => {
+              setBotToken(token);
+              setError(null);
+            }}
+            onReset={() => setBotToken(null)}
+            disabled={loading}
+          />
+
           <div className="pt-2">
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || !botToken}
               className="w-full py-3 rounded-xl btn-crimson text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer disabled:opacity-50 transition-all"
             >
-              <span>{loading ? "جاري المعالجة..." : tab === "login" ? "دخول إلى حسابي" : "إنشاء الحساب وتفعيل المزايا"}</span>
+              <span>{loading ? "جاري المعالجة..." : !botToken ? "تأكيد التحقق الأمني أولاً" : tab === "login" ? "دخول إلى حسابي" : "إنشاء الحساب وتفعيل المزايا"}</span>
               <ArrowLeft className="w-4 h-4" />
             </button>
           </div>

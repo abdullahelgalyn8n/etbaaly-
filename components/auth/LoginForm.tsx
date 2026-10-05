@@ -9,6 +9,7 @@ import { LoginQuickDemoButtons } from "./LoginQuickDemoButtons";
 import LoginFormHeader from "./LoginFormHeader";
 import LoginPasswordField from "./LoginPasswordField";
 import { RegisterForm } from "./RegisterForm";
+import { BotVerification } from "./BotVerification";
 
 export function LoginForm() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export function LoginForm() {
   );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [botToken, setBotToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -93,11 +95,15 @@ export function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!botToken) {
+      setError("يرجى النقر على مربع التحقق الأمني (أنا لست برنامج روبوت) قبل تسجيل الدخول.");
+      return;
+    }
     setLoading(true);
     setError(null);
 
     try {
-      const success = await login({ email, password, role: activeRole });
+      const success = await login({ email, password, role: activeRole, botToken });
       if (success) {
         const saved = typeof window !== "undefined" ? localStorage.getItem("etbaaly_user_session") : null;
         const parsed = saved ? JSON.parse(saved) : null;
@@ -238,15 +244,27 @@ export function LoginForm() {
                 setPassword={setPassword}
               />
 
+              {/* Bot Verification Guard */}
+              <BotVerification
+                onVerified={(token) => {
+                  setBotToken(token);
+                  setError(null);
+                }}
+                onReset={() => setBotToken(null)}
+                disabled={loading}
+              />
+
               <div className="pt-2">
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={loading || !botToken}
                   className="w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer disabled:opacity-50 transition-all btn-crimson text-white"
                 >
                   <span>
                     {loading
                       ? "جاري التحقق من الصلاحيات..."
+                      : !botToken
+                      ? "يرجى تأكيد التحقق الأمني أولاً"
                       : "تسجيل الدخول"}
                   </span>
                   <ArrowLeft className="w-4 h-4" />
