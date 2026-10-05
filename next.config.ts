@@ -1,5 +1,19 @@
 import type { NextConfig } from "next";
 
+const cspHeader = `
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://connect.facebook.net https://www.googletagmanager.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  img-src 'self' data: blob: https:;
+  font-src 'self' data: https://fonts.gstatic.com;
+  frame-src 'self' https://challenges.cloudflare.com;
+  connect-src 'self' https: wss:;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'self';
+`.replace(/\s{2,}/g, " ").trim();
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
@@ -13,6 +27,10 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
+          {
+            key: "Content-Security-Policy",
+            value: cspHeader,
+          },
           {
             key: "X-Content-Type-Options",
             value: "nosniff",

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getAdminProducts, getAdminProductByIdOrSlug } from "@/lib/db";
 import { siteConfig } from "@/data/siteConfig";
 import ProductStudioDetailView from "@/components/product-detail/ProductStudioDetailView";
+import { BreadcrumbSchema } from "@/components/JsonLd";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -95,6 +96,13 @@ export default async function ProductDetailPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "الرئيسية", url: `${siteConfig.url}/` },
+          { name: "المنتجات", url: `${siteConfig.url}/products/` },
+          { name: product.title, url: `${siteConfig.url}/products/${product.slug || product.id}/` },
+        ]}
       />
       <ProductStudioDetailView product={product} relatedProducts={related} />
     </>

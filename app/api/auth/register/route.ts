@@ -1,16 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { inMemoryStore, getDb } from "@/lib/db";
+import { hashPassword, validatePasswordStrength } from "@/lib/auth/password";
+import { sanitizeString, sanitizeEmail, sanitizePhone, sanitizeUsername } from "@/lib/security/sanitize";
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { username, email, password, fullName, phone, companyName, taxNumber, commercialReg, address } = body;
 
-    const trimmedFullName = fullName?.trim();
-    const rawUsername = username?.trim().toLowerCase();
-    const trimmedEmail = email?.trim().toLowerCase();
-    const trimmedPhone = phone?.trim();
-    const cleanPassword = password?.trim();
+    const trimmedFullName = sanitizeString(fullName);
+    const rawUsername = sanitizeUsername(username);
+    const trimmedEmail = sanitizeEmail(email);
+    const trimmedPhone = sanitizePhone(phone);
+    const cleanPassword = typeof password === "string" ? password.trim() : "";
 
     // 1. Core Validation (Only essential fields are mandatory)
     if (!trimmedFullName || !trimmedEmail || !trimmedPhone || !cleanPassword) {
@@ -20,9 +22,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (cleanPassword.length < 6) {
+    // 2. Strong Password Policy Enforcement
+    const passwordCheck = validatePasswordStrength(cleanPassword);
+    if (!passwordCheck.isValid) {
       return NextResponse.json(
-        { error: "كلمة المرور يجب أن لا تقل عن 6 أحرف أو أرقام." },
+        { error: passwordCheck.message || "كلمة المرور يجب ألا تقل عن 8 خانات وتحتوي على حروف وأرقام." },
         { status: 400 }
       );
     }
@@ -54,18 +58,19 @@ export async function POST(request: NextRequest) {
     }
 
     const userId = `usr-${Date.now()}`;
+    const passwordHashed = await hashPassword(cleanPassword);
     const newUser = {
       id: userId,
       username: finalUsername,
       email: trimmedEmail,
-      password_hash: cleanPassword,
+      password_hash: passwordHashed,
       role: "client",
       full_name: trimmedFullName,
       phone: phoneClean,
-      company_name: companyName?.trim() || "",
-      tax_number: taxNumber?.trim() || "",
-      commercial_reg: commercialReg?.trim() || "",
-      address: address?.trim() || "",
+      company_name: sanitizeString(companyName),
+      tax_number: sanitizeString(taxNumber),
+      commercial_reg: sanitizeString(commercialReg),
+      address: sanitizeString(address),
       created_at: new Date().toISOString(),
     };
 

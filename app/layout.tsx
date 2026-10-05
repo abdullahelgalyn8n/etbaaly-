@@ -10,6 +10,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import AuthModal from "@/components/AuthModal";
 import { OrganizationSchema } from "@/components/JsonLd";
 import FacebookPixel from "@/components/FacebookPixel";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import StoreMainWrapper from "@/components/StoreMainWrapper";
 import { CartProvider } from "@/context/CartContext";
 import CartDrawer from "@/components/cart/CartDrawer";
@@ -143,6 +144,7 @@ export default function RootLayout({
           <AuthProvider>
             <CartProvider>
               <FacebookPixel />
+              <GoogleAnalytics />
               <Navbar />
               <StoreMainWrapper>{children}</StoreMainWrapper>
               <Footer />

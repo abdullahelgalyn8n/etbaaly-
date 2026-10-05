@@ -4,6 +4,7 @@ import PODProductsGallery from "@/components/PODProductsGallery";
 import { Sparkles, Palette, Truck, ShieldCheck, Layers } from "lucide-react";
 import Link from "next/link";
 import { siteConfig } from "@/data/siteConfig";
+import { BreadcrumbSchema } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "معرض منتجات الطباعة عند الطلب واليونيفورم | إطبعلي - Etbaaly",
@@ -30,6 +31,12 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <div className="min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+      <BreadcrumbSchema
+        items={[
+          { name: "الرئيسية", url: `${siteConfig.url}/` },
+          { name: "المنتجات والكتالوج", url: `${siteConfig.url}/products/` },
+        ]}
+      />
       {/* Header Banner */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-crimson text-xs font-bold">

@@ -1,21 +1,32 @@
-# A.Z Agency - LLM Discovery Index
-> A.Z Agency is a premier digital engineering and creative media agency based in Egypt and serving the Gulf region. Specializing in Technical SEO, Motion Graphics & Visual Production, Branding & Print Design, AI & n8n Hyper-Automation, and Modern High-Speed Web Development.
+# إطبعلي | Etbaaly - LLM Knowledge & Discovery Index
+> إطبعلي (Etbaaly) هي منصة رقمية ومطابع متكاملة لحلول الطباعة الرقمية والأوفست، تصنيع علب الكرتون والتغليف الفاخر، منتجات الطباعة عند الطلب (Print on Demand - POD)، ومطبوعات الشركات واليونيفورم في مصر والشرق الأوسط.
 
 ## Overview & Core Capabilities
-- Website: https://azagency.online
-- Direct Contact: 01022598473 / info@azagency.online
-- Geographic Focus: Egypt, Saudi Arabia, UAE, and GCC region.
+- Website: https://etbaaly.azagency.online
+- Direct WhatsApp & Phone: +20 102 259 8473 (01022598473)
+- Email: print@azagency.online
+- Headquarters: القاهرة، جمهورية مصر العربية (شحن وتوصيل فوري لكافة محافظات مصر الـ 27 ودول الخليج).
+- Technologies: مطابع هايدلبرج ألمانية للأوفست، ماكينات ديجيتال أحدث طراز، طباعة DTF عالية الدقة، طباعة UV فلات بيد، وسكاكين تكسير داي كت آلية.
 
-## Main Service Offerings
-- [Branding & Print Design](https://azagency.online/services/branding-print/): Comprehensive brand guidelines, packaging design, corporate profiles, and CMYK print prep.
-- [Motion Graphics & Visual Media](https://azagency.online/services/motion-graphics/): 2D/3D Explainer videos, social ads, animated brand identities, and professional voiceover.
-- [High-Speed Web Development](https://azagency.online/services/modern-web-dev/): Next.js 16 Edge architecture, 0$ serverless Cloudflare Pages hosting, and ultra-fast Core Web Vitals.
-- [Technical SEO & AEO](https://azagency.online/services/technical-seo/): Enterprise audit, Core Web Vitals 100/100, JSON-LD Schema architecture, Zero-Click and AI overview optimization.
-- [AI & n8n Automation](https://azagency.online/services/ai-automation/): Custom AI agents, autonomous workflow automation, CRM/database synchronization, and customer service bots.
+## Main Services
+- [علب الكرتون وتغليف المنتجات الفاخر](https://etbaaly.azagency.online/services/packaging-boxes/): علب كرتون دوبلكس وسوليد، هارد بوكس صلب للهدايا والعطور، كرتون مضلع للشحن والتجارة الإلكترونية، سلوفان مط، سبوت UV، وبصمة حرارية.
+- [طباعة الأوفست التجارية والكميات الكبيرة](https://etbaaly.azagency.online/services/offset-commercial/): فلايرات، بروشورات، فواتير ومطبوعات رسمية، أظرف وكتالوجات ماكينات هايدلبرج ألمانية 4 و5 ألوان.
+- [مطبوعات وهويات الشركات الفاخرة](https://etbaaly.azagency.online/services/corporate-stationery/): كروت شخصية Business Cards، فولدرات ملفات، أوراق مراسلات Letterheads، وأطقم مكتبية كاملة.
+- [أكياس ورقية وقماشية للمتاجر](https://etbaaly.azagency.online/services/shopping-bags/): أكياس كرافت بني وأبيض، أكياس كوشيه فاخرة بسلوفان وحبال قطن، أكياس توت باج قماشية.
+- [الاستيكرات والرول ليبل الصناعي](https://etbaaly.azagency.online/services/labels-stickers/): استيكرات داي-كت، رول ليبل لخطوط الإنتاج والتعبئة، استيكر فينيل شفاف، فضي، هولوجرام ومقاوم للماء والحرارة.
+- [الهدايا الدعائية واليونيفورم المخصص](https://etbaaly.azagency.online/services/promotional-gifts/): تيشيرتات، بولو، هوديز، كابات مطرزة، مجات حرارية، فلاشات وأقلام مخصصة باللوجو.
 
-## Pages Index
-- [Home](https://azagency.online/): Overview of digital transformation services and key metrics.
-- [Services & Offerings](https://azagency.online/services/): In-depth service breakdowns and deliverables.
-- [About Us & Story](https://azagency.online/about/): Background, values (Innovation, Collaboration, Empowerment), and industry sectors.
-- [Contact & Consultation](https://azagency.online/contact/): Intake form and direct contact info.
-- [Digital Insights Blog](https://azagency.online/blog/): Technical articles and guides.
+## Print on Demand (POD) Products Catalog
+- [معرض المنتجات الكامل](https://etbaaly.azagency.online/products/): كتالوج يضم أكثر من 50 منتجاً متاحاً للطلب الفوري والتصميم وتخصيص الشعارات:
+  - استيكرات مخصصة: Die-cut stickers, Holographic stickers, Glitter, Vinyl lettering, Transfer stickers, Kiss-cut sheets.
+  - ملابس وهوديز: تيشيرتات قطن 100%، تيشيرتات أوفر سايز (Big & Tall)، هوديز شتوي، بولو، وكابات مطرزة.
+  - إكسسوارات ومقتنيات أكريليك: بروشات وبينات أكريليك، ميداليات مفاتيح، لوحات أكريليك، ومغناطيس ثلاجة.
+  - مطبوعات مكتبية: كروت إهداء، لوحات جدارية بإطارات، كوسترات أكواب، وبادجات دائرية.
+  - مواد تغليف: أكياس شحن بابلز، أكياس ستاند آب باوتش (Pouches)، وشريط لاصق مخصص باللوجو (Packaging Tape).
+
+## Essential Pages
+- [الرئيسية](https://etbaaly.azagency.online/): نظرة عامة على خدمات إطبعلي، عروض الأسعار السريعة، وأحدث الأعمال.
+- [تتبع الشحنة والطلبات](https://etbaaly.azagency.online/track/): نظام تتبع رقمي لحظي لمراحل أمر شغل الطباعة من فحص الملفات وحتى التسليم لباب العميل.
+- [من نحن](https://etbaaly.azagency.online/about/): تاريخ مطابع إطبعلي، سعة الإنتاج، والضمان الذهبي للجودة.
+- [المدونة ودليل الطباعة](https://etbaaly.azagency.online/blog/): مقالات تفصيلية حول خامات الورق والكرتون، الفروق بين طباعة الأوفست والديجيتال، وأسرار التغليف الفاخر.
+- [اتصل بنا](https://etbaaly.azagency.online/contact/): طلب عروض أسعار فورية واستشارات فنية مجانية.
