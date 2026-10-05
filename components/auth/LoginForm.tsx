@@ -26,12 +26,8 @@ export function LoginForm() {
   const [activeRole, setActiveRole] = useState<"client" | "admin">(
     roleParam === "admin" ? "admin" : "client"
   );
-  const [email, setEmail] = useState(
-    roleParam === "admin" ? "admin@etbaaly.com" : "client@azagency.online"
-  );
-  const [password, setPassword] = useState(
-    roleParam === "admin" ? "admin123456" : "demo123456"
-  );
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,24 +42,52 @@ export function LoginForm() {
   useEffect(() => {
     if (roleParam === "admin") {
       setActiveRole("admin");
-      setEmail("admin@etbaaly.com");
-      setPassword("admin123456");
     } else if (roleParam === "client") {
       setActiveRole("client");
-      setEmail("client@azagency.online");
-      setPassword("demo123456");
+    }
+
+    // Only pre-fill demo credentials in local testing or development environment
+    const isLocal =
+      process.env.NODE_ENV === "development" ||
+      (typeof window !== "undefined" &&
+        (window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1" ||
+          window.location.hostname.endsWith(".local") ||
+          window.location.search.includes("dev_demo=true")));
+
+    if (isLocal) {
+      if (roleParam === "admin") {
+        setEmail("admin@etbaaly.com");
+        setPassword("admin123456");
+      } else if (roleParam === "client") {
+        setEmail("client@azagency.online");
+        setPassword("demo123456");
+      }
     }
   }, [roleParam]);
 
   const handleRoleTabChange = (role: "client" | "admin") => {
     setActiveRole(role);
     setError(null);
-    if (role === "admin") {
-      setEmail("admin@etbaaly.com");
-      setPassword("admin123456");
+    const isLocal =
+      process.env.NODE_ENV === "development" ||
+      (typeof window !== "undefined" &&
+        (window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1" ||
+          window.location.hostname.endsWith(".local") ||
+          window.location.search.includes("dev_demo=true")));
+
+    if (isLocal) {
+      if (role === "admin") {
+        setEmail("admin@etbaaly.com");
+        setPassword("admin123456");
+      } else {
+        setEmail("client@azagency.online");
+        setPassword("demo123456");
+      }
     } else {
-      setEmail("client@azagency.online");
-      setPassword("demo123456");
+      setEmail("");
+      setPassword("");
     }
   };
 

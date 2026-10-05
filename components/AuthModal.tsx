@@ -16,6 +16,19 @@ export default function AuthModal() {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isLocalDev, setIsLocalDev] = useState(false);
+
+  React.useEffect(() => {
+    const isLocal =
+      process.env.NODE_ENV === "development" ||
+      (typeof window !== "undefined" &&
+        (window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1" ||
+          window.location.hostname.endsWith(".local") ||
+          window.location.search.includes("dev_demo=true")));
+
+    setIsLocalDev(Boolean(isLocal));
+  }, []);
 
   if (!isAuthModalOpen) return null;
 
@@ -177,8 +190,8 @@ export default function AuthModal() {
           </div>
         </form>
 
-        {/* Demo Fast Login Shortcut */}
-        {tab === "login" && (
+        {/* Demo Fast Login Shortcut (Local Dev Only) */}
+        {tab === "login" && isLocalDev && (
           <div className="mt-5 pt-4 border-t border-slate-100 dark:border-white/[0.08] text-center">
             <button
               type="button"
@@ -186,7 +199,7 @@ export default function AuthModal() {
               className="text-xs font-bold text-[#c93b41] hover:underline flex items-center justify-center gap-1.5 mx-auto cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              تجربة دخول سريع بحساب شركة تجريبي
+              تجربة دخول سريع بحساب شركة تجريبي (Local Only)
             </button>
           </div>
         )}
