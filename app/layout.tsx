@@ -154,9 +154,6 @@ export default function RootLayout({
             </CartProvider>
           </AuthProvider>
         </ThemeProvider>
-      {/* impeccable-live-start */}
-<script src="http://localhost:8400/live.js?token=53daaab4-9251-418b-a76b-cc88f68d8663"></script>
-{/* impeccable-live-end */}
 </body>
     </html>
   );

@@ -99,13 +99,16 @@ export function LoginForm() {
     try {
       const success = await login({ email, password, role: activeRole });
       if (success) {
-        if (activeRole === "admin") {
+        const saved = typeof window !== "undefined" ? localStorage.getItem("etbaaly_user_session") : null;
+        const parsed = saved ? JSON.parse(saved) : null;
+        const isAdmin = parsed?.role === "admin" || parsed?.email?.toLowerCase().includes("admin") || roleParam === "admin";
+        if (isAdmin) {
           router.push("/admin");
         } else {
           router.push("/dashboard");
         }
       } else {
-        setError("بيانات الدخول غير صحيحة، يرجى التحقق من البريد وكلمة المرور.");
+        setError("بيانات الدخول غير صحيحة، يرجى التحقق من اسم المستخدم أو البريد وكلمة المرور.");
       }
     } catch (err) {
       setError("حدث خطأ أثناء محاولة تسجيل الدخول. يرجى المحاولة لاحقاً.");
@@ -178,7 +181,7 @@ export function LoginForm() {
         {/* Glow Accent */}
         <div
           className={`absolute -top-24 -right-24 w-48 h-48 rounded-full blur-3xl opacity-20 pointer-events-none ${
-            authMode === "register" ? "bg-amber-500" : activeRole === "admin" ? "bg-red-600" : "bg-blue-600"
+            authMode === "register" ? "bg-amber-500" : "bg-blue-600"
           }`}
         />
 
@@ -201,9 +204,7 @@ export function LoginForm() {
               </button>
             </div>
 
-            <LoginRoleTabs activeRole={activeRole} onRoleChange={handleRoleTabChange} />
-
-            <LoginFormHeader activeRole={activeRole} />
+            <LoginFormHeader isAdminExplicit={roleParam === "admin"} />
 
             {error && (
               <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-500 text-xs font-bold flex items-center gap-2">
@@ -216,9 +217,7 @@ export function LoginForm() {
             <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
               <div>
                 <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                  {activeRole === "admin"
-                    ? "اسم المستخدم أو البريد الإلكتروني الإداري:"
-                    : "اسم المستخدم (Username) أو البريد الإلكتروني:"}
+                  اسم المستخدم (Username) أو البريد الإلكتروني:
                 </label>
                 <div className="relative">
                   <Mail className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -228,7 +227,7 @@ export function LoginForm() {
                     dir="ltr"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder={activeRole === "admin" ? "assem_admin أو admin@etbaaly.com" : "ahmed_99 أو user@company.com"}
+                    placeholder="اسم المستخدم أو name@example.com"
                     className="w-full pr-10 pl-3.5 py-3 rounded-xl bg-slate-50 dark:bg-[#141518] border border-slate-200 dark:border-white/[0.1] text-xs text-slate-900 dark:text-white focus:outline-none focus:border-[#c93b41] font-medium transition-all"
                   />
                 </div>
@@ -243,18 +242,12 @@ export function LoginForm() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer disabled:opacity-50 transition-all ${
-                    activeRole === "admin"
-                      ? "bg-[#c93b41] hover:bg-[#a82d32] text-white shadow-red-500/20"
-                      : "btn-crimson text-white"
-                  }`}
+                  className="w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer disabled:opacity-50 transition-all btn-crimson text-white"
                 >
                   <span>
                     {loading
                       ? "جاري التحقق من الصلاحيات..."
-                      : activeRole === "admin"
-                      ? "دخول لوحة تحكم الموقع (Admin)"
-                      : "تسجيل الدخول إلى حساب العميل"}
+                      : "تسجيل الدخول"}
                   </span>
                   <ArrowLeft className="w-4 h-4" />
                 </button>

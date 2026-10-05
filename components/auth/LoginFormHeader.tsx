@@ -1,36 +1,34 @@
 import React from "react";
-import { Building2, ShieldAlert } from "lucide-react";
+import { ShieldCheck, UserCheck } from "lucide-react";
 
 interface LoginFormHeaderProps {
-  activeRole: "client" | "admin";
+  isAdminExplicit?: boolean;
 }
 
-export function LoginFormHeader({ activeRole }: LoginFormHeaderProps) {
+export function LoginFormHeader({ isAdminExplicit = false }: LoginFormHeaderProps) {
   return (
     <div className="text-center space-y-2 relative z-10">
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-1 border shadow-xs">
-        {activeRole === "admin" ? (
+        {isAdminExplicit ? (
           <span className="flex items-center gap-1.5 text-red-600 dark:text-red-400 bg-red-500/10 border border-red-500/20 px-2.5 py-0.5 rounded-full">
-            <ShieldAlert className="w-3.5 h-3.5" />
-            <span>لوحة التحكم الرئيسية (Site Admin)</span>
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>تسجيل دخول المسؤولين (Admin Portal)</span>
           </span>
         ) : (
-          <span className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-0.5 rounded-full">
-            <Building2 className="w-3.5 h-3.5" />
-            <span>بوابة الشركات وحسابات B2B المعتمدة</span>
+          <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/[0.08] border border-slate-200 dark:border-white/[0.1] px-2.5 py-0.5 rounded-full">
+            <UserCheck className="w-3.5 h-3.5 text-[#c93b41]" />
+            <span>بوابة العملاء والمستخدمين</span>
           </span>
         )}
       </div>
 
       <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
-        {activeRole === "admin"
-          ? "تسجيل دخول مشرف المنصة والمطبعة"
-          : "تسجيل الدخول إلى حساب شركتك"}
+        {isAdminExplicit ? "تسجيل دخول مشرف المنصة" : "تسجيل الدخول إلى حسابك"}
       </h2>
       <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-sm mx-auto">
-        {activeRole === "admin"
-          ? "إدارة خطوط إنتاج الطباعة، استوديو تجهيز الطبقات، وتعديل أسعار وعروض الخدمات."
-          : "متابعة أوامر التشغيل لحظياً، سحب الفواتير الضريبية، وإدارة مقايسات الإنتاج."}
+        {isAdminExplicit
+          ? "أدخل بيانات حساب الإدارة المصرح له للمتابعة إلى لوحة التحكم."
+          : "أدخل اسم المستخدم أو البريد الإلكتروني وكلمة المرور للوصول إلى حسابك ومتابعة الطلبات."}
       </p>
     </div>
   );
