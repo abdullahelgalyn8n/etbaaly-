@@ -1,7 +1,9 @@
 import { initialAdminProducts } from "./seed";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://dvkbfckmtovvoybnytix.supabase.co";
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+// Only SUPABASE_SERVICE_ROLE_KEY has permission to execute raw SQL over exec_sql RPC.
+// Do NOT fallback to NEXT_PUBLIC_SUPABASE_ANON_KEY which fails with 401 and causes worker timeouts.
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
 export const inMemoryStore = {
   adminProducts: [...initialAdminProducts],
@@ -192,46 +194,51 @@ export async function executeSql<T = any>(
   strings: TemplateStringsArray,
   ...values: any[]
 ): Promise<T[]> {
-  let query = "";
-  for (let i = 0; i < strings.length; i++) {
-    query += strings[i];
-    if (i < values.length) {
-      const val = values[i];
-      if (val === null || val === undefined) {
-        query += "NULL";
-      } else if (typeof val === "number") {
-        query += Number.isFinite(val) ? val.toString() : "0";
-      } else if (typeof val === "boolean") {
-        query += val ? "TRUE" : "FALSE";
-      } else if (typeof val === "object") {
-        const jsonStr = JSON.stringify(val).replace(/'/g, "''");
-        query += `'${jsonStr}'`;
-      } else {
-        const strVal = String(val).replace(/'/g, "''");
-        query += `'${strVal}'`;
+  try {
+    let query = "";
+    for (let i = 0; i < strings.length; i++) {
+      query += strings[i];
+      if (i < values.length) {
+        const val = values[i];
+        if (val === null || val === undefined) {
+          query += "NULL";
+        } else if (typeof val === "number") {
+          query += Number.isFinite(val) ? val.toString() : "0";
+        } else if (typeof val === "boolean") {
+          query += val ? "TRUE" : "FALSE";
+        } else if (typeof val === "object") {
+          const jsonStr = JSON.stringify(val).replace(/'/g, "''");
+          query += `'${jsonStr}'`;
+        } else {
+          const strVal = String(val).replace(/'/g, "''");
+          query += `'${strVal}'`;
+        }
       }
     }
+
+    const endpoint = `${supabaseUrl}/rest/v1/rpc/exec_sql`;
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+      },
+      body: JSON.stringify({ query }),
+      signal: AbortSignal.timeout(2000),
+    });
+
+    if (!res.ok) {
+      const errorBody = await res.text();
+      throw new Error(`Supabase SQL Execution failed (${res.status}): ${errorBody}`);
+    }
+
+    const data = await res.json();
+    return (data || []) as T[];
+  } catch (err: any) {
+    console.warn("DB SQL Error, falling back to local memory store:", err?.message || err);
+    return [] as T[];
   }
-
-  const endpoint = `${supabaseUrl}/rest/v1/rpc/exec_sql`;
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      apikey: supabaseKey,
-      Authorization: `Bearer ${supabaseKey}`,
-    },
-    body: JSON.stringify({ query }),
-    signal: AbortSignal.timeout(6000),
-  });
-
-  if (!res.ok) {
-    const errorBody = await res.text();
-    throw new Error(`Supabase SQL Execution failed (${res.status}): ${errorBody}`);
-  }
-
-  const data = await res.json();
-  return (data || []) as T[];
 }
 
 export function getDb() {

@@ -63,26 +63,11 @@ export async function getAdminProducts(statusFilter?: "published" | "draft" | "a
           updatedAt: r.updated_at,
         }));
 
-        // Automatically sync and append any missing seed products (e.g. apparel & hoodies)
+        // Automatically sync and append any missing seed products (e.g. apparel & hoodies) in-memory without firing 50 roundtrips
         const dbIds = new Set(dbProducts.map((p: any) => p.id));
         const missingSeed = initialAdminProducts.filter((p) => !dbIds.has(p.id));
 
         if (missingSeed.length > 0) {
-          for (const p of missingSeed) {
-            try {
-              await sql`
-                INSERT INTO admin_products (
-                  id, slug, title, category, base_price, description, turnaround, badge, status, colors, layers, print_area_label
-                ) VALUES (
-                  ${p.id}, ${p.slug}, ${p.title}, ${p.category}, ${p.basePrice}, ${p.description || ''},
-                  ${p.turnaround || ''}, ${p.badge || ''}, ${p.status || 'published'},
-                  ${JSON.stringify(p.colors || [])}::jsonb, ${JSON.stringify(p.layers || [])}::jsonb, ${p.printAreaLabel || ''}
-                ) ON CONFLICT (id) DO NOTHING;
-              `;
-            } catch (insertErr) {
-              console.warn("Auto-insert error for product:", p.id, insertErr);
-            }
-          }
           const filteredMissing = statusFilter && statusFilter !== "all" 
             ? missingSeed.filter((p) => p.status === statusFilter)
             : missingSeed;
