@@ -6,11 +6,11 @@ const cspHeader = `
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   img-src 'self' data: blob: https:;
   font-src 'self' data: https://fonts.gstatic.com;
-  frame-src 'self' https://challenges.cloudflare.com;
+  frame-src 'self' https://challenges.cloudflare.com https://www.facebook.com;
   connect-src 'self' https: wss: https://cloudflareinsights.com;
   object-src 'none';
   base-uri 'self';
-  form-action 'self';
+  form-action 'self' https://www.facebook.com;
   frame-ancestors 'self';
 `.replace(/\s{2,}/g, " ").trim();
 
