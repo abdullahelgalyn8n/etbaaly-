@@ -6,21 +6,25 @@ import { generateConfiguratorForProduct } from "./configuratorGenerators";
 
 export { initialVisualConfigurators, generateConfiguratorForProduct };
 
+let configuratorsTableChecked = false;
 export async function getVisualConfigurators(): Promise<VisualConfigurator[]> {
   const { isLive, sql } = getDb();
   if (isLive && sql) {
     try {
-      await sql`
-        CREATE TABLE IF NOT EXISTS visual_configurators (
-          id VARCHAR(64) PRIMARY KEY, name VARCHAR(255) NOT NULL, product_id VARCHAR(64) NOT NULL,
-          style VARCHAR(50) DEFAULT 'style1', canvas_width INT DEFAULT 1000, canvas_height INT DEFAULT 1000,
-          base_price NUMERIC(10, 2) DEFAULT 0, views JSONB DEFAULT '[]'::jsonb, groups JSONB DEFAULT '[]'::jsonb,
-          hotspots JSONB DEFAULT '[]'::jsonb, responsible_view_thumbnail VARCHAR(255), choose_form VARCHAR(50),
-          contact_form VARCHAR(50), load_configurator_in VARCHAR(50), configurator_template VARCHAR(100),
-          description TEXT, view_background TEXT, show_details_page VARCHAR(50), custom_css TEXT, custom_js TEXT,
-          created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-        );
-      `;
+      if (!configuratorsTableChecked) {
+        await sql`
+          CREATE TABLE IF NOT EXISTS visual_configurators (
+            id VARCHAR(64) PRIMARY KEY, name VARCHAR(255) NOT NULL, product_id VARCHAR(64) NOT NULL,
+            style VARCHAR(50) DEFAULT 'style1', canvas_width INT DEFAULT 1000, canvas_height INT DEFAULT 1000,
+            base_price NUMERIC(10, 2) DEFAULT 0, views JSONB DEFAULT '[]'::jsonb, groups JSONB DEFAULT '[]'::jsonb,
+            hotspots JSONB DEFAULT '[]'::jsonb, responsible_view_thumbnail VARCHAR(255), choose_form VARCHAR(50),
+            contact_form VARCHAR(50), load_configurator_in VARCHAR(50), configurator_template VARCHAR(100),
+            description TEXT, view_background TEXT, show_details_page VARCHAR(50), custom_css TEXT, custom_js TEXT,
+            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+          );
+        `;
+        configuratorsTableChecked = true;
+      }
       const rows = await sql`SELECT * FROM visual_configurators ORDER BY updated_at DESC`;
       if (rows && rows.length > 0) {
         return rows.map((r: any) => ({

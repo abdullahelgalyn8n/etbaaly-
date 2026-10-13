@@ -25,7 +25,9 @@ export interface QueryPostsOptions {
   limit?: number;
 }
 
+let postsTableChecked = false;
 async function ensurePostsTable() {
+  if (postsTableChecked) return;
   const { isLive, sql } = getDb();
   if (isLive && sql) {
     try {
@@ -51,6 +53,7 @@ async function ensurePostsTable() {
           updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
         );
       `;
+      postsTableChecked = true;
     } catch (err) {
       console.error("Neon ensurePostsTable error:", err);
     }
@@ -130,7 +133,6 @@ export async function findPostBySlug(slug: string): Promise<AdminBlogPost | unde
   const { isLive, sql } = getDb();
   if (isLive && sql) {
     try {
-      await ensurePostsTable();
       const rows = await sql`
         SELECT * FROM posts WHERE slug = ${slug} LIMIT 1
       `;

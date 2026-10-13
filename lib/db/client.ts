@@ -222,6 +222,7 @@ export async function executeSql<T = any>(
       Authorization: `Bearer ${supabaseKey}`,
     },
     body: JSON.stringify({ query }),
+    signal: AbortSignal.timeout(6000),
   });
 
   if (!res.ok) {

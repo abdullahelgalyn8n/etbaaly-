@@ -2,28 +2,41 @@ import { AdminProduct } from "./types";
 import { getDb, inMemoryStore } from "./client";
 import { initialAdminProducts } from "./seed";
 
+// Helper: in Edge/Worker execution, tables already exist in Supabase.
+// Re-running DDL CREATE TABLE on read queries consumes excessive subrequests and CPU quota.
+let productsTableChecked = false;
+async function ensureProductsTable(sql: any) {
+  if (productsTableChecked) return;
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS admin_products (
+        id VARCHAR(64) PRIMARY KEY,
+        slug VARCHAR(255) UNIQUE NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        category VARCHAR(100) NOT NULL,
+        base_price NUMERIC(10, 2) NOT NULL,
+        description TEXT,
+        turnaround VARCHAR(100),
+        badge VARCHAR(100),
+        status VARCHAR(50) DEFAULT 'published',
+        colors JSONB DEFAULT '[]'::jsonb,
+        layers JSONB DEFAULT '[]'::jsonb,
+        print_area_label VARCHAR(255),
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      );
+    `;
+    productsTableChecked = true;
+  } catch (err) {
+    console.error("ensureProductsTable error:", err);
+  }
+}
+
 export async function getAdminProducts(statusFilter?: "published" | "draft" | "all") {
   const { isLive, sql } = getDb();
   if (isLive && sql) {
     try {
-      await sql`
-        CREATE TABLE IF NOT EXISTS admin_products (
-          id VARCHAR(64) PRIMARY KEY,
-          slug VARCHAR(255) UNIQUE NOT NULL,
-          title VARCHAR(255) NOT NULL,
-          category VARCHAR(100) NOT NULL,
-          base_price NUMERIC(10, 2) NOT NULL,
-          description TEXT,
-          turnaround VARCHAR(100),
-          badge VARCHAR(100),
-          status VARCHAR(50) DEFAULT 'published',
-          colors JSONB DEFAULT '[]'::jsonb,
-          layers JSONB DEFAULT '[]'::jsonb,
-          print_area_label VARCHAR(255),
-          created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-          updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-        );
-      `;
+      await ensureProductsTable(sql);
 
       let rows;
       if (statusFilter && statusFilter !== "all") {
@@ -180,10 +193,42 @@ export async function deleteAdminProduct(id: string) {
 }
 
 export async function getAdminProductByIdOrSlug(idOrSlug: string): Promise<AdminProduct | null> {
-  const products = await getAdminProducts("all");
   const decoded = decodeURIComponent(idOrSlug);
+  const { isLive, sql } = getDb();
+  if (isLive && sql) {
+    try {
+      const rows = await sql`
+        SELECT * FROM admin_products 
+        WHERE id = ${idOrSlug} OR slug = ${idOrSlug} OR slug = ${decoded} OR id = ${decoded}
+        LIMIT 1
+      `;
+      if (rows && rows.length > 0) {
+        const r = rows[0];
+        return {
+          id: r.id,
+          slug: r.slug,
+          title: r.title,
+          category: r.category,
+          basePrice: Number(r.base_price),
+          description: r.description,
+          turnaround: r.turnaround,
+          badge: r.badge,
+          status: r.status,
+          colors: typeof r.colors === "string" ? JSON.parse(r.colors) : r.colors,
+          layers: typeof r.layers === "string" ? JSON.parse(r.layers) : r.layers,
+          printAreaLabel: r.print_area_label,
+          createdAt: r.created_at,
+          updatedAt: r.updated_at,
+        };
+      }
+    } catch (err) {
+      console.error("Neon getAdminProductByIdOrSlug direct query error:", err);
+    }
+  }
+
+  // Fallback to in-memory store
   return (
-    products.find(
+    inMemoryStore.adminProducts.find(
       (p) =>
         p.id === idOrSlug ||
         p.slug === idOrSlug ||

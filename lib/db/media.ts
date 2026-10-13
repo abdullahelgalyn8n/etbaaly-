@@ -4,6 +4,7 @@ import { initialMediaAssets } from "./initialMediaData";
 
 export { initialMediaAssets };
 
+let mediaTableChecked = false;
 export async function getMediaAssets(params?: {
   search?: string;
   category?: string;
@@ -12,26 +13,29 @@ export async function getMediaAssets(params?: {
   const { isLive, sql } = getDb();
   if (isLive && sql) {
     try {
-      await sql`
-        CREATE TABLE IF NOT EXISTS media_assets (
-          id VARCHAR(64) PRIMARY KEY,
-          url TEXT NOT NULL UNIQUE,
-          storage_type VARCHAR(20) NOT NULL DEFAULT 'local',
-          filename VARCHAR(255) NOT NULL,
-          alt_text VARCHAR(255) DEFAULT '',
-          title VARCHAR(255) DEFAULT '',
-          caption TEXT DEFAULT '',
-          description TEXT DEFAULT '',
-          dimensions JSONB DEFAULT '{"width": 0, "height": 0}'::jsonb,
-          file_size_kb NUMERIC(10, 2) DEFAULT 0,
-          mime_type VARCHAR(50) DEFAULT 'image/webp',
-          category VARCHAR(100) DEFAULT 'general',
-          tags JSONB DEFAULT '[]'::jsonb,
-          used_in JSONB DEFAULT '[]'::jsonb,
-          created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-          updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-        );
-      `;
+      if (!mediaTableChecked) {
+        await sql`
+          CREATE TABLE IF NOT EXISTS media_assets (
+            id VARCHAR(64) PRIMARY KEY,
+            url TEXT NOT NULL UNIQUE,
+            storage_type VARCHAR(20) NOT NULL DEFAULT 'local',
+            filename VARCHAR(255) NOT NULL,
+            alt_text VARCHAR(255) DEFAULT '',
+            title VARCHAR(255) DEFAULT '',
+            caption TEXT DEFAULT '',
+            description TEXT DEFAULT '',
+            dimensions JSONB DEFAULT '{"width": 0, "height": 0}'::jsonb,
+            file_size_kb NUMERIC(10, 2) DEFAULT 0,
+            mime_type VARCHAR(50) DEFAULT 'image/webp',
+            category VARCHAR(100) DEFAULT 'general',
+            tags JSONB DEFAULT '[]'::jsonb,
+            used_in JSONB DEFAULT '[]'::jsonb,
+            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+          );
+        `;
+        mediaTableChecked = true;
+      }
 
       const rows = await sql`SELECT * FROM media_assets ORDER BY created_at DESC`;
       if (rows && rows.length > 0) {
