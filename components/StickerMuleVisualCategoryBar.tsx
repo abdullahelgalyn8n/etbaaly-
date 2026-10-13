@@ -18,14 +18,14 @@ export const visualCategories: VisualCategoryItem[] = [
     id: "all",
     name: "كافة الأقسام",
     englishName: "All Products",
-    icon: "/images/stickermule/02_Stickers_op_maat/Products/16_sticker-packs_stickersets/01_index_sticker-packs.png",
+    icon: "/images/stickermule/02_Stickers_op_maat/Products/16_sticker-packs_stickersets/01_index_sticker-packs.webp",
     tag: "48 منتجاً متوفراً",
   },
   {
     id: "استيكرات",
     name: "استيكرات داي-كت",
     englishName: "Custom Stickers",
-    icon: "/images/stickermule/02_Stickers_op_maat/Products/04_317_uitgesneden-stickers/01_index_317.png",
+    icon: "/images/stickermule/02_Stickers_op_maat/Products/04_317_uitgesneden-stickers/01_index_317.webp",
     tag: "22 نوعاً ومقاس",
     badge: "الأكثر طلباً ⭐",
   },
@@ -33,28 +33,28 @@ export const visualCategories: VisualCategoryItem[] = [
     id: "تجهيزات مكاتب ويافط",
     name: "أكريليك ويافط مكاتب",
     englishName: "Acrylic & Office",
-    icon: "/images/stickermule/04_Gepersonaliseerde_acrylproducten/Products/06_die-cut-acrylic-signs_contourgesneden-acryl-borden/01_index_die-cut-acrylic-signs.png",
+    icon: "/images/stickermule/04_Gepersonaliseerde_acrylproducten/Products/06_die-cut-acrylic-signs_contourgesneden-acryl-borden/01_index_die-cut-acrylic-signs.webp",
     tag: "يافطات، بوسترات وإطارات",
   },
   {
     id: "علب وتغليف",
     name: "تغليف وشحن وتيب",
     englishName: "Custom Packaging",
-    icon: "/images/stickermule/05_Verpakking_op_maat/Products/03_pkg-tp_verpakkingstape/01_index_pkg-tp.png",
+    icon: "/images/stickermule/05_Verpakking_op_maat/Products/03_pkg-tp_verpakkingstape/01_index_pkg-tp.webp",
     tag: "أشرطة وتغليف بريميوم",
   },
   {
     id: "هدايا شخصية وحفر ليزر",
     name: "بادجات وهدايا ليزر",
     englishName: "Buttons & Gifts",
-    icon: "/images/stickermule/07_Buttons_op_maat/Products/01_acrylic-pins_acryl-pins/01_index_acrylic-pins.png",
+    icon: "/images/stickermule/07_Buttons_op_maat/Products/01_acrylic-pins_acryl-pins/01_index_acrylic-pins.webp",
     tag: "دبابيس، كوسترات وهدايا",
   },
   {
     id: "ملابس وهوديز",
     name: "هوديز وملابس مخصصة",
     englishName: "Hoodies & Merch",
-    icon: "/images/stickermule/03_Gepersonaliseerde_kleding/Products/03_custom-hoodies_gepersonaliseerde-hoodies/01_index_custom-hoodies-az.png?v=az1",
+    icon: "/images/stickermule/03_Gepersonaliseerde_kleding/Products/03_custom-hoodies_gepersonaliseerde-hoodies/01_index_custom-hoodies-az.webp",
     tag: "طباعة DTF وميلتون 100%",
     badge: "جديد 🔥",
   },
@@ -114,7 +114,10 @@ export default function StickerMuleVisualCategoryBar({
                 <img
                   src={item.icon}
                   alt={item.name}
-                  loading="eager"
+                  width={80}
+                  height={80}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain filter drop-shadow-[0_6px_10px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_8px_14px_rgba(0,0,0,0.45)] group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300"
                 />
               </div>

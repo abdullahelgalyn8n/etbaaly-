@@ -20,12 +20,12 @@ export default function BrandLogo({
           <span className="font-black text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
             إطبعلي<span className="text-[#c93b41]">.</span>
           </span>
-          <span className="text-[10px] font-mono tracking-wider text-slate-500 dark:text-slate-400 font-bold uppercase">
+          <span className="text-[10px] font-mono tracking-wider text-slate-600 dark:text-slate-300 font-bold uppercase">
             ETBAALY
           </span>
         </div>
         {showSubtext && (
-          <span className="text-[8.5px] font-medium tracking-tight text-slate-500 dark:text-slate-400 mt-0.5">
+          <span className="text-[8.5px] font-semibold tracking-tight text-slate-600 dark:text-slate-300 mt-0.5">
             A.Z Agency Print Production
           </span>
         )}

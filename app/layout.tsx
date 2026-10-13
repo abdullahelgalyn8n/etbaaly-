@@ -121,6 +121,11 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className={`${lateef.variable} scroll-smooth`} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "window.__name=window.__name||function(t,v){return t};",
+          }}
+        />
         <link rel="preload" as="image" href="/images/brand-hero-business-sm.webp" type="image/webp" media="(max-width: 640px)" fetchPriority="high" />
         <link rel="preload" as="image" href="/images/brand-hero-business.webp" type="image/webp" media="(min-width: 641px)" fetchPriority="high" />
         <link rel="icon" href="/favicon.ico" sizes="any" />

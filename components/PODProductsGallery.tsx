@@ -170,10 +170,10 @@ export default function PODProductsGallery() {
           {/* Counter and Reset */}
           <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+              <span className="text-xs text-slate-600 dark:text-slate-300 font-semibold">
                 المنتجات المتاحة:
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#c93b41]/10 text-[#c93b41] font-mono text-xs font-black">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#c93b41]/10 text-[#a82025] dark:text-[#ff6b72] font-mono text-xs font-black">
                 {filteredProducts.length} خيار
               </span>
             </div>
@@ -259,6 +259,7 @@ export default function PODProductsGallery() {
                 <Link
                   href={`/products/${product.slug || product.id}/`}
                   className="relative aspect-[4/3] w-full bg-[#ECEAE6] dark:bg-[#15161a] rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/[0.05] flex items-center justify-center transition-all block cursor-pointer group-hover:bg-[#E4E2DC] dark:group-hover:bg-[#1a1c22]"
+                  aria-label={`معاينة تفاصيل ومواصفات ${product.title}`}
                 >
                   {/* Product Image */}
                   {product.image ||
@@ -273,6 +274,10 @@ export default function PODProductsGallery() {
                         product.colors[0]?.mockupOverlay
                       }
                       alt={product.title}
+                      loading="lazy"
+                      decoding="async"
+                      width={400}
+                      height={340}
                       className="w-full h-full object-contain p-3 group-hover:scale-108 transition-transform duration-500 drop-shadow-md"
                     />
                   ) : (
@@ -356,7 +361,8 @@ export default function PODProductsGallery() {
                   <Link
                     href={`/products/${product.slug || product.id}/`}
                     className="px-3.5 py-2 rounded-xl btn-crimson text-white text-xs font-bold flex items-center gap-1.5 shadow-md hover:scale-105 transition-all"
-                    title="فتح صفحة طلب المنتج ومعاينة الصور الواقعية"
+                    title={`طلب المنتج ومعاينة المواصفات: ${product.title}`}
+                    aria-label={`طلب المنتج ${product.title}`}
                   >
                     <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                     <span>طلب المنتج ➔</span>
