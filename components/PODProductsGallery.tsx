@@ -244,7 +244,7 @@ export default function PODProductsGallery({ initialProducts = [] }: Props) {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedProducts.map((product) => (
+          {displayedProducts.map((product, idx) => (
             <div
               key={product.id}
               className="group bg-white dark:bg-[#1e2026] border border-slate-200/90 dark:border-white/[0.08] hover:border-[#c93b41]/50 rounded-3xl p-5 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
@@ -261,7 +261,8 @@ export default function PODProductsGallery({ initialProducts = [] }: Props) {
                     <img
                       src={product.image}
                       alt={product.title}
-                      loading="lazy"
+                      loading={idx < 2 ? "eager" : "lazy"}
+                      fetchPriority={idx === 0 ? "high" : "auto"}
                       decoding="async"
                       width={400}
                       height={340}

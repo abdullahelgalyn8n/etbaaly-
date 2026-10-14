@@ -119,7 +119,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${lateef.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang="ar" dir="rtl" className={lateef.variable} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -142,7 +142,7 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className="min-h-screen bg-[#f8f9fa] dark:bg-[#1d1d1d] text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-[#c93b41]/20 selection:text-[#c93b41] flex flex-col justify-between overflow-x-hidden text-lg">
+      <body className="min-h-screen bg-[#f8f9fa] dark:bg-[#1d1d1d] text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-[#c93b41]/20 selection:text-[#c93b41] flex flex-col justify-between text-lg">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           <AuthProvider>
             <CartProvider>

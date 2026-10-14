@@ -73,10 +73,7 @@ export default function StickerMuleVisualCategoryBar({
     <div className="w-full space-y-3.5">
       <div className="flex items-center justify-between px-1 sm:px-2">
         <div className="flex items-center gap-2.5">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c93b41] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#c93b41]" />
-          </span>
+          <span className="inline-flex rounded-full h-2.5 w-2.5 bg-[#c93b41]" />
           <h2 className="text-sm sm:text-base font-black text-slate-900 dark:text-white tracking-tight">
             تصفح الأقسام والمنتجات البصرية
           </h2>
@@ -88,7 +85,7 @@ export default function StickerMuleVisualCategoryBar({
       </div>
 
       {/* Horizontal Scrollable Strip of 3D Tiles */}
-      <div className="flex items-stretch gap-2.5 sm:gap-3.5 overflow-x-auto no-scrollbar pb-3 pt-3 px-1 sm:px-2 scroll-smooth snap-x snap-mandatory md:justify-center">
+      <div className="flex items-stretch gap-2.5 sm:gap-3.5 overflow-x-auto no-scrollbar pb-3 pt-3 px-1 sm:px-2 md:justify-center">
         {visualCategories.map((item) => {
           const isActive = selectedCategory === item.id;
           return (
@@ -96,7 +93,7 @@ export default function StickerMuleVisualCategoryBar({
               key={item.id}
               type="button"
               onClick={() => onSelectCategory(item.id)}
-              className={`group relative flex flex-col items-center justify-between flex-1 min-w-[125px] max-w-[165px] sm:min-w-[150px] p-3 sm:p-4 rounded-3xl border transition-all duration-300 cursor-pointer select-none text-center snap-start ${
+              className={`group relative flex flex-col items-center justify-between flex-1 min-w-[125px] max-w-[165px] sm:min-w-[150px] p-3 sm:p-4 rounded-3xl border transition-all duration-300 cursor-pointer select-none text-center ${
                 isActive
                   ? "bg-gradient-to-b from-[#c93b41]/[0.09] via-[#c93b41]/[0.03] to-white dark:to-[#1a1c22] border-[#c93b41] shadow-xl shadow-[#c93b41]/12 scale-[1.03] ring-2 ring-[#c93b41]/25"
                   : "bg-white dark:bg-[#181a20] border-slate-200/80 dark:border-white/[0.07] hover:border-[#c93b41]/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/30"
@@ -116,7 +113,7 @@ export default function StickerMuleVisualCategoryBar({
                   alt={item.name}
                   width={80}
                   height={80}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                   className="w-full h-full object-contain filter drop-shadow-[0_6px_10px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_8px_14px_rgba(0,0,0,0.45)] group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300"
                 />

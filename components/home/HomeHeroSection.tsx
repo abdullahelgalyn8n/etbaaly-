@@ -4,10 +4,12 @@ import { ArrowLeft, Sparkles, ShieldCheck, Box, PackageCheck, Truck, ArrowUpRigh
 
 export function HomeHeroSection() {
   return (
-    <section className="relative pt-4 md:pt-10 pb-4 overflow-hidden">
+    <section className="relative pt-4 md:pt-10 pb-4">
       {/* Background glow effects */}
-      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[radial-gradient(circle,rgba(201,59,65,0.12)_0%,transparent_70%)] pointer-events-none -z-10" />
-      <div className="absolute top-1/3 -left-40 w-96 h-96 bg-[radial-gradient(circle,rgba(138,28,35,0.08)_0%,transparent_70%)] pointer-events-none -z-10" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[radial-gradient(circle,rgba(201,59,65,0.12)_0%,transparent_70%)]" />
+        <div className="absolute top-1/3 -left-40 w-96 h-96 bg-[radial-gradient(circle,rgba(138,28,35,0.08)_0%,transparent_70%)]" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto space-y-6">
