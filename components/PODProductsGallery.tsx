@@ -1,27 +1,19 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import {
   Sparkles,
-  Palette,
-  ArrowLeft,
-  Truck,
-  ShieldCheck,
-  Tag,
-  CheckCircle2,
   Clock,
-  Layers,
   Image as ImageIcon,
-  Box,
   MessageSquare,
   Search,
-  SlidersHorizontal,
   X,
+  ChevronDown,
 } from "lucide-react";
-import { initialAdminProducts, AdminProduct } from "@/lib/db";
 import { siteConfig } from "@/data/siteConfig";
 import StickerMuleVisualCategoryBar from "@/components/StickerMuleVisualCategoryBar";
+import type { GalleryProductItem } from "@/lib/db/galleryProducts";
 
 // Sub-category definitions for each top-level category
 const subCategoryMap: Record<
@@ -65,31 +57,23 @@ const subCategoryMap: Record<
   ],
 };
 
-export default function PODProductsGallery() {
+const INITIAL_LIMIT = 12;
+
+interface Props {
+  initialProducts?: GalleryProductItem[];
+}
+
+export default function PODProductsGallery({ initialProducts = [] }: Props) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedSubCategory, setSelectedSubCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [products, setProducts] = useState<AdminProduct[]>(initialAdminProducts);
-
-  useEffect(() => {
-    async function loadProducts() {
-      try {
-        const res = await fetch("/api/products?status=published");
-        const data = await res.json();
-        if (data.success && data.products && data.products.length > 0) {
-          setProducts(data.products);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    loadProducts();
-  }, []);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_LIMIT);
 
   // Reset subcategory when primary category changes
   const handleCategoryChange = (catId: string) => {
     setSelectedCategory(catId);
     setSelectedSubCategory("all");
+    setVisibleCount(INITIAL_LIMIT);
   };
 
   // Active subcategories list
@@ -100,7 +84,7 @@ export default function PODProductsGallery() {
 
   // Filtered Products
   const filteredProducts = useMemo(() => {
-    return products.filter((p) => {
+    return initialProducts.filter((p) => {
       if (p.status !== "published") return false;
 
       // Category match
@@ -132,7 +116,18 @@ export default function PODProductsGallery() {
 
       return true;
     });
-  }, [products, selectedCategory, selectedSubCategory, searchQuery]);
+  }, [initialProducts, selectedCategory, selectedSubCategory, searchQuery]);
+
+  // Only paginate on "all" categories when no search active
+  const isFiltering =
+    selectedCategory !== "all" ||
+    selectedSubCategory !== "all" ||
+    Boolean(searchQuery.trim());
+
+  const displayedProducts = useMemo(() => {
+    if (isFiltering) return filteredProducts;
+    return filteredProducts.slice(0, visibleCount);
+  }, [filteredProducts, isFiltering, visibleCount]);
 
   return (
     <div className="w-full max-w-7xl mx-auto space-y-8">
@@ -249,7 +244,7 @@ export default function PODProductsGallery() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => (
+          {displayedProducts.map((product) => (
             <div
               key={product.id}
               className="group bg-white dark:bg-[#1e2026] border border-slate-200/90 dark:border-white/[0.08] hover:border-[#c93b41]/50 rounded-3xl p-5 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
@@ -262,17 +257,9 @@ export default function PODProductsGallery() {
                   aria-label={`معاينة تفاصيل ومواصفات ${product.title}`}
                 >
                   {/* Product Image */}
-                  {product.image ||
-                  product.colors[0]?.images?.[0] ||
-                  (product.colors[0]?.mockupOverlay?.startsWith("/")
-                    ? product.colors[0]?.mockupOverlay
-                    : null) ? (
+                  {product.image ? (
                     <img
-                      src={
-                        product.image ||
-                        product.colors[0]?.images?.[0] ||
-                        product.colors[0]?.mockupOverlay
-                      }
+                      src={product.image}
                       alt={product.title}
                       loading="lazy"
                       decoding="async"
@@ -284,10 +271,7 @@ export default function PODProductsGallery() {
                     <div
                       className="w-32 h-36 rounded-2xl shadow-xl flex items-center justify-center p-2 border border-black/10"
                       style={{
-                        background:
-                          product.colors[0]?.bgStyle ||
-                          product.colors[0]?.hex ||
-                          "#FFFFFF",
+                        background: product.bgColor || "#FFFFFF",
                       }}
                     >
                       <div className="w-20 h-20 rounded-xl bg-black/10 dark:bg-white/10 border border-dashed border-white/40 flex flex-col items-center justify-center p-1 text-center">
@@ -318,13 +302,12 @@ export default function PODProductsGallery() {
                   </span>
 
                   {/* Gallery Photos Count Indicator */}
-                  {product.colors[0]?.images &&
-                    product.colors[0].images.length > 1 && (
-                      <span className="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-lg text-[10px] text-white font-mono flex items-center gap-1 shadow-xs">
-                        <ImageIcon className="w-3 h-3 text-amber-300" />
-                        <span>{product.colors[0].images.length} صور</span>
-                      </span>
-                    )}
+                  {product.imagesCount && product.imagesCount > 1 && (
+                    <span className="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded-lg text-[10px] text-white font-mono flex items-center gap-1 shadow-xs">
+                      <ImageIcon className="w-3 h-3 text-amber-300" />
+                      <span>{product.imagesCount} صور</span>
+                    </span>
+                  )}
                 </Link>
 
                 {/* Title & Info */}
@@ -337,9 +320,11 @@ export default function PODProductsGallery() {
                       {product.title}
                     </h3>
                   </Link>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed font-medium">
-                    {product.description}
-                  </p>
+                  {product.description && (
+                    <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed font-medium">
+                      {product.description}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -382,6 +367,23 @@ export default function PODProductsGallery() {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* 4. Load More Button if items remain */}
+      {!isFiltering && filteredProducts.length > visibleCount && (
+        <div className="flex flex-col items-center justify-center pt-6 gap-3">
+          <button
+            type="button"
+            onClick={() => setVisibleCount((prev) => prev + 24)}
+            className="px-8 py-3.5 rounded-2xl bg-white dark:bg-[#1e2026] border-2 border-slate-200 dark:border-white/[0.1] hover:border-[#c93b41] text-slate-900 dark:text-white font-black text-sm transition-all hover:scale-[1.02] shadow-sm flex items-center gap-2 cursor-pointer group"
+          >
+            <span>عرض المزيد من المنتجات ({filteredProducts.length - visibleCount} متبقي)</span>
+            <ChevronDown className="w-4 h-4 text-[#c93b41] group-hover:translate-y-0.5 transition-transform" />
+          </button>
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            يتم عرض {Math.min(visibleCount, filteredProducts.length)} من أصل {filteredProducts.length} منتجاً متاحاً
+          </span>
         </div>
       )}
     </div>

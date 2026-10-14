@@ -18,8 +18,11 @@ import { FAQSchema, WebSiteSchema } from "@/components/JsonLd";
 import HomeHeroSection from "@/components/home/HomeHeroSection";
 import HomeTestimonialsSection from "@/components/home/HomeTestimonialsSection";
 import PODProductsGallery from "@/components/PODProductsGallery";
+import { getInitialGalleryProducts } from "@/lib/db/galleryProducts";
 
 export default function HomePage() {
+  const initialProducts = getInitialGalleryProducts();
+
   return (
     <div className="space-y-16 md:space-y-24 pb-20">
       <WebSiteSchema />
@@ -50,7 +53,7 @@ export default function HomePage() {
         </div>
 
         {/* Gallery with category filter */}
-        <PODProductsGallery />
+        <PODProductsGallery initialProducts={initialProducts} />
       </section>
 
       {/* 3. HOW IT WORKS (3 SIMPLE STEPS) */}

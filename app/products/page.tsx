@@ -5,6 +5,7 @@ import { Sparkles, Palette, Truck, ShieldCheck, Layers } from "lucide-react";
 import Link from "next/link";
 import { siteConfig } from "@/data/siteConfig";
 import { BreadcrumbSchema } from "@/components/JsonLd";
+import { getInitialGalleryProducts } from "@/lib/db/galleryProducts";
 
 export const metadata: Metadata = {
   title: "معرض منتجات الطباعة عند الطلب واليونيفورم | إطبعلي - Etbaaly",
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
 };
 
 export default function ProductsPage() {
+  const initialProducts = getInitialGalleryProducts();
+
   return (
     <div className="min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
       <BreadcrumbSchema
@@ -52,7 +55,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Gallery */}
-      <PODProductsGallery />
+      <PODProductsGallery initialProducts={initialProducts} />
 
       {/* Benefits Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">

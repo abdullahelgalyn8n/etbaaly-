@@ -126,8 +126,6 @@ export default function RootLayout({
             __html: "window.__name=window.__name||function(t,v){return t};",
           }}
         />
-        <link rel="preload" as="image" href="/images/brand-hero-business-sm.webp" type="image/webp" media="(max-width: 640px)" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/brand-hero-business.webp" type="image/webp" media="(min-width: 641px)" fetchPriority="high" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon-48x48.png" type="image/png" sizes="48x48" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
