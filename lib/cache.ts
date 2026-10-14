@@ -25,6 +25,72 @@ export const CACHE_PROFILES = {
 };
 
 /**
+ * Edge Cache Wrapper utilizing Cloudflare Workers Cache API (caches.default).
+ * Caches responses at the Cloudflare Edge server closest to the user.
+ */
+export async function withEdgeCache(
+  request: Request,
+  fetcher: () => Promise<Response>,
+  ttlSeconds: number = 600
+): Promise<Response> {
+  const globalAny = globalThis as any;
+  const hasWorkerCache =
+    typeof globalAny !== 'undefined' &&
+    'caches' in globalAny &&
+    globalAny.caches?.default;
+
+  if (!hasWorkerCache || request.method !== 'GET') {
+    return fetcher();
+  }
+
+  const cache = globalAny.caches.default;
+  const url = new URL(request.url);
+  const cacheKey = new Request(url.toString(), { method: 'GET' });
+
+  try {
+    const cachedResponse = await cache.match(cacheKey);
+    if (cachedResponse) {
+      const responseHeaders = new Headers(cachedResponse.headers);
+      responseHeaders.set('CF-Edge-Cache-Status', 'HIT');
+      return new Response(cachedResponse.body, {
+        status: cachedResponse.status,
+        statusText: cachedResponse.statusText,
+        headers: responseHeaders,
+      });
+    }
+  } catch (e) {
+    // If cache lookup throws, fall back gracefully
+  }
+
+  const freshResponse = await fetcher();
+
+  if (freshResponse.ok) {
+    try {
+      const cloned = freshResponse.clone();
+      const headers = new Headers(cloned.headers);
+      headers.set('Cache-Control', `public, max-age=${ttlSeconds}, s-maxage=${ttlSeconds}`);
+      headers.set('CF-Edge-Cache-Status', 'MISS');
+
+      const toCache = new Response(cloned.body, {
+        status: cloned.status,
+        headers,
+      });
+      await cache.put(cacheKey, toCache);
+    } catch (e) {
+      // Ignore cache put failures
+    }
+  }
+
+  const finalHeaders = new Headers(freshResponse.headers);
+  finalHeaders.set('CF-Edge-Cache-Status', 'MISS');
+  return new Response(freshResponse.body, {
+    status: freshResponse.status,
+    statusText: freshResponse.statusText,
+    headers: finalHeaders,
+  });
+}
+
+/**
  * Purge specific URLs or tags from Cloudflare Cache via Cloudflare API.
  * Uses CLOUDFLARE_ZONE_ID and CLOUDFLARE_API_TOKEN if set in environment.
  */
