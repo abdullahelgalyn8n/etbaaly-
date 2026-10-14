@@ -84,6 +84,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/افضل-الهدايا-الدعائية-والييونيفورم-للشركات",
+        destination: "/افضل-الهدايا-الدعائية-واليونيفورم-للشركات/",
+        permanent: true,
+      },
+      {
+        source: "/افضل-الهدايا-الدعائية-والييونيفورم-للشركات/",
+        destination: "/افضل-الهدايا-الدعائية-واليونيفورم-للشركات/",
+        permanent: true,
+      },
+      {
         source: "/customize",
         destination: "/products/",
         permanent: true,
