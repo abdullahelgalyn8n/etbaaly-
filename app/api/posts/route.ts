@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { queryAdminPosts, findPostBySlug } from "@/lib/posts/adminPostsStore";
+import { CACHE_PROFILES } from "@/lib/cache";
 
 export async function GET(request: NextRequest) {
   try {
@@ -11,7 +12,10 @@ export async function GET(request: NextRequest) {
       if (!post || post.status !== "published") {
         return NextResponse.json({ error: "المقال غير موجود" }, { status: 404 });
       }
-      return NextResponse.json({ success: true, post });
+      return NextResponse.json(
+        { success: true, post },
+        { headers: CACHE_PROFILES.PUBLIC_READ }
+      );
     }
 
     const search = searchParams.get("search")?.toLowerCase().trim() || "";
@@ -27,12 +31,17 @@ export async function GET(request: NextRequest) {
       limit,
     });
 
-    return NextResponse.json({
-      success: true,
-      posts: result.posts,
-      pagination: result.pagination,
-      stats: result.stats,
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        posts: result.posts,
+        pagination: result.pagination,
+        stats: result.stats,
+      },
+      {
+        headers: CACHE_PROFILES.PUBLIC_READ,
+      }
+    );
   } catch {
     return NextResponse.json(
       { success: false, error: "تعذر جلب المقالات المتاحة" },

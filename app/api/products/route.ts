@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminProducts } from "@/lib/db";
+import { CACHE_PROFILES } from "@/lib/cache";
 
 export async function GET(request: NextRequest) {
   try {
@@ -13,11 +14,16 @@ export async function GET(request: NextRequest) {
       results = results.filter((p) => p.category === category);
     }
 
-    return NextResponse.json({
-      success: true,
-      count: results.length,
-      products: results,
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        count: results.length,
+        products: results,
+      },
+      {
+        headers: CACHE_PROFILES.PUBLIC_READ,
+      }
+    );
   } catch {
     return NextResponse.json(
       { success: false, error: "تعذر جلب المنتجات المتاحة" },

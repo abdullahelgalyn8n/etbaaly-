@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { podProductsSeed } from "@/lib/db";
+import { CACHE_PROFILES } from "@/lib/cache";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -11,7 +12,10 @@ export async function GET(request: NextRequest) {
     if (!product) {
       return NextResponse.json({ error: "المنتج غير موجود" }, { status: 404 });
     }
-    return NextResponse.json({ success: true, product });
+    return NextResponse.json(
+      { success: true, product },
+      { headers: CACHE_PROFILES.PUBLIC_READ }
+    );
   }
 
   let results = [...podProductsSeed];
@@ -19,9 +23,14 @@ export async function GET(request: NextRequest) {
     results = results.filter((p) => (p.categorySlug || p.category) === category || p.category === category);
   }
 
-  return NextResponse.json({
-    success: true,
-    count: results.length,
-    products: results,
-  });
+  return NextResponse.json(
+    {
+      success: true,
+      count: results.length,
+      products: results,
+    },
+    {
+      headers: CACHE_PROFILES.PUBLIC_READ,
+    }
+  );
 }

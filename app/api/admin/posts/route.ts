@@ -7,6 +7,7 @@ import {
   deleteAdminPost,
 } from "@/lib/posts/adminPostsStore";
 import { guardAdminRoute } from "@/lib/auth/adminGuard";
+import { CACHE_PROFILES, purgeCloudflareCache } from "@/lib/cache";
 
 export async function GET(request: Request) {
   const guard = guardAdminRoute(request);
@@ -23,7 +24,10 @@ export async function GET(request: Request) {
         { status: 404 }
       );
     }
-    return NextResponse.json({ success: true, post });
+    return NextResponse.json(
+      { success: true, post },
+      { headers: CACHE_PROFILES.NO_STORE }
+    );
   }
 
   const result = await queryAdminPosts({
@@ -34,12 +38,17 @@ export async function GET(request: Request) {
     limit: parseInt(searchParams.get("limit") || "15", 10),
   });
 
-  return NextResponse.json({
-    success: true,
-    posts: result.posts,
-    pagination: result.pagination,
-    stats: result.stats,
-  });
+  return NextResponse.json(
+    {
+      success: true,
+      posts: result.posts,
+      pagination: result.pagination,
+      stats: result.stats,
+    },
+    {
+      headers: CACHE_PROFILES.NO_STORE,
+    }
+  );
 }
 
 export async function POST(request: Request) {
@@ -54,6 +63,13 @@ export async function POST(request: Request) {
       const status = res.error?.includes("يوجد مقال") ? 409 : 400;
       return NextResponse.json({ success: false, error: res.error }, { status });
     }
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://etbaaly.azagency.online";
+    const purgeUrls = [`${siteUrl}/api/posts`];
+    if (res.post?.slug) {
+      purgeUrls.push(`${siteUrl}/api/posts?slug=${res.post.slug}`);
+    }
+    await purgeCloudflareCache(purgeUrls);
 
     return NextResponse.json({
       success: true,
@@ -88,6 +104,13 @@ export async function PATCH(request: Request) {
     if (!res.success) {
       return NextResponse.json({ success: false, error: res.error }, { status: 404 });
     }
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://etbaaly.azagency.online";
+    const purgeUrls = [`${siteUrl}/api/posts`, `${siteUrl}/api/posts?slug=${targetSlug}`];
+    if (res.post?.slug && res.post.slug !== targetSlug) {
+      purgeUrls.push(`${siteUrl}/api/posts?slug=${res.post.slug}`);
+    }
+    await purgeCloudflareCache(purgeUrls);
 
     return NextResponse.json({
       success: true,
@@ -125,6 +148,12 @@ export async function DELETE(request: Request) {
         { status: 404 }
       );
     }
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://etbaaly.azagency.online";
+    await purgeCloudflareCache([
+      `${siteUrl}/api/posts`,
+      `${siteUrl}/api/posts?slug=${slug}`,
+    ]);
 
     return NextResponse.json({
       success: true,

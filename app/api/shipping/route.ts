@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { CACHE_PROFILES } from "@/lib/cache";
 
 export const egyptianGovernorates = [
   { id: "cairo", name: "القاهرة الكبرى (القاهرة، الجيزة، القليوبية)", standardCost: 65, expressCost: 120, standardDays: "24-48 ساعة", expressDays: "نفس اليوم / 24 ساعة" },
@@ -11,11 +12,16 @@ export const egyptianGovernorates = [
 ];
 
 export async function GET() {
-  return NextResponse.json({
-    success: true,
-    governorates: egyptianGovernorates,
-    freeShippingThreshold: 3500, // Free shipping above 3500 EGP for business orders
-  });
+  return NextResponse.json(
+    {
+      success: true,
+      governorates: egyptianGovernorates,
+      freeShippingThreshold: 3500, // Free shipping above 3500 EGP for business orders
+    },
+    {
+      headers: CACHE_PROFILES.IMMUTABLE_READ,
+    }
+  );
 }
 
 export async function POST(request: NextRequest) {
