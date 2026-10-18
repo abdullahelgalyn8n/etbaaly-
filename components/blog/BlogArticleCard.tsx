@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Clock, Calendar, ArrowLeft } from "lucide-react";
 import BrandedImage from "@/components/BrandedImage";
-import { BlogPostSummary } from "@/data/blogPostsData";
+import { BlogPostSummary } from "@/data/blog/types";
 
 interface BlogArticleCardProps {
   post: BlogPostSummary;

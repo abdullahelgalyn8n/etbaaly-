@@ -34,12 +34,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
-  const dbPost = (await findPostBySlug(decodedSlug)) || (await findPostBySlug(slug));
+  // أولوية فورية للذاكرة بدون تأخير استعلام قاعدة البيانات
   const post =
-    dbPost ||
     allBlogPostsData.find(
       (p) => p.slug === slug || p.slug === decodedSlug || encodeURIComponent(p.slug) === slug
-    );
+    ) ||
+    (await findPostBySlug(decodedSlug)) ||
+    (await findPostBySlug(slug));
+
   if (!post) return { title: "مقال غير موجود" };
 
   return {
@@ -76,12 +78,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
-  const dbPost = (await findPostBySlug(decodedSlug)) || (await findPostBySlug(slug));
+  // أولوية فورية للذاكرة بدون تأخير استعلام قاعدة البيانات
   const post =
-    dbPost ||
     allBlogPostsData.find(
       (p) => p.slug === slug || p.slug === decodedSlug || encodeURIComponent(p.slug) === slug
-    );
+    ) ||
+    (await findPostBySlug(decodedSlug)) ||
+    (await findPostBySlug(slug));
 
   if (!post) {
     notFound();

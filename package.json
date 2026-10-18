@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:worker": "node --max-old-space-size=4096 ./node_modules/@opennextjs/cloudflare/dist/cli/index.js build",
+    "build:worker": "node --max-old-space-size=4096 ./node_modules/@opennextjs/cloudflare/dist/cli/index.js build && node scripts/patch-worker-cache.mjs",
     "preview:worker": "opennextjs-cloudflare preview",
     "deploy:worker": "opennextjs-cloudflare deploy",
     "cf:typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",

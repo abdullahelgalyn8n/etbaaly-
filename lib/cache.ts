@@ -91,10 +91,30 @@ export async function withEdgeCache(
 }
 
 /**
+ * Invalidate specific URLs from Cloudflare Workers Cache API (caches.default).
+ */
+export async function invalidateWorkerCache(urls: string[]) {
+  const globalAny = globalThis as any;
+  if (typeof globalAny !== 'undefined' && 'caches' in globalAny && globalAny.caches?.default) {
+    const cache = globalAny.caches.default;
+    for (const u of urls) {
+      try {
+        await cache.delete(new Request(u, { method: 'GET' }));
+      } catch {
+        // Ignore deletion errors
+      }
+    }
+  }
+}
+
+/**
  * Purge specific URLs or tags from Cloudflare Cache via Cloudflare API.
  * Uses CLOUDFLARE_ZONE_ID and CLOUDFLARE_API_TOKEN if set in environment.
  */
 export async function purgeCloudflareCache(urls: string[]) {
+  // Purge worker edge cache directly if available
+  await invalidateWorkerCache(urls);
+
   const zoneId = process.env.CLOUDFLARE_ZONE_ID;
   const apiToken = process.env.CLOUDFLARE_API_TOKEN;
 

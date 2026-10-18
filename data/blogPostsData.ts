@@ -36,20 +36,5 @@ export function getScheduledArticles(): BlogPost[] {
 // التصدير الافتراضي المعتمد للمقالات المنشورة
 export const blogPostsData: BlogPost[] = getPublishedArticles();
 
-// ملخصات خفيفة الوزن للمقالات بدون نصوص الماركداون الضخمة لتقليل حجم حزم الجافاسكريبت للعميل
-export const blogPostsSummaries: BlogPostSummary[] = blogPostsData.map((post) => ({
-  slug: post.slug,
-  title: post.title,
-  excerpt: post.excerpt,
-  category: post.category,
-  categoryTag: post.categoryTag,
-  image: post.image,
-  date: post.date,
-  publishDate: post.publishDate,
-  readTime: post.readTime,
-  author: post.author,
-  tags: post.tags,
-  isNews: post.isNews,
-  publishedTime: post.publishedTime,
-  isAction: post.isAction,
-}));
+// تصدير ملخصات خفيفة الوزن للمقالات بدون نصوص الماركداون الضخمة لتقليل حجم حزم الجافاسكريبت للعميل
+export { blogPostsSummaries } from "./blogPostsSummaries";

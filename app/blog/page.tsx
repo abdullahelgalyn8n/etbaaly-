@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import { Sparkles, Newspaper, BookOpen, Layers, Printer, Package, Tag, ShoppingBag, Gift, Megaphone } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
-import { blogPostsSummaries } from "@/data/blogPostsData";
+import { blogPostsSummaries } from "@/data/blogPostsSummaries";
 import { BreadcrumbSchema } from "@/components/JsonLd";
 import Pagination from "@/components/Pagination";
 import BlogArticleCard from "@/components/blog/BlogArticleCard";

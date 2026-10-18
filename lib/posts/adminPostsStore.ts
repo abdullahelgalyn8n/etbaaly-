@@ -130,15 +130,22 @@ function mapPostRow(r: PostRow): AdminBlogPost {
 }
 
 export async function findPostBySlug(slug: string): Promise<AdminBlogPost | undefined> {
+  const decoded = decodeURIComponent(slug);
+  // فحص الكاش الداخلي أولاً للاستجابة الفورية بـ 0ms
+  const cached = adminPostsCache.find(
+    (p) => p.slug === slug || p.slug === decoded || encodeURIComponent(p.slug) === slug
+  );
+  if (cached) return cached;
+
   const { isLive, sql } = getDb();
   if (isLive && sql) {
     try {
       const rows = await sql`
-        SELECT * FROM posts WHERE slug = ${slug} LIMIT 1
+        SELECT * FROM posts WHERE slug = ${slug} OR slug = ${decoded} LIMIT 1
       `;
       if (rows && rows.length > 0) {
         const post = mapPostRow(rows[0] as unknown as PostRow);
-        const existingIdx = adminPostsCache.findIndex((p) => p.slug === slug);
+        const existingIdx = adminPostsCache.findIndex((p) => p.slug === post.slug);
         if (existingIdx >= 0) {
           adminPostsCache[existingIdx] = post;
         } else {
@@ -147,10 +154,10 @@ export async function findPostBySlug(slug: string): Promise<AdminBlogPost | unde
         return post;
       }
     } catch (err) {
-      console.error("Neon findPostBySlug error:", err);
+      console.error("DB findPostBySlug error:", err);
     }
   }
-  return adminPostsCache.find((p) => p.slug === slug);
+  return undefined;
 }
 
 export async function queryAdminPosts(options: QueryPostsOptions) {
@@ -160,37 +167,6 @@ export async function queryAdminPosts(options: QueryPostsOptions) {
   if (isLive && sql) {
     try {
       await ensurePostsTable();
-      const countRes = await sql`SELECT COUNT(*)::int AS count FROM posts`;
-      const tableCount = countRes?.[0]?.count ?? 0;
-
-      // Seed static posts to DB if table is fresh
-      if (tableCount === 0 && adminPostsCache.length > 0) {
-        for (const p of adminPostsCache) {
-          const id = `post-${p.slug}`;
-          const tagsJson = JSON.stringify(p.tags || []);
-          const seoJson = JSON.stringify({
-            focusKeyword: p.focusKeyword,
-            seoTitle: p.seoTitle,
-            metaDescription: p.metaDescription,
-            canonicalUrl: p.canonicalUrl,
-            schemaType: p.schemaType,
-            ogImage: p.ogImage,
-            robotsMeta: p.robotsMeta,
-            seoScore: p.seoScore,
-          });
-          await sql`
-            INSERT INTO posts (
-              id, slug, title, excerpt, content, category, category_tag, image,
-              date, read_time, author, tags, status, views, seo_metadata
-            ) VALUES (
-              ${id}, ${p.slug}, ${p.title}, ${p.excerpt}, ${p.content}, ${p.category},
-              ${p.categoryTag}, ${p.image}, ${p.date}, ${p.readTime}, ${p.author},
-              ${tagsJson}::jsonb, ${p.status}, ${p.views || 0}, ${seoJson}::jsonb
-            ) ON CONFLICT (slug) DO NOTHING;
-          `;
-        }
-      }
-
       const dbRows = await sql`SELECT * FROM posts ORDER BY created_at DESC`;
       if (dbRows && dbRows.length > 0) {
         const allDbPosts = (dbRows as unknown as PostRow[]).map(mapPostRow);
