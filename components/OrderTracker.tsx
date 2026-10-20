@@ -35,7 +35,7 @@ export default function OrderTracker({ initialCode = "" }: { initialCode?: strin
       }
       try {
         const targetUserId = isAdmin ? "all" : (user?.id || "");
-        const res = await fetch(`/api/orders?userId=${encodeURIComponent(targetUserId)}`);
+        const res = await fetch(`/api/orders/?userId=${encodeURIComponent(targetUserId)}`);
         const data = await res.json();
         if (data.success && data.orders) {
           setUserOrders(data.orders);
@@ -83,7 +83,7 @@ export default function OrderTracker({ initialCode = "" }: { initialCode?: strin
           isAdmin: isAdmin ? "true" : "false",
         });
 
-        const res = await fetch(`/api/orders/track?${params.toString()}`);
+        const res = await fetch(`/api/orders/track/?${params.toString()}`);
         const data = await res.json();
 
         if (res.status === 401 || data.requireAuth) {

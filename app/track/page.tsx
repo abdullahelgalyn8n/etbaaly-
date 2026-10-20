@@ -5,6 +5,8 @@ import { Truck, ShieldCheck, Clock } from "lucide-react";
 import { TrackTimelineSkeleton, TrackDetailsSkeleton } from "@/components/Skeleton";
 import { siteConfig } from "@/data/siteConfig";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "تتبع شحنة وأمر الطباعة مباشرة | إطبعلي - Etbaaly",
   description:

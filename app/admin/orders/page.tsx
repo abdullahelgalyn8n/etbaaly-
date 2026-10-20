@@ -57,7 +57,7 @@ export default function AdminOrdersPage() {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/admin/orders", {
+      const res = await fetch("/api/admin/orders/", {
         credentials: "include",
       });
       const data = await res.json();
@@ -81,7 +81,7 @@ export default function AdminOrdersPage() {
     const statusLabel = stageMeta ? stageMeta.label : newStatus;
 
     try {
-      const res = await fetch("/api/admin/orders", {
+      const res = await fetch("/api/admin/orders/", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

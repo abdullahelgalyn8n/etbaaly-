@@ -34,7 +34,7 @@ export default function DashboardPage() {
     async function loadOrders() {
       try {
         const targetUserId = isAdmin ? "all" : (user?.id || "usr-demo-01");
-        const res = await fetch(`/api/orders?userId=${encodeURIComponent(targetUserId)}`);
+        const res = await fetch(`/api/orders/?userId=${encodeURIComponent(targetUserId)}`);
         const data = await res.json();
         if (data.success && data.orders) {
           setOrders(data.orders);

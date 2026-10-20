@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getOrderByTrackingCode } from "@/lib/db";
 import { demoSimulationOrders } from "@/components/order-tracker/types";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const rawCode = (searchParams.get("code") || searchParams.get("q") || "").trim();
@@ -30,8 +32,6 @@ export async function GET(request: NextRequest) {
       message: "هذا نموذج محاكاة تجريبي تفاعلي لتوضيح مراحل تتبع الإنتاج والشحن.",
     });
   }
-
-  const hasUserCredentials = Boolean(userId || userEmail || userPhone || isAdmin);
 
   try {
     const order = await getOrderByTrackingCode(rawCode);

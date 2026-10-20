@@ -47,9 +47,9 @@ function WPAdminDashboardContent() {
   const fetchData = async () => {
     try {
       const [statsRes, prodRes, ordRes] = await Promise.all([
-        fetch("/api/admin/stats", { credentials: "include" }).then((r) => r.json()).catch(() => null),
-        fetch("/api/admin/products", { credentials: "include" }).then((r) => r.json()).catch(() => null),
-        fetch("/api/admin/orders", { credentials: "include" }).then((r) => r.json()).catch(() => null),
+        fetch("/api/admin/stats/", { credentials: "include" }).then((r) => r.json()).catch(() => null),
+        fetch("/api/admin/products/", { credentials: "include" }).then((r) => r.json()).catch(() => null),
+        fetch("/api/admin/orders/", { credentials: "include" }).then((r) => r.json()).catch(() => null),
       ]);
 
       if (statsRes?.success && statsRes.stats) setStats(statsRes.stats);
@@ -77,7 +77,7 @@ function WPAdminDashboardContent() {
         delivered: "تم التسليم بنجاح للعميل",
       };
 
-      const res = await fetch("/api/admin/orders", {
+      const res = await fetch("/api/admin/orders/", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
