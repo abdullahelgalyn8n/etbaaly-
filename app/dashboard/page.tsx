@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
+export const dynamic = "force-static";
 import { useAuth } from "@/context/AuthContext";
 import {
   Package,

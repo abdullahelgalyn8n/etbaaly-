@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+
+export const dynamic = "force-static";
 import {
   ShoppingBag,
   Trash2,

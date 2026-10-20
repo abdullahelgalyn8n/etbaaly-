@@ -31,6 +31,12 @@ function dedupeNextEnv() {
 
 dedupeNextEnv();
 
+let buildId = "v1";
+const buildIdPath = path.resolve(".open-next/assets/BUILD_ID");
+if (fs.existsSync(buildIdPath)) {
+  buildId = fs.readFileSync(buildIdPath, "utf-8").trim();
+}
+
 let content = fs.readFileSync(workerPath, "utf-8");
 
 if (content.includes("CF_EDGE_CACHE_ENABLED")) {
@@ -55,8 +61,6 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 pathname.startsWith("/api/admin") ||
                 pathname.startsWith("/api/auth") ||
                 pathname.startsWith("/api/orders") ||
-                pathname.startsWith("/dashboard") ||
-                pathname.startsWith("/cart") ||
                 request.headers.has("authorization") ||
                 (request.headers.get("cookie") || "").includes("etbaaly_admin_token") ||
                 url.searchParams.has("preview");
@@ -65,9 +69,13 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 ? caches.default
                 : null;
 
+            const BUILD_ID = "${buildId}";
+            const cacheKeyUrl = new URL(request.url);
+            cacheKeyUrl.searchParams.set("__cf_bid", BUILD_ID);
+            const cacheKey = new Request(cacheKeyUrl.toString(), { method: "GET" });
+
             if (cache) {
                 try {
-                    const cacheKey = new Request(request.url, { method: "GET" });
                     const match = await cache.match(cacheKey);
                     if (match) {
                         const hitHeaders = new Headers(match.headers);
@@ -107,9 +115,10 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                     const cloned = serverResponse.clone();
                     const cacheHeaders = new Headers(cloned.headers);
                     const isApi = pathname.startsWith("/api/");
-                    const ttl = isApi ? 600 : 86400;
-                    cacheHeaders.set("Cache-Control", \`public, max-age=\${ttl}, s-maxage=\${ttl}, stale-while-revalidate=604800\`);
-                    cacheHeaders.set("Cloudflare-CDN-Cache-Control", \`max-age=\${ttl}\`);
+                    const browserMaxAge = isApi ? 60 : 0;
+                    const edgeMaxAge = isApi ? 600 : 86400;
+                    cacheHeaders.set("Cache-Control", \`public, max-age=\${browserMaxAge}, s-maxage=\${edgeMaxAge}, must-revalidate\`);
+                    cacheHeaders.set("Cloudflare-CDN-Cache-Control", \`max-age=\${edgeMaxAge}\`);
                     cacheHeaders.set("CF-Worker-Cache", "HIT");
                     cacheHeaders.set("X-Cache-Status", "HIT");
 
@@ -118,7 +127,6 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                         statusText: cloned.statusText,
                         headers: cacheHeaders,
                     });
-                    const cacheKey = new Request(request.url, { method: "GET" });
                     if (ctx && typeof ctx.waitUntil === "function") {
                         ctx.waitUntil(cache.put(cacheKey, toCache));
                     } else {

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
 import { OrderData, demoSimulationOrders } from "./order-tracker/types";
 import { TrackerSearchBar } from "./order-tracker/TrackerSearchBar";
 import { TrackerTimeline } from "./order-tracker/TrackerTimeline";
@@ -11,20 +10,21 @@ import { TrackerAccessBadges } from "./order-tracker/TrackerAccessBadges";
 import { useAuth } from "@/context/AuthContext";
 
 export default function OrderTracker({ initialCode = "" }: { initialCode?: string }) {
-  const searchParams = useSearchParams();
-  const queryCode = searchParams ? searchParams.get("code") : null;
-
   const { user, isAuthenticated, isAdmin, openAuthModal } = useAuth();
 
-  const [searchCode, setSearchCode] = useState<string>(queryCode || initialCode || "");
+  const [searchCode, setSearchCode] = useState<string>(initialCode || "DEMO-BOX");
   const [loading, setLoading] = useState(false);
   const [errorInfo, setErrorInfo] = useState<{
     type: "requireAuth" | "forbidden" | "notFound" | "error";
     message: string;
   } | null>(null);
-  const [order, setOrder] = useState<OrderData | null>(null);
+  const [order, setOrder] = useState<OrderData | null>(
+    initialCode ? null : demoSimulationOrders["DEMO-BOX"]
+  );
   const [userOrders, setUserOrders] = useState<OrderData[]>([]);
-  const [authorizedAs, setAuthorizedAs] = useState<"owner" | "admin" | "demo" | null>(null);
+  const [authorizedAs, setAuthorizedAs] = useState<"owner" | "admin" | "demo" | null>(
+    initialCode ? null : "demo"
+  );
 
   // Fetch logged in user's active orders for quick 1-click tracking
   useEffect(() => {
@@ -135,19 +135,26 @@ export default function OrderTracker({ initialCode = "" }: { initialCode?: strin
     [user?.id, user?.email, user?.phone, isAdmin]
   );
 
-  // Initial load
+  // Initial load: parse ?code= from URL safely on client without suspending prerender
   useEffect(() => {
-    const code = queryCode || initialCode;
+    let code = initialCode;
+    if (typeof window !== "undefined") {
+      const urlCode = new URLSearchParams(window.location.search).get("code");
+      if (urlCode) {
+        code = urlCode;
+      }
+    }
+
     if (code) {
       setSearchCode(code);
       fetchTracking(code);
     } else if (!isAuthenticated) {
-      // For first-time visitors without a code, show the Demo Box simulation by default
+      // Default initial interactive preview
       setSearchCode("DEMO-BOX");
       setOrder(demoSimulationOrders["DEMO-BOX"]);
       setAuthorizedAs("demo");
     }
-  }, [queryCode, initialCode, isAuthenticated, fetchTracking]);
+  }, [initialCode, isAuthenticated, fetchTracking]);
 
   return (
     <div className="w-full max-w-5xl mx-auto space-y-6">
