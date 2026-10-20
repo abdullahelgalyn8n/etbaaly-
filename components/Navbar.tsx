@@ -33,8 +33,10 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "الرئيسية", href: "/" },
-    { name: "معرض المنتجات", href: "/products/" },
     { name: "خدمات الطباعة والتغليف", href: "/services/" },
+    { name: "العروض والباقات", href: "/offers/" },
+    { name: "معرض المنتجات", href: "/products/" },
+    { name: "عن إطبعلي", href: "/about/" },
     { name: "تتبع طلبك", href: "/track/" },
     { name: "المدونة", href: "/blog/" },
     { name: "تواصل معنا", href: "/contact/" },

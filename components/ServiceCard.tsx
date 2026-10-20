@@ -86,7 +86,7 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
           prefetch={false}
           className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-white hover:text-[#c93b41] dark:hover:text-[#c93b41] transition-colors"
         >
-          <span>المواصفات والأسعار</span>
+          <span>المواصفات وسابقة الأعمال</span>
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
         </Link>
 
@@ -95,7 +95,7 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
           prefetch={false}
           className="inline-flex items-center gap-1 text-xs font-bold text-white btn-crimson px-3.5 py-1.5 rounded-full shadow-sm"
         >
-          <span>طلب الخدمة والمواصفات</span>
+          <span>استكشاف الخدمة</span>
         </Link>
       </div>
     </div>

@@ -61,6 +61,22 @@ export default function ServicesPage() {
         <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
           اختر القسم المطلوب للاطلاع على المواصفات الفنية، أنواع الورق والكرتون المتاحة، التشطيبات الفاخرة، وحساب التكلفة المباشرة لأمر الشغل.
         </p>
+
+        {/* Banner to Offers */}
+        <div className="mt-8 p-4 rounded-2xl bg-red-50 dark:bg-[#1a1415] border border-red-200/80 dark:border-red-900/40 text-xs sm:text-sm text-slate-800 dark:text-slate-200 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-right">
+          <div className="flex items-center gap-2.5">
+            <Tag className="w-5 h-5 text-[#c93b41] shrink-0" />
+            <span className="font-bold">
+              هل تبحث عن باقات جاهزة بأسعار مخفضة وكميات محددة لمتجرك أو شركتك؟
+            </span>
+          </div>
+          <Link
+            href="/offers/"
+            className="px-4 py-1.5 rounded-xl btn-crimson text-white font-bold text-xs shrink-0 shadow-sm hover:scale-105 transition-all"
+          >
+            تصفح العروض والباقات ➔
+          </Link>
+        </div>
       </section>
 
       {/* Core Services Grid */}

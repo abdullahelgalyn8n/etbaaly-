@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/data/siteConfig";
 import { servicesData } from "@/data/servicesData";
+import { offersData } from "@/data/offersData";
 import { blogPostsData } from "@/data/blogPostsData";
 import { getAdminProducts } from "@/lib/db";
 import { initialAdminProducts } from "@/lib/db/seed";
@@ -14,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/about/",
     "/services/",
+    "/offers/",
     "/products/",
     "/track/",
     "/contact/",
@@ -29,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority:
       route === ""
         ? 1.0
-        : route === "/products/"
+        : route === "/products/" || route === "/offers/"
         ? 0.95
         : route.startsWith("/policy") || route.startsWith("/terms")
         ? 0.7
@@ -41,6 +43,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date().toISOString(),
     changeFrequency: "weekly" as const,
     priority: 0.9,
+  }));
+
+  const offerPages = offersData.map((offer) => ({
+    url: `${baseUrl}/offers/${offer.slug}/`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: "weekly" as const,
+    priority: 0.95,
   }));
 
   let products = [];
@@ -66,5 +75,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...productPages, ...blogPages];
+  return [...staticPages, ...servicePages, ...offerPages, ...productPages, ...blogPages];
 }

@@ -20,9 +20,29 @@ export default function FooterLinks() {
       {/* Quick Links */}
       <div className="lg:col-span-2 space-y-4">
         <p className="text-sm font-bold text-slate-950 dark:text-white uppercase tracking-wider">
-          أدوات وتتبع
+          روابط وأدوات
         </p>
         <ul className="space-y-2 text-sm font-medium">
+          <li>
+            <Link
+              href="/offers/"
+              prefetch={false}
+              className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group text-[#c93b41] font-bold"
+            >
+              <ArrowUpLeft className="w-3.5 h-3.5 text-[#c93b41]" />
+              <span>العروض والباقات المخفضة</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/about/"
+              prefetch={false}
+              className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
+            >
+              <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
+              <span>من نحن وقصة إطبعلي</span>
+            </Link>
+          </li>
           <li>
             <Link
               href="/track/"

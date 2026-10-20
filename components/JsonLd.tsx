@@ -181,3 +181,48 @@ export function WebSiteSchema() {
     />
   );
 }
+
+export function OfferProductSchema({
+  offer,
+  url,
+}: {
+  offer: {
+    title: string;
+    subtitle: string;
+    discountedPrice: string;
+    originalPrice: string;
+    heroImage?: string;
+  };
+  url: string;
+}) {
+  const numericPrice = parseFloat(offer.discountedPrice.replace(/[^\d.]/g, "")) || 0;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": offer.title,
+    "description": offer.subtitle,
+    "image": offer.heroImage ? `${siteConfig.url}${offer.heroImage}` : `${siteConfig.url}/images/ICON-LOGO-SITE.webp`,
+    "brand": {
+      "@type": "Brand",
+      "name": "إطبعلي | Etbaaly",
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": url,
+      "priceCurrency": "EGP",
+      "price": numericPrice,
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "إطبعلي | Etbaaly - A.Z Agency",
+      },
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
