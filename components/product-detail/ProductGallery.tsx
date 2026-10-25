@@ -68,22 +68,22 @@ export default function ProductGallery({
         {/* Floating Top Controls Bar */}
         <div className="absolute top-5 inset-x-5 flex items-center justify-between z-20 pointer-events-none">
           {/* Badge */}
-          <div className="pointer-events-auto px-3.5 py-1.5 rounded-full bg-black/70 text-white backdrop-blur-md border border-white/15 text-xs font-bold flex items-center gap-1.5 shadow-lg">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+          <div className="pointer-events-auto px-3.5 py-1.5 rounded-full bg-slate-900/90 text-white border border-white/15 text-xs font-bold flex items-center gap-1.5 shadow-md">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
             <span>{badge || "خامة فندقية فاخرة ✨"}</span>
           </div>
 
           {/* Active Angle Badge & Fullscreen */}
           <div className="flex items-center gap-2 pointer-events-auto">
             {imagesList.length > 1 && (
-              <span className="px-3 py-1.5 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/10 text-[11px] font-mono font-bold shadow-md">
+              <span className="px-3 py-1.5 rounded-full bg-slate-900/80 text-white border border-white/10 text-[11px] font-mono font-bold shadow-sm">
                 {activeImageIdx + 1} / {imagesList.length}
               </span>
             )}
             <button
               type="button"
               onClick={onOpenFullscreen}
-              className="p-2.5 rounded-full bg-white/90 dark:bg-black/60 hover:bg-white text-slate-800 dark:text-white backdrop-blur-md transition-all cursor-pointer border border-slate-200 dark:border-white/20 shadow-lg hover:scale-110 active:scale-95"
+              className="p-2.5 rounded-full bg-white/95 dark:bg-[#1f2127]/95 hover:bg-white text-slate-800 dark:text-white transition-transform cursor-pointer border border-slate-200 dark:border-white/20 shadow-md hover:scale-105 active:scale-95"
               title="تكبير الصورة بجودة Ultra HD"
             >
               <Maximize2 className="w-4 h-4" />
@@ -93,8 +93,8 @@ export default function ProductGallery({
 
         {/* Floating Perspective Pill in Center Top */}
         {perspectiveLabels[activeImageIdx] && (
-          <div className="absolute top-16 inset-x-0 mx-auto w-fit z-20 pointer-events-none transition-all duration-300">
-            <span className="px-3 py-1 rounded-full bg-white/80 dark:bg-[#202228]/80 text-slate-700 dark:text-slate-300 backdrop-blur-md border border-slate-300/60 dark:border-white/10 text-[10px] font-bold shadow-xs">
+          <div className="absolute top-16 inset-x-0 mx-auto w-fit z-20 pointer-events-none transition-opacity duration-200">
+            <span className="px-3 py-1 rounded-full bg-white/95 dark:bg-[#202228]/95 text-slate-700 dark:text-slate-300 border border-slate-300/60 dark:border-white/10 text-[10px] font-bold shadow-xs">
               {perspectiveLabels[activeImageIdx]}
             </span>
           </div>
@@ -108,7 +108,10 @@ export default function ProductGallery({
           <img
             src={activeImage}
             alt={`${title} - ${selectedColorName} - ${perspectiveLabels[activeImageIdx] || ""}`}
-            className="w-full h-full object-contain p-2 sm:p-4 transition-transform duration-500 ease-out group-hover:scale-105 drop-shadow-2xl"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            className="w-full h-full object-contain p-2 sm:p-4 transition-transform duration-300 ease-out group-hover:scale-105"
           />
         </div>
 
@@ -121,7 +124,7 @@ export default function ProductGallery({
                 e.stopPropagation();
                 handleNext();
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 dark:bg-black/70 hover:bg-white text-slate-800 dark:text-white backdrop-blur-md border border-slate-200 dark:border-white/20 transition-all cursor-pointer hover:scale-110 active:scale-95 flex items-center justify-center shadow-xl"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/95 dark:bg-[#1f2127]/95 hover:bg-white text-slate-800 dark:text-white border border-slate-200 dark:border-white/20 transition-transform cursor-pointer hover:scale-105 active:scale-95 flex items-center justify-center shadow-lg"
               title="الصورة التالية"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -133,7 +136,7 @@ export default function ProductGallery({
                 e.stopPropagation();
                 handlePrev();
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 dark:bg-black/70 hover:bg-white text-slate-800 dark:text-white backdrop-blur-md border border-slate-200 dark:border-white/20 transition-all cursor-pointer hover:scale-110 active:scale-95 flex items-center justify-center shadow-xl"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/95 dark:bg-[#1f2127]/95 hover:bg-white text-slate-800 dark:text-white border border-slate-200 dark:border-white/20 transition-transform cursor-pointer hover:scale-105 active:scale-95 flex items-center justify-center shadow-lg"
               title="الصورة السابقة"
             >
               <ChevronRight className="w-5 h-5" />
@@ -181,7 +184,9 @@ export default function ProductGallery({
                 <img
                   src={imgUrl}
                   alt={`زاوية ${idx + 1}`}
-                  className="w-full h-full object-contain p-1 drop-shadow-sm transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-contain p-1 transition-transform duration-200 hover:scale-105"
                 />
               </div>
               <span className="text-[10px] font-bold text-slate-700 dark:text-slate-300 truncate w-full px-1">

@@ -22,7 +22,7 @@ export default function ProductRelatedSection({
             منتجات أخرى قد تعجبك
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            تصفح تشكيلة واسعة من المجات والمطبوعات الفاخرة
+            تصفح تشكيلة واسعة من المنتجات والمطبوعات الفاخرة
           </p>
         </div>
         <Link
@@ -54,6 +54,8 @@ export default function ProductRelatedSection({
                   <img
                     src={rpImage}
                     alt={rp.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain p-2"
                   />
                 ) : (

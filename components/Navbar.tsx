@@ -19,9 +19,23 @@ export default function Navbar() {
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
+    let ticking = false;
+    let isScrolled = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const nowScrolled = window.scrollY > 20;
+          if (nowScrolled !== isScrolled) {
+            isScrolled = nowScrolled;
+            setScrolled(nowScrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

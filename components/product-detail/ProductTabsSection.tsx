@@ -96,7 +96,7 @@ export function ProductTabsSection({
           onHelpfulClick={handleHelpfulClick}
         />
       )}
-      {activeTab === "shipping" && <ProductShippingTab />}
+      {activeTab === "shipping" && <ProductShippingTab product={product} />}
     </div>
   );
 }

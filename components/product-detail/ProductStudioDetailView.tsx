@@ -78,7 +78,7 @@ export default function ProductStudioDetailView({
     reviewSubmitted,
     handleAddReview,
     handleHelpfulClick,
-  } = useProductReviews();
+  } = useProductReviews(product);
 
   // WhatsApp link
   const whatsappUrl = useMemo(() => {

@@ -65,7 +65,7 @@ export default function ProductReviewsTab({
           </div>
           <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#18191d] border border-slate-200 dark:border-white/[0.06] text-center">
             <span className="text-emerald-500 block text-base font-black">100%</span>
-            <span className="text-slate-500">سلامة التغليف ضد الكسر</span>
+            <span className="text-slate-500">سلامة التغليف والتسليم</span>
           </div>
           <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#18191d] border border-slate-200 dark:border-white/[0.06] text-center">
             <span className="text-blue-500 block text-base font-black">98%</span>
