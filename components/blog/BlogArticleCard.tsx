@@ -14,11 +14,12 @@ export function BlogArticleCard({ post }: BlogArticleCardProps) {
   return (
     <article className="bg-white dark:bg-[#1a1c20] border border-slate-200 dark:border-white/[0.08] hover:border-[#c93b41]/40 rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl group">
       {/* Featured Image */}
-      <div className="relative h-52 w-full bg-slate-100 dark:bg-[#111215] overflow-hidden">
+      <div className="relative aspect-[16/10] sm:aspect-video w-full bg-slate-100 dark:bg-[#111215] overflow-hidden">
         <BrandedImage
           src={post.image}
           alt={post.title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-3 right-3 flex items-center gap-1.5 z-10">
