@@ -43,10 +43,10 @@ export default function DashboardOrdersTab({
       <DashboardOrderStats orders={orders} />
 
       {/* Orders Table Container */}
-      <div className="bg-white dark:bg-[#1e2026] border border-slate-200 dark:border-white/[0.08] rounded-3xl p-5 sm:p-7 shadow-xl">
+      <div className="bg-white dark:bg-[#1e2026] border border-slate-200 dark:border-white/[0.08] rounded-3xl p-4 sm:p-7 shadow-xl">
         {/* Filter Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-white/[0.08]">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-5 border-b border-slate-100 dark:border-white/[0.08]">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0 -mx-1 px-1 sm:mx-0 sm:px-0">
             {(["all", "active", "shipped", "delivered"] as const).map((filter) => {
               const label =
                 filter === "all"
@@ -61,10 +61,10 @@ export default function DashboardOrdersTab({
                   key={filter}
                   type="button"
                   onClick={() => setOrderFilter(filter)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer shrink-0 whitespace-nowrap ${
                     orderFilter === filter
-                      ? "bg-[#c93b41] text-white"
-                      : "bg-slate-100 dark:bg-[#141518] text-slate-600 dark:text-slate-300"
+                      ? "bg-[#c93b41] text-white shadow-xs"
+                      : "bg-slate-100 dark:bg-[#141518] text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/[0.06]"
                   }`}
                 >
                   {label}
@@ -96,16 +96,16 @@ export default function DashboardOrdersTab({
       {/* Embedded Live Tracking Panel */}
       {selectedTrackingCode && (
         <div className="pt-4 animate-fadeIn">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Truck className="w-5 h-5 text-[#c93b41]" />
-              شاشة التتبع المباشر لأمر الطباعة:{" "}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-4">
+            <h3 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-[#c93b41] shrink-0" />
+              <span>شاشة التتبع المباشر لأمر الطباعة:</span>{" "}
               <span className="font-mono text-[#c93b41]">{selectedTrackingCode}</span>
             </h3>
             <button
               type="button"
               onClick={() => setSelectedTrackingCode(null)}
-              className="text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white font-bold cursor-pointer"
+              className="text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white font-bold cursor-pointer self-start sm:self-auto"
             >
               إخفاء شاشة التتبع ✕
             </button>
