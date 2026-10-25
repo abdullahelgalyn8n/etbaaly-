@@ -1,97 +1,59 @@
 import { AdminProduct } from "./types";
-import { getDb, inMemoryStore } from "./client";
+import { inMemoryStore } from "./client";
 import { initialAdminProducts } from "./seed";
 
-// Helper: in Edge/Worker execution, tables already exist in Supabase.
-// Re-running DDL CREATE TABLE on read queries consumes excessive subrequests and CPU quota.
-let productsTableChecked = false;
-async function ensureProductsTable(sql: any) {
-  if (productsTableChecked) return;
-  try {
-    await sql`
-      CREATE TABLE IF NOT EXISTS admin_products (
-        id VARCHAR(64) PRIMARY KEY,
-        slug VARCHAR(255) UNIQUE NOT NULL,
-        title VARCHAR(255) NOT NULL,
-        category VARCHAR(100) NOT NULL,
-        base_price NUMERIC(10, 2) NOT NULL,
-        description TEXT,
-        turnaround VARCHAR(100),
-        badge VARCHAR(100),
-        status VARCHAR(50) DEFAULT 'published',
-        colors JSONB DEFAULT '[]'::jsonb,
-        layers JSONB DEFAULT '[]'::jsonb,
-        print_area_label VARCHAR(255),
-        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-      );
-    `;
-    productsTableChecked = true;
-  } catch (err) {
-    console.error("ensureProductsTable error:", err);
-  }
-}
+// Static In-Code Store: Products are bundled directly in Git and Cloudflare Edge bundle
+// Eliminates external database roundtrips for 0ms instantaneous response time.
 
-export async function getAdminProducts(statusFilter?: "published" | "draft" | "all") {
-  const { isLive, sql } = getDb();
-  if (isLive && sql) {
-    try {
-      await ensureProductsTable(sql);
+export async function getAdminProducts(statusFilter?: "published" | "draft" | "all"): Promise<AdminProduct[]> {
+  const store = inMemoryStore.adminProducts && inMemoryStore.adminProducts.length > 0
+    ? inMemoryStore.adminProducts
+    : initialAdminProducts;
 
-      let rows;
-      if (statusFilter && statusFilter !== "all") {
-        rows = await sql`SELECT * FROM admin_products WHERE status = ${statusFilter} ORDER BY created_at DESC`;
-      } else {
-        rows = await sql`SELECT * FROM admin_products ORDER BY created_at DESC`;
-      }
-
-      if (rows && rows.length > 0) {
-        const dbProducts = rows.map((r: any) => ({
-          id: r.id,
-          slug: r.slug,
-          title: r.title,
-          category: r.category,
-          basePrice: Number(r.base_price),
-          description: r.description,
-          turnaround: r.turnaround,
-          badge: r.badge,
-          status: r.status,
-          colors: typeof r.colors === "string" ? JSON.parse(r.colors) : r.colors,
-          layers: typeof r.layers === "string" ? JSON.parse(r.layers) : r.layers,
-          printAreaLabel: r.print_area_label,
-          createdAt: r.created_at,
-          updatedAt: r.updated_at,
-        }));
-
-        // Automatically sync and append any missing seed products (e.g. apparel & hoodies) in-memory without firing 50 roundtrips
-        const dbIds = new Set(dbProducts.map((p: any) => p.id));
-        const missingSeed = initialAdminProducts.filter((p) => !dbIds.has(p.id));
-
-        if (missingSeed.length > 0) {
-          const filteredMissing = statusFilter && statusFilter !== "all" 
-            ? missingSeed.filter((p) => p.status === statusFilter)
-            : missingSeed;
-          return [...dbProducts, ...filteredMissing];
-        }
-
-        return dbProducts;
-      }
-    } catch (err) {
-      console.error("Neon getAdminProducts error:", err);
-    }
-  }
-
-  // In-memory fallback
-  if (inMemoryStore.adminProducts.length < initialAdminProducts.length) {
-    inMemoryStore.adminProducts = [...initialAdminProducts];
-  }
   if (statusFilter && statusFilter !== "all") {
-    return inMemoryStore.adminProducts.filter((p) => p.status === statusFilter);
+    return store.filter((p) => p.status === statusFilter);
   }
-  return inMemoryStore.adminProducts;
+  return store;
 }
 
-export async function saveAdminProduct(productData: Partial<AdminProduct>) {
+export async function getAdminProductByIdOrSlug(idOrSlug: string): Promise<AdminProduct | null> {
+  if (!idOrSlug) return null;
+
+  const raw = String(idOrSlug).trim().replace(/\/+$/, "");
+  const decoded = decodeURIComponent(raw).trim().replace(/\/+$/, "");
+  const rawLower = raw.toLowerCase();
+  const decodedLower = decoded.toLowerCase();
+
+  const store = inMemoryStore.adminProducts && inMemoryStore.adminProducts.length > 0
+    ? inMemoryStore.adminProducts
+    : initialAdminProducts;
+
+  // Direct fast matching across id and slug
+  const found = store.find((p) => {
+    if (!p) return false;
+    const pId = (p.id || "").trim();
+    const pSlug = (p.slug || "").trim();
+    const pIdLower = pId.toLowerCase();
+    const pSlugLower = pSlug.toLowerCase();
+
+    return (
+      pSlug === raw ||
+      pSlug === decoded ||
+      pId === raw ||
+      pId === decoded ||
+      pSlugLower === rawLower ||
+      pSlugLower === decodedLower ||
+      pIdLower === rawLower ||
+      pIdLower === decodedLower ||
+      encodeURIComponent(pSlug) === raw ||
+      encodeURIComponent(pSlug) === decoded
+    );
+  });
+
+  return found || null;
+}
+
+export async function saveAdminProduct(productData: Partial<AdminProduct>): Promise<AdminProduct> {
   const id = productData.id || `prod-${Date.now()}`;
   const slug =
     productData.slug ||
@@ -121,40 +83,11 @@ export async function saveAdminProduct(productData: Partial<AdminProduct>) {
     updatedAt: new Date().toISOString(),
   };
 
-  const { isLive, sql } = getDb();
-  if (isLive && sql) {
-    try {
-      await sql`
-        INSERT INTO admin_products (
-          id, slug, title, category, base_price, description, turnaround, badge,
-          status, colors, layers, print_area_label, updated_at
-        ) VALUES (
-          ${newProduct.id}, ${newProduct.slug}, ${newProduct.title}, ${newProduct.category},
-          ${newProduct.basePrice}, ${newProduct.description}, ${newProduct.turnaround}, ${newProduct.badge},
-          ${newProduct.status}, ${JSON.stringify(newProduct.colors)}, ${JSON.stringify(newProduct.layers)},
-          ${newProduct.printAreaLabel}, CURRENT_TIMESTAMP
-        )
-        ON CONFLICT (id) DO UPDATE SET
-          slug = EXCLUDED.slug,
-          title = EXCLUDED.title,
-          category = EXCLUDED.category,
-          base_price = EXCLUDED.base_price,
-          description = EXCLUDED.description,
-          turnaround = EXCLUDED.turnaround,
-          badge = EXCLUDED.badge,
-          status = EXCLUDED.status,
-          colors = EXCLUDED.colors,
-          layers = EXCLUDED.layers,
-          print_area_label = EXCLUDED.print_area_label,
-          updated_at = CURRENT_TIMESTAMP;
-      `;
-    } catch (err) {
-      console.error("Neon saveAdminProduct error:", err);
-    }
+  if (!inMemoryStore.adminProducts || inMemoryStore.adminProducts.length === 0) {
+    inMemoryStore.adminProducts = [...initialAdminProducts];
   }
 
-  // Update in-memory
-  const existingIdx = inMemoryStore.adminProducts.findIndex((p) => p.id === id);
+  const existingIdx = inMemoryStore.adminProducts.findIndex((p) => p.id === id || p.slug === slug);
   if (existingIdx >= 0) {
     inMemoryStore.adminProducts[existingIdx] = newProduct;
   } else {
@@ -164,61 +97,10 @@ export async function saveAdminProduct(productData: Partial<AdminProduct>) {
   return newProduct;
 }
 
-export async function deleteAdminProduct(id: string) {
-  const { isLive, sql } = getDb();
-  if (isLive && sql) {
-    try {
-      await sql`DELETE FROM admin_products WHERE id = ${id}`;
-    } catch (err) {
-      console.error("Neon deleteAdminProduct error:", err);
-    }
+export async function deleteAdminProduct(id: string): Promise<boolean> {
+  if (!inMemoryStore.adminProducts || inMemoryStore.adminProducts.length === 0) {
+    inMemoryStore.adminProducts = [...initialAdminProducts];
   }
   inMemoryStore.adminProducts = inMemoryStore.adminProducts.filter((p) => p.id !== id);
   return true;
-}
-
-export async function getAdminProductByIdOrSlug(idOrSlug: string): Promise<AdminProduct | null> {
-  const decoded = decodeURIComponent(idOrSlug);
-  const { isLive, sql } = getDb();
-  if (isLive && sql) {
-    try {
-      const rows = await sql`
-        SELECT * FROM admin_products 
-        WHERE id = ${idOrSlug} OR slug = ${idOrSlug} OR slug = ${decoded} OR id = ${decoded}
-        LIMIT 1
-      `;
-      if (rows && rows.length > 0) {
-        const r = rows[0];
-        return {
-          id: r.id,
-          slug: r.slug,
-          title: r.title,
-          category: r.category,
-          basePrice: Number(r.base_price),
-          description: r.description,
-          turnaround: r.turnaround,
-          badge: r.badge,
-          status: r.status,
-          colors: typeof r.colors === "string" ? JSON.parse(r.colors) : r.colors,
-          layers: typeof r.layers === "string" ? JSON.parse(r.layers) : r.layers,
-          printAreaLabel: r.print_area_label,
-          createdAt: r.created_at,
-          updatedAt: r.updated_at,
-        };
-      }
-    } catch (err) {
-      console.error("Neon getAdminProductByIdOrSlug direct query error:", err);
-    }
-  }
-
-  // Fallback to in-memory store
-  return (
-    inMemoryStore.adminProducts.find(
-      (p) =>
-        p.id === idOrSlug ||
-        p.slug === idOrSlug ||
-        p.slug === decoded ||
-        p.id === decoded
-    ) || null
-  );
 }

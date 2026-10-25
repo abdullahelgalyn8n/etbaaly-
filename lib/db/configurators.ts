@@ -8,56 +8,7 @@ export { initialVisualConfigurators, generateConfiguratorForProduct };
 
 let configuratorsTableChecked = false;
 export async function getVisualConfigurators(): Promise<VisualConfigurator[]> {
-  const { isLive, sql } = getDb();
-  if (isLive && sql) {
-    try {
-      if (!configuratorsTableChecked) {
-        await sql`
-          CREATE TABLE IF NOT EXISTS visual_configurators (
-            id VARCHAR(64) PRIMARY KEY, name VARCHAR(255) NOT NULL, product_id VARCHAR(64) NOT NULL,
-            style VARCHAR(50) DEFAULT 'style1', canvas_width INT DEFAULT 1000, canvas_height INT DEFAULT 1000,
-            base_price NUMERIC(10, 2) DEFAULT 0, views JSONB DEFAULT '[]'::jsonb, groups JSONB DEFAULT '[]'::jsonb,
-            hotspots JSONB DEFAULT '[]'::jsonb, responsible_view_thumbnail VARCHAR(255), choose_form VARCHAR(50),
-            contact_form VARCHAR(50), load_configurator_in VARCHAR(50), configurator_template VARCHAR(100),
-            description TEXT, view_background TEXT, show_details_page VARCHAR(50), custom_css TEXT, custom_js TEXT,
-            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-          );
-        `;
-        configuratorsTableChecked = true;
-      }
-      const rows = await sql`SELECT * FROM visual_configurators ORDER BY updated_at DESC`;
-      if (rows && rows.length > 0) {
-        return rows.map((r: any) => ({
-          id: r.id,
-          name: r.name,
-          productId: r.product_id,
-          style: r.style,
-          canvasWidth: r.canvas_width,
-          canvasHeight: r.canvas_height,
-          basePrice: r.base_price ? Number(r.base_price) : undefined,
-          views: typeof r.views === "string" ? JSON.parse(r.views) : r.views,
-          groups: typeof r.groups === "string" ? JSON.parse(r.groups) : r.groups,
-          hotspots: typeof r.hotspots === "string" ? JSON.parse(r.hotspots) : r.hotspots,
-          responsibleViewThumbnail: r.responsible_view_thumbnail,
-          chooseForm: r.choose_form,
-          contactForm: r.contact_form,
-          loadConfiguratorIn: r.load_configurator_in,
-          configuratorTemplate: r.configurator_template,
-          description: r.description,
-          viewBackground: r.view_background,
-          showDetailsPage: r.show_details_page,
-          customCss: r.custom_css,
-          customJs: r.custom_js,
-          createdAt: r.created_at,
-          updatedAt: r.updated_at,
-        }));
-      }
-    } catch (err) {
-      console.error("Neon getVisualConfigurators error:", err);
-    }
-  }
-
-  // Fallback to in-memory store
+  // Static In-Code Store: Fast 0ms edge response from bundled configurator seeds
   if (!(inMemoryStore as any).visualConfigurators || (inMemoryStore as any).visualConfigurators.length === 0) {
     (inMemoryStore as any).visualConfigurators = [...initialVisualConfigurators];
   } else {

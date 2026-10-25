@@ -10,6 +10,8 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const products = await getAdminProducts("all");
   return products.map((p) => ({
@@ -19,7 +21,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = await getAdminProductByIdOrSlug(slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const product =
+    (await getAdminProductByIdOrSlug(slug)) ||
+    (await getAdminProductByIdOrSlug(decodedSlug));
 
   if (!product) {
     return { title: "منتج غير موجود | إطبعلي" };
@@ -59,7 +64,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params;
-  const product = await getAdminProductByIdOrSlug(slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const product =
+    (await getAdminProductByIdOrSlug(slug)) ||
+    (await getAdminProductByIdOrSlug(decodedSlug));
 
   if (!product) {
     notFound();
