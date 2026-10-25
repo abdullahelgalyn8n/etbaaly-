@@ -664,8 +664,10 @@ export function getAllOffers(): OfferItem[] {
 }
 
 export function getOfferBySlug(slug: string): OfferItem | undefined {
-  const decodedSlug = decodeURIComponent(slug);
-  return offersData.find((o) => o.slug === decodedSlug || o.slug === slug || o.id === slug);
+  if (!slug) return undefined;
+  const clean = slug.trim().replace(/\/+$/, "");
+  const decodedSlug = decodeURIComponent(clean);
+  return offersData.find((o) => o.slug === decodedSlug || o.slug === clean || o.id === clean || o.id === decodedSlug);
 }
 
 export function getOffersByServiceSlug(serviceSlug: string): OfferItem[] {

@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   return servicesData.map((service) => ({
@@ -29,7 +29,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const service = servicesData.find((s) => s.slug === slug);
+  const cleanSlug = (slug || "").replace(/\/+$/, "");
+  const decoded = decodeURIComponent(cleanSlug);
+  const service = servicesData.find(
+    (s) => s.slug === cleanSlug || s.slug === decoded || s.id === cleanSlug || s.id === decoded
+  );
   if (!service) return { title: "الخدمة غير موجودة" };
 
   return {
@@ -49,7 +53,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServiceDetailPage({ params }: Props) {
   const { slug } = await params;
-  const service = servicesData.find((s) => s.slug === slug);
+  const cleanSlug = (slug || "").replace(/\/+$/, "");
+  const decoded = decodeURIComponent(cleanSlug);
+  const service = servicesData.find(
+    (s) => s.slug === cleanSlug || s.slug === decoded || s.id === cleanSlug || s.id === decoded
+  );
 
   if (!service) {
     notFound();

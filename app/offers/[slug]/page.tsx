@@ -26,7 +26,7 @@ import { BreadcrumbSchema, OfferProductSchema } from "@/components/JsonLd";
 import BrandedImage from "@/components/BrandedImage";
 
 export const dynamic = "force-static";
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 interface Props {
   params: Promise<{ slug: string }>;
