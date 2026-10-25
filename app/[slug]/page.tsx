@@ -17,9 +17,8 @@ import {
   generateFaqSchema,
 } from "@/components/article/articleHelpers";
 
-import { findPostBySlug } from "@/lib/posts/adminPostsStore";
-
-export const dynamicParams = true;
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -34,13 +33,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
-  // أولوية فورية للذاكرة بدون تأخير استعلام قاعدة البيانات
-  const post =
-    allBlogPostsData.find(
-      (p) => p.slug === slug || p.slug === decodedSlug || encodeURIComponent(p.slug) === slug
-    ) ||
-    (await findPostBySlug(decodedSlug)) ||
-    (await findPostBySlug(slug));
+  const post = allBlogPostsData.find(
+    (p) => p.slug === slug || p.slug === decodedSlug || encodeURIComponent(p.slug) === slug
+  );
 
   if (!post) return { title: "مقال غير موجود" };
 
@@ -78,13 +73,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
-  // أولوية فورية للذاكرة بدون تأخير استعلام قاعدة البيانات
-  const post =
-    allBlogPostsData.find(
-      (p) => p.slug === slug || p.slug === decodedSlug || encodeURIComponent(p.slug) === slug
-    ) ||
-    (await findPostBySlug(decodedSlug)) ||
-    (await findPostBySlug(slug));
+  const post = allBlogPostsData.find(
+    (p) => p.slug === slug || p.slug === decodedSlug || encodeURIComponent(p.slug) === slug
+  );
 
   if (!post) {
     notFound();

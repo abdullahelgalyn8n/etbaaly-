@@ -33,10 +33,10 @@ export default function ProductLightboxModal({
       if (!isOpen) return;
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") {
-        setActiveImageIdx((activeImageIdx - 1 + imagesList.length) % imagesList.length);
+        handleNext();
       }
       if (e.key === "ArrowRight") {
-        setActiveImageIdx((activeImageIdx + 1) % imagesList.length);
+        handlePrev();
       }
     };
 
@@ -124,17 +124,17 @@ export default function ProductLightboxModal({
           <>
             <button
               type="button"
-              onClick={handlePrev}
+              onClick={handleNext}
               className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white backdrop-blur-md border border-white/15 transition-all cursor-pointer hover:scale-110 shadow-xl"
-              title="السابق"
+              title="التالي"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               type="button"
-              onClick={handleNext}
+              onClick={handlePrev}
               className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white backdrop-blur-md border border-white/15 transition-all cursor-pointer hover:scale-110 shadow-xl"
-              title="التالي"
+              title="السابق"
             >
               <ChevronRight className="w-6 h-6" />
             </button>

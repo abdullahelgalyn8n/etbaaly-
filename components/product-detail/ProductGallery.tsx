@@ -119,10 +119,10 @@ export default function ProductGallery({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                handlePrev();
+                handleNext();
               }}
               className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 dark:bg-black/70 hover:bg-white text-slate-800 dark:text-white backdrop-blur-md border border-slate-200 dark:border-white/20 transition-all cursor-pointer hover:scale-110 active:scale-95 flex items-center justify-center shadow-xl"
-              title="الزاوية السابقة"
+              title="الصورة التالية"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -131,10 +131,10 @@ export default function ProductGallery({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                handleNext();
+                handlePrev();
               }}
               className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/90 dark:bg-black/70 hover:bg-white text-slate-800 dark:text-white backdrop-blur-md border border-slate-200 dark:border-white/20 transition-all cursor-pointer hover:scale-110 active:scale-95 flex items-center justify-center shadow-xl"
-              title="الزاوية التالية"
+              title="الصورة السابقة"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
