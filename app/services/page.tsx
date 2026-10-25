@@ -39,6 +39,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = "force-static";
+
 export default function ServicesPage() {
   return (
     <div className="space-y-20 pb-20">

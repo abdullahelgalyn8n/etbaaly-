@@ -14,7 +14,7 @@ export default function InvoiceModal({ order, onClose, user }: InvoiceModalProps
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-white dark:bg-[#1e2026] border border-slate-200 dark:border-white/[0.1] rounded-3xl p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto space-y-6">
+      <div className="relative w-full max-w-2xl bg-white dark:bg-[#1a1c23] border border-slate-200/80 dark:border-white/[0.1] rounded-3xl p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto space-y-6">
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/[0.08]">
           <div className="flex items-center gap-2">

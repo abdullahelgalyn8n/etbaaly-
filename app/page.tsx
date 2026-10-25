@@ -20,6 +20,8 @@ import HomeTestimonialsSection from "@/components/home/HomeTestimonialsSection";
 import PODProductsGallery from "@/components/PODProductsGallery";
 import { getInitialGalleryProducts } from "@/lib/db/galleryProducts";
 
+export const dynamic = "force-static";
+
 export default function HomePage() {
   const initialProducts = getInitialGalleryProducts();
 

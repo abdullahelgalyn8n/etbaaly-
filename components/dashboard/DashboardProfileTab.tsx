@@ -32,13 +32,13 @@ export default function DashboardProfileTab({ user, updateProfile }: DashboardPr
   };
 
   return (
-    <div className="bg-white dark:bg-[#1e2026] border border-slate-200 dark:border-white/[0.08] rounded-3xl p-6 sm:p-8 shadow-xl max-w-2xl mx-auto space-y-6">
+    <div className="bg-white dark:bg-[#1a1c23] border border-slate-200/80 dark:border-white/[0.08] rounded-3xl p-6 sm:p-8 shadow-xs max-w-3xl mx-auto space-y-6">
       <div className="pb-5 border-b border-slate-100 dark:border-white/[0.08] text-center sm:text-right">
         <h3 className="text-lg font-black text-slate-900 dark:text-white flex items-center justify-center sm:justify-start gap-2">
           <Building2 className="w-5 h-5 text-[#c93b41]" />
           الملف التجاري والضريبي للشركة
         </h3>
-        <p className="text-xs text-slate-500 mt-1">
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
           تُستخدم هذه البيانات لإصدار الفواتير الضريبية الإلكترونية واعتماد تسليمات الشحن الرسمية.
         </p>
       </div>
