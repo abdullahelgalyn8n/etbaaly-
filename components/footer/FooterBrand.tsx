@@ -2,10 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpLeft, MessageSquare } from "lucide-react";
+import { ArrowUpLeft } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import BrandLogo from "@/components/BrandLogo";
 import AZLogo from "@/components/AZLogo";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -82,7 +83,7 @@ export default function FooterBrand() {
           className="w-9 h-9 rounded-full bg-white dark:bg-[#1a1c20] border border-slate-200 dark:border-white/[0.08] flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-white hover:bg-emerald-600 dark:hover:bg-emerald-600 hover:border-emerald-600 transition-all shadow-sm"
           aria-label="WhatsApp Direct"
         >
-          <MessageSquare className="w-4 h-4" />
+          <WhatsAppIcon className="w-4 h-4" />
         </a>
       </div>
     </div>

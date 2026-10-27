@@ -26,7 +26,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/offers/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group text-[#c93b41] font-bold"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-[#c93b41]" />
@@ -36,7 +35,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/about/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
@@ -46,7 +44,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/track/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <Truck className="w-3.5 h-3.5 text-[#c93b41]" />
@@ -56,7 +53,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/blog/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
@@ -66,7 +62,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/dashboard/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <Calculator className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
@@ -76,7 +71,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/#preflight"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
@@ -86,7 +80,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/dashboard/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
@@ -106,8 +99,7 @@ export default function FooterLinks() {
             <li key={serv.id}>
               <Link
                 href={`/services/${serv.slug}/`}
-                prefetch={false}
-                className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
+                  className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
               >
                 <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41] transition-colors" />
                 <span className="line-clamp-1">{serv.title.split("(")[0]}</span>
@@ -126,7 +118,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/terms/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
@@ -136,7 +127,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/refund/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
@@ -146,7 +136,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/privacy/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
@@ -156,7 +145,6 @@ export default function FooterLinks() {
           <li>
             <Link
               href="/policy/"
-              prefetch={false}
               className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-[#c93b41]" />

@@ -69,9 +69,17 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 ? caches.default
                 : null;
 
+            const isRsc = request.headers.get("rsc") === "1" || url.searchParams.has("_rsc");
+
             const BUILD_ID = "${buildId}";
             const cacheKeyUrl = new URL(request.url);
+            cacheKeyUrl.searchParams.delete("_rsc");
             cacheKeyUrl.searchParams.set("__cf_bid", BUILD_ID);
+            if (isRsc) {
+                cacheKeyUrl.searchParams.set("__cf_rsc", "1");
+            } else {
+                cacheKeyUrl.searchParams.delete("__cf_rsc");
+            }
             const cacheKey = new Request(cacheKeyUrl.toString(), { method: "GET" });
 
             if (cache) {
@@ -114,8 +122,12 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 try {
                     const cloned = serverResponse.clone();
                     const cacheHeaders = new Headers(cloned.headers);
+                    // Cloudflare Cache API: remove Vary so cache.match(cacheKey) matches reliably
+                    cacheHeaders.delete("Vary");
+                    cacheHeaders.set("Vary", "Accept-Encoding");
+
                     const isApi = pathname.startsWith("/api/");
-                    const browserMaxAge = isApi ? 60 : 0;
+                    const browserMaxAge = isApi ? 60 : (isRsc ? 300 : 3600);
                     const edgeMaxAge = isApi ? 600 : 86400;
                     cacheHeaders.set("Cache-Control", \`public, max-age=\${browserMaxAge}, s-maxage=\${edgeMaxAge}, must-revalidate\`);
                     cacheHeaders.set("Cloudflare-CDN-Cache-Control", \`max-age=\${edgeMaxAge}\`);

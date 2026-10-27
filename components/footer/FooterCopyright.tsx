@@ -23,23 +23,23 @@ export default function FooterCopyright() {
         </span>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[11px] sm:text-xs">
-        <Link href="/terms/" prefetch={false} className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
+        <Link href="/terms/" className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
           الشروط والأحكام
         </Link>
         <span className="text-slate-300 dark:text-white/20">•</span>
-        <Link href="/refund/" prefetch={false} className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
+        <Link href="/refund/" className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
           سياسة الاسترجاع
         </Link>
         <span className="text-slate-300 dark:text-white/20">•</span>
-        <Link href="/privacy/" prefetch={false} className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
+        <Link href="/privacy/" className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
           الخصوصية والبيانات
         </Link>
         <span className="text-slate-300 dark:text-white/20">•</span>
-        <Link href="/about/" prefetch={false} className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
+        <Link href="/about/" className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
           عن إطبعلي
         </Link>
         <span className="text-slate-300 dark:text-white/20">•</span>
-        <Link href="/track/" prefetch={false} className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
+        <Link href="/track/" className="hover:text-[#c93b41] dark:hover:text-white transition-colors">
           تتبع الشحنة
         </Link>
       </div>

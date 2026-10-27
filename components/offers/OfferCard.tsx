@@ -52,7 +52,7 @@ export default function OfferCard({ offer }: OfferCardProps) {
         {/* Title & Subtitle */}
         <div className="space-y-2">
           <h2 className="text-xl sm:text-2xl font-black text-slate-950 dark:text-white leading-snug group-hover:text-[#c93b41] transition-colors">
-            <Link href={`/offers/${offer.slug}/`}>{offer.title}</Link>
+            <Link href={`/offers/${offer.slug}/`} prefetch={true}>{offer.title}</Link>
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-[#a8abb4] leading-relaxed line-clamp-2 font-medium">
             {offer.subtitle}
@@ -123,6 +123,7 @@ export default function OfferCard({ offer }: OfferCardProps) {
         <div className="grid grid-cols-2 gap-2">
           <Link
             href={`/offers/${offer.slug}/`}
+            prefetch={true}
             className="w-full py-2.5 px-3 rounded-xl border border-slate-200 dark:border-white/[0.1] hover:bg-slate-100 dark:hover:bg-white/[0.06] text-slate-900 dark:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all text-center"
           >
             <span>التفاصيل الكاملة</span>

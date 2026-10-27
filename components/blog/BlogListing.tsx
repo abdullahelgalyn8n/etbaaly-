@@ -135,8 +135,8 @@ export default function BlogListing({ posts }: BlogListingProps) {
           )}
         </div>
 
-        {/* Category Filter Tabs - Mobile scrollable, desktop flex */}
-        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-2 scrollbar-none no-scrollbar px-1">
+        {/* Category Filter Tabs - Mobile scrollable, desktop flex wrap */}
+        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto sm:overflow-visible pb-2 sm:pb-0 scrollbar-none no-scrollbar px-1 py-1 sm:flex-wrap">
           {categories.map((cat) => {
             const Icon = cat.icon;
             const isActive = activeCategory === cat.id;

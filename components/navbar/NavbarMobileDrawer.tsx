@@ -2,8 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, User, Building2, ShieldCheck, Image as ImageIcon, ShoppingBag, LogOut, Package } from "lucide-react";
+import { ArrowLeft, User, Building2, ShieldCheck, ShoppingBag, LogOut, Package } from "lucide-react";
 import AZLogo from "@/components/AZLogo";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { trackEvent } from "@/lib/fpixel";
 import { useAuth } from "@/context/AuthContext";
 
@@ -162,8 +163,8 @@ export default function NavbarMobileDrawer({
           className="w-full py-3 rounded-xl btn-crimson text-white text-center text-xs font-bold flex items-center justify-center gap-2"
           title="تواصل معنا فوراً عبر واتساب"
         >
-          <ImageIcon className="w-4 h-4" />
-          <span>اطبع صورتك فوراً</span>
+          <WhatsAppIcon className="w-4 h-4" />
+          <span>اطبع صورتك فوراً عبر واتساب</span>
         </a>
       </div>
     </div>

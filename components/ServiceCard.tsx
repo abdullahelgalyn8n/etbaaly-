@@ -44,7 +44,6 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
         <div className="flex items-center justify-between gap-4 mb-6">
           <Link
             href={`/services/${service.slug}/`}
-            prefetch={false}
             aria-label={`تفاصيل خدمة ${service.title}`}
             className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-[#111215] border border-slate-200 dark:border-white/[0.08] flex items-center justify-center group-hover:scale-105 group-hover:border-[#c93b41]/40 transition-all shadow-sm"
           >
@@ -57,7 +56,7 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
 
         {/* Title & Subtitle */}
         <h3 className="text-xl font-bold text-slate-950 dark:text-white mb-2 group-hover:text-[#c93b41] transition-colors">
-          <Link href={`/services/${service.slug}/`} prefetch={false}>
+          <Link href={`/services/${service.slug}/`}>
             {service.title}
           </Link>
         </h3>
@@ -83,7 +82,7 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
       <div className="pt-6 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between gap-3 mt-auto">
         <Link
           href={`/services/${service.slug}/`}
-          prefetch={false}
+          prefetch={true}
           className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-white hover:text-[#c93b41] dark:hover:text-[#c93b41] transition-colors"
         >
           <span>المواصفات وسابقة الأعمال</span>
@@ -92,7 +91,7 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
 
         <Link
           href={`/services/${service.slug}/`}
-          prefetch={false}
+          prefetch={true}
           className="inline-flex items-center gap-1 text-xs font-bold text-white btn-crimson px-3.5 py-1.5 rounded-full shadow-sm"
         >
           <span>استكشاف الخدمة</span>

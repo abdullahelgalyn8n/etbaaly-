@@ -52,7 +52,6 @@ export default function PolicyTabsNav() {
             <Link
               key={tab.href}
               href={tab.href}
-              prefetch={false}
               className={`flex-shrink-0 group flex flex-col p-4 rounded-2xl border transition-all duration-200 text-right ${
                 isActive
                   ? "bg-white dark:bg-[#242424] border-[#c93b41] shadow-md shadow-[#c93b41]/5 ring-1 ring-[#c93b41]/40"

@@ -33,9 +33,15 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return offersData.map((offer) => ({
-    slug: offer.slug,
-  }));
+  const params: { slug: string }[] = [];
+  for (const offer of offersData) {
+    params.push({ slug: offer.slug });
+    const encoded = encodeURIComponent(offer.slug);
+    if (encoded !== offer.slug) {
+      params.push({ slug: encoded });
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

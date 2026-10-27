@@ -2,10 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, User, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, User } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import CartNavButton from "@/components/cart/CartNavButton";
 import AZLogo from "@/components/AZLogo";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { siteConfig } from "@/data/siteConfig";
 import { trackEvent } from "@/lib/fpixel";
 import { useAuth } from "@/context/AuthContext";
 import UserNavMenu from "./UserNavMenu";
@@ -40,6 +42,21 @@ export default function NavbarDesktopActions({
       <ThemeToggle />
       <CartNavButton />
 
+      {/* Direct WhatsApp Quick Chat */}
+      <a
+        href={whatsappInstantPrintUrl || siteConfig.social.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => {
+          trackEvent("Contact", { method: "whatsapp_header_direct" });
+        }}
+        className="w-9 h-9 rounded-full bg-slate-100 dark:bg-[#1a1c20] border border-slate-200 dark:border-white/[0.08] flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-white hover:bg-emerald-600 dark:hover:bg-emerald-600 hover:border-emerald-600 transition-all shadow-sm"
+        aria-label="WhatsApp Direct"
+        title="WhatsApp"
+      >
+        <WhatsAppIcon className="w-4 h-4" />
+      </a>
+
       {/* Auth / Accounts Navigation */}
       {isAuthenticated ? (
         <UserNavMenu user={user} isAdmin={isAdmin} pathname={pathname} />
@@ -68,7 +85,7 @@ export default function NavbarDesktopActions({
         title="تواصل معنا فوراً عبر واتساب"
       >
         <span className="flex items-center gap-1.5">
-          <ImageIcon className="w-3.5 h-3.5 text-red-200 group-hover:text-white" />
+          <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-300 group-hover:text-white transition-colors" />
           <span>اطبع صورتك فوراً</span>
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
         </span>

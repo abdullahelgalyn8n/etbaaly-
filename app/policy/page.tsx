@@ -219,7 +219,6 @@ export default function PolicyHubPage() {
                 <div className="pt-6 mt-4 border-t border-slate-100 dark:border-white/[0.06]">
                   <Link
                     href={doc.href}
-                    prefetch={false}
                     className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-slate-100 dark:bg-white/10 hover:bg-[#c93b41] hover:text-white text-slate-900 dark:text-white transition-all group/btn"
                   >
                     <span>قراءة الوثيقة الكاملة</span>
@@ -290,7 +289,6 @@ export default function PolicyHubPage() {
           </a>
           <Link
             href="/contact/"
-            prefetch={false}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-medium border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300 transition-colors"
           >
             <span>طلب معاينة أو عينات</span>
