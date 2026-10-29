@@ -25,9 +25,15 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return allBlogPostsData.map((post) => ({
-    slug: post.slug,
-  }));
+  const params: { slug: string }[] = [];
+  for (const post of allBlogPostsData) {
+    params.push({ slug: post.slug });
+    const encoded = encodeURIComponent(post.slug);
+    if (encoded !== post.slug) {
+      params.push({ slug: encoded });
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

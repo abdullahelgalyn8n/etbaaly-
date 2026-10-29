@@ -944,7 +944,7 @@ ${discountAmount > 0 ? `الخصم: -${discountAmount} ج.م\n` : ""}الشحن:
                       </span>
                     </div>
                     <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                      حول مباشرة إلى حساب إنستاباي: <code className="font-bold text-purple-600 dark:text-purple-400 font-mono">etbaaly@instapay</code> أو رقم الكاش: <code className="font-bold font-mono">01099887766</code>.
+                      حول مباشرة إلى حساب إنستاباي: <code className="font-bold text-purple-600 dark:text-purple-400 font-mono">etbaaly@instapay</code> أو رقم الكاش: <code className="font-bold font-mono">{siteConfig.phone}</code>.
                     </p>
 
                     {paymentMethod === "instapay" && (

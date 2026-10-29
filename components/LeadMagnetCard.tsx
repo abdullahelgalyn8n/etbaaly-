@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Download, CheckCircle2, ShieldCheck, Sparkles, Send } from "lucide-react";
 import { trackEvent } from "@/lib/fpixel";
+import { siteConfig } from "@/data/siteConfig";
 
 interface LeadMagnetProps {
   categoryTag?: string;
@@ -20,30 +21,53 @@ export default function LeadMagnetCard({ categoryTag = "all", sourceArticle = ""
 
   const getMagnetDetails = () => {
     switch (categoryTag) {
+      case "packaging":
+        return {
+          badge: "كتالوج فني مجاني للشركات والمتاجر",
+          title: "كتالوج خامات التغليف ومخططات سكاكين العلب القياسية (Dielines Guide 2026)",
+          desc: "دليل مصور ومقاسات جاهزة لأكثر من 50 نموذج علبة كرتون، هارد بوكس، وأكياس شحن مع معايير اختيار الجراماج ونوع السلوفان المناسب لمنتجك.",
+          fileName: "Etbaaly-Packaging-Dielines-Catalog-2026.pdf",
+        };
+      case "signage":
+        return {
+          badge: "دليل المواصفات الفنية لليافط",
+          title: "دليل خامات وتراخيص يافط المحلات والكلادينج والنيون ليد 2026",
+          desc: "مقارنة شاملة بين سماكات الكلادينج المقاوم للحريق، أنواع الأكريليك، درجات عزل الليدات IP68، واشتراطات المظهر الحضاري والتراخيص.",
+          fileName: "Etbaaly-Signage-Cladding-Guide-2026.pdf",
+        };
+      case "stickers":
+        return {
+          badge: "دليل خامات الرول ليبل والاستيكر",
+          title: "كتالوج عينات وخامات الاستيكرات المقاومة للماء والزيوت والحرارة",
+          desc: "جدول مقارنة تفصيلي بين الفينيل، الشفاف، الهولوجرام، والورقي، مع اختبارات قوة الالتصاق على الزجاج والبلاستيك لخطوط الإنتاج والتعبئة.",
+          fileName: "Etbaaly-Stickers-Labels-Guide-2026.pdf",
+        };
+      case "offset":
+      case "prepress":
+      case "finishes":
+        return {
+          badge: "دليل التجهيز الطباعي والتشطيبات",
+          title: "دليل فحص ملفات الطباعة وضبط ألوان CMYK والتشطيبات الفاخرة",
+          desc: "قائمة فحص تقنية شاملة تشمل ضبط هوامش النزيف (Bleed)، مطابقة أحبار Pantone، وتطبيقات السبوت UV والفويل الحراري بدون أخطاء.",
+          fileName: "Etbaaly-Prepress-Finishes-Guide-2026.pdf",
+        };
       case "branding":
       case "design":
         return {
           badge: "أداة تدقيق مجانية للشركات",
-          title: "قائمة تدقيق الهوية البصرية وفحص التميز التجاري 2026",
-          desc: "دليل عملي مكثف من 18 بنداً لفحص مدى اتساق علامتك التجارية، جودة المطبوعات، وجاذبية تصاميم السوشيال ميديا قبل إطلاق حملاتك الإعلانية.",
-          fileName: "AZ-Brand-Audit-Checklist-2026.pdf",
+          title: "قائمة تدقيق الهوية البصرية وفحص جودة المطبوعات التجارية 2026",
+          desc: "دليل عملي لفحص مدى اتساق علامتك التجارية، جودة المطبوعات الرسمية، وتطابق ألوان الهوية عبر كافة المواد الإعلانية.",
+          fileName: "Etbaaly-Brand-Print-Checklist-2026.pdf",
         };
-      case "web":
-      case "development":
-        return {
-          badge: "تقرير هندسي مجاني",
-          title: "دليل الانتقال إلى Next.js وتحقيق 100/100 في Core Web Vitals",
-          desc: "خارطة طريق تقنية لتسريع موقعك وخفض تكلفة الاستضافة الشهرية إلى صفر مع مضاعفة معدل التحويل بمقدار 3 أضعاف.",
-          fileName: "AZ-Nextjs-Core-Web-Vitals-Guide.pdf",
-        };
-      case "seo":
-      case "aeo":
+      case "gifts":
+      case "uniforms":
+      case "bags":
       default:
         return {
-          badge: "أداة السيو والـ AEO الحصرية",
-          title: "قائمة فحص السيو التقني ومحركات الذكاء الاصطناعي (AEO) لعام 2026",
-          desc: "دليل شامل لاقتناص المركز الأول في Google والظهور في إجابات Perplexity و ChatGPT Search مع نماذج الـ JSON-LD الجاهزة.",
-          fileName: "AZ-Technical-SEO-AEO-Checklist-2026.pdf",
+          badge: "كتالوج الخامات والعينات المجانية",
+          title: "تحميل كتالوج الخامات والمقاسات القياسية للطباعة والتغليف 2026",
+          desc: "كتالوج شامل يضم مواصفات الخامات الورقية، الكرتون المضلع، الأكياس، الهدايا الترويجية، وجداول المقاسات القياسية المعتمدة لدى إطبعلي.",
+          fileName: "Etbaaly-Printing-Materials-Catalog-2026.pdf",
         };
     }
   };
@@ -172,8 +196,8 @@ export default function LeadMagnetCard({ categoryTag = "all", sourceArticle = ""
             </p>
             <div className="pt-2">
               <a
-                href={`https://wa.me/201022598473?text=${encodeURIComponent(
-                  `مرحبًا A.Z Agency، قمت بتحميل (${magnet.title}) وأرغب في استشارة حول موقعي/هويتي.`
+                href={`${siteConfig.social.whatsapp}?text=${encodeURIComponent(
+                  `مرحبًا إطبعلي، قمت بتحميل (${magnet.title}) وأرغب في استشارة تسعير / عينات لشركتي.`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"

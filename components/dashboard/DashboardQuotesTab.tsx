@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { FileText, PlusCircle, Calculator, X } from "lucide-react";
 import PrintCalculator from "@/components/PrintCalculator";
+import { siteConfig } from "@/data/siteConfig";
 
 export const defaultMockQuotes = [
   {
@@ -117,7 +118,7 @@ export default function DashboardQuotesTab() {
                     <span>{q.statusLabel}</span>
                   </span>
                   <a
-                    href="https://wa.me/201022598473?text=مرحباً، أود مناقشة تفاصيل عرض السعر والمقايسة"
+                    href={`${siteConfig.social.whatsapp}?text=${encodeURIComponent("مرحباً، أود مناقشة تفاصيل عرض السعر والمقايسة")}`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold text-xs transition-colors"

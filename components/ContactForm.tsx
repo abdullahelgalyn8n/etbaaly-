@@ -26,8 +26,8 @@ export default function ContactForm() {
 
     setTimeout(() => {
       setStatus("success");
-      const text = `طلب استشارة جديد من موقع A.Z Adv Co:%0A- الاسم: ${formData.name}%0A- البريد: ${formData.email}%0A- الهاتف: ${formData.phone}%0A- الخدمة المطلوبة: ${formData.service}%0A- التفاصيل: ${formData.message}`;
-      window.open(`https://wa.me/201022598473?text=${text}`, "_blank");
+      const text = `طلب استشارة جديد من منصة إطبعلي (Etbaaly):\n- الاسم: ${formData.name}\n- البريد: ${formData.email}\n- الهاتف: ${formData.phone}\n- الخدمة المطلوبة: ${formData.service}\n- التفاصيل: ${formData.message}`;
+      window.open(`${siteConfig.social.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
     }, 800);
   };
 
@@ -42,7 +42,7 @@ export default function ContactForm() {
           </div>
           <h3 className="text-2xl font-bold text-slate-950 dark:text-white">تم استلام طلبك بنجاح!</h3>
           <p className="text-slate-600 dark:text-slate-300 text-sm max-w-md mx-auto font-medium">
-            شكراً لتواصلك مع A.Z Adv Co. تم توجيه رسالتك لفريقنا وسنقوم بالرد عليك والتواصل معك في أقرب وقت.
+            شكراً لتواصلك مع إطبعلي (Etbaaly). تم توجيه رسالتك لمسؤول الحسابات وسنقوم بالتواصل معك فوراً عبر الواتساب.
           </p>
           <button
             onClick={() => setStatus("idle")}

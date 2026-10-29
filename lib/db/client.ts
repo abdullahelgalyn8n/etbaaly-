@@ -1,4 +1,5 @@
 import { initialAdminProducts } from "./seed";
+import { siteConfig } from "@/data/siteConfig";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://dvkbfckmtovvoybnytix.supabase.co";
 // Only SUPABASE_SERVICE_ROLE_KEY has permission to execute raw SQL over exec_sql RPC.
@@ -60,7 +61,7 @@ export const inMemoryStore = {
       shipping_method: "شحن سريع مخصص مع حماية مضاعفة",
       estimated_delivery: "خلال 48 ساعة (16 سبتمبر 2026)",
       courier_name: "كابتن محمود فوزي (أسطول توصيل إطبعلي)",
-      courier_phone: "01099887766",
+      courier_phone: siteConfig.phone,
       timeline: [
         { step: "تم استلام أمر الشغل وتأكيد الدفعة", date: "12 سبتمبر 2026 - 10:30 ص", completed: true, desc: "تمت مراجعة المواصفات والكمية وتأكيد الدفعة المقدمة." },
         { step: "الفحص الفني واعتماد بروفة الألوان (Preflight)", date: "12 سبتمبر 2026 - 02:15 م", completed: true, desc: "تم فحص ملفات الطباعة CMYK واعتماد البروفة." },
@@ -97,7 +98,7 @@ export const inMemoryStore = {
       shipping_method: "شحن سريع مخصص مع حماية مضاعفة",
       estimated_delivery: "خلال 24 ساعة (16 سبتمبر 2026)",
       courier_name: "كابتن محمود فوزي (أسطول توصيل إطبعلي)",
-      courier_phone: "01099887766",
+      courier_phone: siteConfig.phone,
       timeline: [
         { step: "تم استلام الطلب وتأكيد النصوص العربية", date: "14 سبتمبر 2026 - 09:00 ص", completed: true, desc: "تم تأكيد الأسماء والمناصب واللوجو المرفق." },
         { step: "معالجة ملفات الفيكتور ومسار ماكينة الليزر", date: "14 سبتمبر 2026 - 11:30 ص", completed: true, current: true, desc: "ضبط مقاسات القص والتفريغ الليزري بدقة 0.1 ملم." },

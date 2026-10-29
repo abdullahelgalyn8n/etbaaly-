@@ -4,6 +4,8 @@ import React from "react";
 import { Package, Truck, MapPin, ShieldCheck, Phone } from "lucide-react";
 import { OrderData } from "./types";
 
+import { siteConfig } from "@/data/siteConfig";
+
 interface TrackerOrderDetailsProps {
   order: OrderData;
 }
@@ -102,7 +104,7 @@ export function TrackerOrderDetails({ order }: TrackerOrderDetailsProps) {
         {/* Action: WhatsApp Support on this order */}
         <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/[0.05]">
           <a
-            href={`https://wa.me/201022598473?text=${encodeURIComponent(
+            href={`${siteConfig.social.whatsapp}?text=${encodeURIComponent(
               `مرحباً، أستفسر عن حالة طلبي رقم ${order.tracking_code} (${order.product_name})`
             )}`}
             target="_blank"

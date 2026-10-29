@@ -1,4 +1,5 @@
 import { OrderData } from "./types";
+import { siteConfig } from "@/data/siteConfig";
 
 export const demoSimulationOrders: Record<string, OrderData> = {
   "DEMO-BOX": {
@@ -27,7 +28,7 @@ export const demoSimulationOrders: Record<string, OrderData> = {
     shipping_method: "شحن أسطول نقل إطبعلي اللوجستي للشركات",
     estimated_delivery: "خلال 48 ساعة من انتهاء التجميع",
     courier_name: "كابتن أسامة حمدي (سيارة لوجستية 14)",
-    courier_phone: "01099887766",
+    courier_phone: siteConfig.phone,
     timeline: [
       {
         step: "استلام وتدقيق ملفات الأوتوكاد والبروفة الفنية",

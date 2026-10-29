@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Building2, PlusCircle, Sparkles, LogOut, MessageCircle, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
+import { siteConfig } from "@/data/siteConfig";
 
 interface DashboardHeaderProps {
   user: any;
@@ -67,7 +68,7 @@ export default function DashboardHeader({
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-100 dark:border-white/[0.05]">
           {/* Dedicated Account Manager Button */}
           <a
-            href="https://wa.me/201022598473?text=مرحباً، أود التواصل مع مسؤول حساب شركتي بخصوص أمر تشغيل"
+            href={`${siteConfig.social.whatsapp}?text=${encodeURIComponent("مرحباً، أود التواصل مع مسؤول حساب شركتي بخصوص أمر تشغيل")}`}
             target="_blank"
             rel="noreferrer"
             className="px-3.5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/30 hover:bg-emerald-100 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40 transition-colors shadow-2xs"
