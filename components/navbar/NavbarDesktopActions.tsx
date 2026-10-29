@@ -2,14 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, User } from "lucide-react";
+import { User, ArrowLeft } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 import ThemeToggle from "@/components/ThemeToggle";
 import CartNavButton from "@/components/cart/CartNavButton";
 import AZLogo from "@/components/AZLogo";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
-import { siteConfig } from "@/data/siteConfig";
 import { trackEvent } from "@/lib/fpixel";
-import { useAuth } from "@/context/AuthContext";
 import UserNavMenu from "./UserNavMenu";
 
 interface NavbarDesktopActionsProps {
@@ -41,21 +40,6 @@ export default function NavbarDesktopActions({
 
       <ThemeToggle />
       <CartNavButton />
-
-      {/* Direct WhatsApp Quick Chat */}
-      <a
-        href={whatsappInstantPrintUrl || siteConfig.social.whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => {
-          trackEvent("Contact", { method: "whatsapp_header_direct" });
-        }}
-        className="w-9 h-9 rounded-full bg-slate-100 dark:bg-[#1a1c20] border border-slate-200 dark:border-white/[0.08] flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-white hover:bg-emerald-600 dark:hover:bg-emerald-600 hover:border-emerald-600 transition-all shadow-sm"
-        aria-label="WhatsApp Direct"
-        title="WhatsApp"
-      >
-        <WhatsAppIcon className="w-4 h-4" />
-      </a>
 
       {/* Auth / Accounts Navigation */}
       {isAuthenticated ? (
