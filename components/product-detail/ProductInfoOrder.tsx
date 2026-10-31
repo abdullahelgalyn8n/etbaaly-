@@ -6,16 +6,11 @@ import {
   Star,
   CheckCircle2,
   Check,
-  ShieldCheck,
-  Zap,
-  Flame,
-  Scissors,
-  Package,
-  Sparkles,
 } from "lucide-react";
 import { AdminProduct, ProductColor } from "@/lib/db";
 import { useCart } from "@/context/CartContext";
 import { ProductOrderActionBox } from "./ProductOrderActionBox";
+import { ProductHighlights } from "./ProductHighlights";
 
 interface ProductInfoOrderProps {
   product: AdminProduct;
@@ -79,7 +74,7 @@ export default function ProductInfoOrder({
 
   return (
     <>
-      <div className="bg-white dark:bg-[#202227] border border-slate-200 dark:border-white/[0.08] rounded-3xl sm:rounded-[2.5rem] p-5 sm:p-8 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-[#202227] border border-slate-200 dark:border-white/[0.08] rounded-3xl sm:rounded-[2.5rem] p-5 sm:p-8 shadow-sm space-y-6 isolate">
         {/* 1. Header Badges & Rating */}
         <div className="space-y-3 border-b border-slate-100 dark:border-white/[0.06] pb-5">
           <div className="flex items-center justify-between flex-wrap gap-2">
@@ -103,13 +98,13 @@ export default function ProductInfoOrder({
           </div>
 
           {/* Product Title */}
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight leading-snug">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white leading-snug">
             {product.title}
           </h1>
 
           {/* Pricing Box */}
           <div className="flex items-baseline gap-3 pt-1">
-            <div className="text-3xl sm:text-4xl font-black font-mono text-[#c93b41]">
+            <div className="text-3xl sm:text-4xl font-bold font-mono text-[#c93b41]">
               {unitPrice}{" "}
               <span className="text-sm font-bold text-slate-900 dark:text-white font-sans">ج.م</span>
             </div>
@@ -199,197 +194,11 @@ export default function ProductInfoOrder({
         </div>
 
         {/* 4. Luxury Highlights Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          {(() => {
-            const cat = (product.category || "").toLowerCase();
-            const sub = (product.subCategory || "").toLowerCase();
-            const title = (product.title || "").toLowerCase();
-
-            const isSticker =
-              cat.includes("استيكر") ||
-              cat.includes("ستيكر") ||
-              sub.includes("استيكر") ||
-              sub.includes("داي-كت");
-            const isApparel =
-              cat.includes("ملابس") ||
-              cat.includes("هوديز") ||
-              sub.includes("تيشيرت") ||
-              sub.includes("كابات");
-            const isPackaging =
-              cat.includes("علب") ||
-              cat.includes("تغليف") ||
-              sub.includes("علب") ||
-              sub.includes("أكياس") ||
-              sub.includes("باوتش");
-            const isOffice =
-              cat.includes("مكاتب") ||
-              cat.includes("يافط") ||
-              sub.includes("يافط") ||
-              sub.includes("أكريليك") ||
-              sub.includes("لوحات");
-            const isMug =
-              title.includes("مج") ||
-              title.includes("كوب") ||
-              sub.includes("كوستر");
-
-            const highlights = isSticker
-              ? [
-                  {
-                    icon: ShieldCheck,
-                    colorClass: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-                    text: "فينيل لاصق مقاوم للماء والخدش والشمس",
-                  },
-                  {
-                    icon: Zap,
-                    colorClass: "bg-red-500/10 text-[#c93b41]",
-                    text: "طباعة ألوان Ultra HD بدقة 300 DPI",
-                  },
-                  {
-                    icon: Scissors,
-                    colorClass: "bg-amber-500/10 text-amber-500",
-                    text: "قص ليزر داي-كت فائق الدقة بالمللي",
-                  },
-                  {
-                    icon: CheckCircle2,
-                    colorClass: "bg-blue-500/10 text-blue-500",
-                    text: "سهولة فك وسلخ بدون أي أثر صمغي",
-                  },
-                ]
-              : isApparel
-              ? [
-                  {
-                    icon: CheckCircle2,
-                    colorClass: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-                    text: "قطن مصري طبيعي 100% معالج ضد الانكماش",
-                  },
-                  {
-                    icon: Zap,
-                    colorClass: "bg-red-500/10 text-[#c93b41]",
-                    text: "طباعة DTF أصلية متينة ومقاومة للغسيل",
-                  },
-                  {
-                    icon: Sparkles,
-                    colorClass: "bg-amber-500/10 text-amber-500",
-                    text: "خياطة مزدوجة معززة وقصة مريحة ممتازة",
-                  },
-                  {
-                    icon: Package,
-                    colorClass: "bg-blue-500/10 text-blue-500",
-                    text: "تغليف فردي معقم مع باركود المقاس المعتمد",
-                  },
-                ]
-              : isPackaging
-              ? [
-                  {
-                    icon: Package,
-                    colorClass: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-                    text: "كرتون صلب عالي المتانة ومقاوم لثني الشحن",
-                  },
-                  {
-                    icon: Zap,
-                    colorClass: "bg-red-500/10 text-[#c93b41]",
-                    text: "طباعة أوفست فوتوغرافية مع سيلوفان فاخر",
-                  },
-                  {
-                    icon: Sparkles,
-                    colorClass: "bg-amber-500/10 text-amber-500",
-                    text: "تصميم ذكي سريع الطي والتجميع بدون هدر",
-                  },
-                  {
-                    icon: ShieldCheck,
-                    colorClass: "bg-blue-500/10 text-blue-500",
-                    text: "شحن مفرود آمن ومحمي لتوفير مساحة التخزين",
-                  },
-                ]
-              : isOffice
-              ? [
-                  {
-                    icon: ShieldCheck,
-                    colorClass: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-                    text: "أكريليك كريستال نقي أو خشب طبيعي معالج",
-                  },
-                  {
-                    icon: Zap,
-                    colorClass: "bg-red-500/10 text-[#c93b41]",
-                    text: "قص وتفريغ 3D فائق الدقة وتشطيب ناعم",
-                  },
-                  {
-                    icon: Sparkles,
-                    colorClass: "bg-amber-500/10 text-amber-500",
-                    text: "ألوان ثابتة ومقاومة للبهتان والشمس والخدش",
-                  },
-                  {
-                    icon: Package,
-                    colorClass: "bg-blue-500/10 text-blue-500",
-                    text: "تغليف فوم هوائي عازل لحماية الحواف والزوايا",
-                  },
-                ]
-              : isMug
-              ? [
-                  {
-                    icon: CheckCircle2,
-                    colorClass: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-                    text: "بورسلين حراري فندقي ممتاز (330 مل)",
-                  },
-                  {
-                    icon: Zap,
-                    colorClass: "bg-red-500/10 text-[#c93b41]",
-                    text: "طباعة ألوان Ultra HD بدقة 300 DPI",
-                  },
-                  {
-                    icon: Flame,
-                    colorClass: "bg-amber-500/10 text-amber-500",
-                    text: "آمن داخل غسالة الأطباق والمايكروويف",
-                  },
-                  {
-                    icon: ShieldCheck,
-                    colorClass: "bg-blue-500/10 text-blue-500",
-                    text: "تغليف كرتوني مقوى عازل لحماية الشحن",
-                  },
-                ]
-              : [
-                  {
-                    icon: CheckCircle2,
-                    colorClass: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-                    text: "خامات تصنيع أصلية معتمدة بأعلى معايير الجودة",
-                  },
-                  {
-                    icon: Zap,
-                    colorClass: "bg-red-500/10 text-[#c93b41]",
-                    text: "طباعة ألوان Ultra HD بدقة 300 DPI",
-                  },
-                  {
-                    icon: ShieldCheck,
-                    colorClass: "bg-amber-500/10 text-amber-500",
-                    text: "فحص جودة يدوي دقيق لكل قطعة قبل التجهيز",
-                  },
-                  {
-                    icon: Package,
-                    colorClass: "bg-blue-500/10 text-blue-500",
-                    text: "تغليف وقائي معتمد لضمان سلامة الشحن والتسليم",
-                  },
-                ];
-
-            return highlights.map((h, i) => {
-              const IconComp = h.icon;
-              return (
-                <div
-                  key={i}
-                  className="p-3 rounded-2xl bg-slate-50 dark:bg-[#18191d] border border-slate-200/80 dark:border-white/[0.06] flex items-center gap-2.5"
-                >
-                  <div
-                    className={`w-7 h-7 rounded-xl flex items-center justify-center shrink-0 ${h.colorClass}`}
-                  >
-                    <IconComp className="w-4 h-4" />
-                  </div>
-                  <div className="text-[11px] font-bold text-slate-800 dark:text-slate-200 leading-tight">
-                    {h.text}
-                  </div>
-                </div>
-              );
-            });
-          })()}
-        </div>
+        <ProductHighlights
+          category={product.category}
+          subCategory={product.subCategory}
+          title={product.title}
+        />
 
         {/* 5. Quantity & Order / WhatsApp Action Box */}
         <ProductOrderActionBox

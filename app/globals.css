@@ -29,11 +29,11 @@
 }
 
 html {
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 body {
-  overflow-x: clip;
+  overflow-x: hidden;
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-lateef), -apple-system, BlinkMacSystemFont, sans-serif;
@@ -146,3 +146,15 @@ body {
 }
 
 
+
+
+/* Global Arabic Typography & Mobile GPU Safety Guard */
+:lang(ar),
+[dir="rtl"],
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] p {
+  letter-spacing: normal;
+}
