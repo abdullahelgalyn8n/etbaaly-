@@ -158,3 +158,9 @@ html[dir="rtl"] h4,
 html[dir="rtl"] p {
   letter-spacing: normal;
 }
+
+/* Fix Tailwind v4 3.40282e38px float overflow on rounded-full for older mobile GPUs */
+.rounded-full,
+[class*="rounded-full"] {
+  border-radius: 9999px !important;
+}

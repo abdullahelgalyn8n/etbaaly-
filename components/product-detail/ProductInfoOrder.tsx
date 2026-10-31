@@ -79,17 +79,17 @@ export default function ProductInfoOrder({
         <div className="space-y-3 border-b border-slate-100 dark:border-white/[0.06] pb-5">
           <div className="flex items-center justify-between flex-wrap gap-2">
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-50 dark:bg-red-950/40 text-[#c93b41] border border-red-200 dark:border-red-900/50">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-red-50 dark:bg-red-950/40 text-[#c93b41] border border-red-200 dark:border-red-900/50">
                 {product.category}
               </span>
-              <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
-                <CheckCircle2 className="w-3 h-3" />
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                <CheckCircle2 className="w-3 h-3 shrink-0" />
                 <span>متاح للتسليم السريع</span>
               </span>
             </div>
 
-            <div className="flex items-center gap-1.5 text-amber-500 font-bold text-xs bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+            <div className="inline-flex items-center gap-1.5 text-amber-500 font-bold text-xs bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 shrink-0" />
               <span>4.9</span>
               <span className="text-slate-500 dark:text-slate-400 font-normal">
                 ({reviewsCount * 48}+ تقييم معتمد)
@@ -111,7 +111,7 @@ export default function ProductInfoOrder({
             <div className="text-sm font-bold text-slate-400 line-through font-mono">
               {originalPrice} ج.م
             </div>
-            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20 shrink-0">
               وفر 20% لفترة محدودة
             </span>
           </div>
