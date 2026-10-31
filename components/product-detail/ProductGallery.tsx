@@ -34,31 +34,24 @@ export default function ProductGallery({
 
   // Human friendly perspective labels
   const perspectiveLabels = useMemo(() => {
-    if (imagesList.length === 5) {
-      return [
-        "مخطط الشكل والقص (Cutout)",
-        "الموك اب الأساسي (Cover)",
-        "نموذج واقعي 1 (Example 1)",
-        "نموذج واقعي 2 (Example 2)",
-        "نموذج واقعي 3 (Example 3)",
-      ];
-    }
-    if (imagesList.length === 4) {
-      return [
-        "مخطط الشكل والقص",
-        "الموك اب الأساسي",
-        "نموذج واقعي 1",
-        "نموذج واقعي 2",
-      ];
-    }
-    if (imagesList.length === 3) {
-      return [
-        "المنظور 1 - الواجهة الأمامية (Front View)",
-        "المنظور 2 - الزاوية العلوية 3/4 (Elevated Angle)",
-        "المنظور 3 - المقبض والجانب (Side View)",
-      ];
-    }
-    return imagesList.map((_, i) => (i === 0 ? "الشكل والقص" : i === 1 ? "الموك اب" : `نموذج واقعي ${i - 1}`));
+    return imagesList.map((url, idx) => {
+      const lower = (url || "").toLowerCase();
+      if (lower.includes("index") || lower.includes("cutout")) return "مخطط الشكل والقص (Cutout)";
+      if (lower.includes("cover")) return "الموك اب الأساسي (Cover)";
+      if (lower.includes("gallery_1") || lower.includes("gallery-1")) return "نموذج واقعي 1 (Example 1)";
+      if (lower.includes("gallery_2") || lower.includes("gallery-2")) return "نموذج واقعي 2 (Example 2)";
+      if (lower.includes("gallery_3") || lower.includes("gallery-3")) return "نموذج واقعي 3 (Example 3)";
+      if (lower.includes("gallery_4") || lower.includes("gallery-4")) return "نموذج واقعي 4 (Example 4)";
+
+      if (imagesList.length === 3) {
+        return idx === 0
+          ? "المنظور 1 - الواجهة الأمامية (Front View)"
+          : idx === 1
+          ? "المنظور 2 - الزاوية العلوية 3/4 (Elevated Angle)"
+          : "المنظور 3 - المقبض والجانب (Side View)";
+      }
+      return idx === 0 ? "الشكل والقص" : `نموذج واقعي ${idx}`;
+    });
   }, [imagesList]);
 
   return (

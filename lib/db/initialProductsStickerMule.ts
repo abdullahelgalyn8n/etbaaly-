@@ -198,7 +198,6 @@ export const initialProductsStickerMule: AdminProduct[] = [
         "priceAdd": 0,
         "images": [
           "/images/stickermule/03_Gepersonaliseerde_kleding/Products/04_custom-t-shirts_t-shirts-bedrukken/01_index_custom-t-shirts.webp",
-          "/images/stickermule/03_Gepersonaliseerde_kleding/Products/04_custom-t-shirts_t-shirts-bedrukken/02_cover_custom-t-shirts.png",
           "/images/stickermule/03_Gepersonaliseerde_kleding/Products/04_custom-t-shirts_t-shirts-bedrukken/06_gallery_1_custom-t-shirts-01.jpg",
           "/images/stickermule/03_Gepersonaliseerde_kleding/Products/04_custom-t-shirts_t-shirts-bedrukken/07_gallery_2_custom-t-shirts-02.jpg",
           "/images/stickermule/03_Gepersonaliseerde_kleding/Products/04_custom-t-shirts_t-shirts-bedrukken/08_gallery_3_custom-t-shirts-03.jpg"
