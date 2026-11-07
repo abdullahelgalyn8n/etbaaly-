@@ -29,6 +29,8 @@ export const oauthConfig = {
   code_challenge_methods_supported: ["S256"],
   service_documentation: "https://etbaaly.azagency.online/llms.txt",
   ui_locales_supported: ["ar", "en"],
+  poppy_domains: ["etbaaly.azagency.online"],
+  protected_resources: ["https://etbaaly.azagency.online"],
   agent_auth: {
     skill: "https://etbaaly.azagency.online/auth.md",
     register_uri: "https://etbaaly.azagency.online/register",

@@ -4,6 +4,8 @@ import path from "node:path";
 const workerPath = path.resolve(".open-next/worker.js");
 const authMdPath = path.resolve("public/auth.md");
 const authMdContent = fs.existsSync(authMdPath) ? fs.readFileSync(authMdPath, "utf-8") : "# auth.md\n";
+const poppyPath = path.resolve("public/.well-known/poppy.json");
+const poppyContent = fs.existsSync(poppyPath) ? fs.readFileSync(poppyPath, "utf-8") : "{}";
 
 if (!fs.existsSync(workerPath)) {
   console.log("No .open-next/worker.js found to patch. Skipping.");
@@ -73,7 +75,17 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                         "Content-Type": "text/markdown; charset=utf-8",
                         "Access-Control-Allow-Origin": "*",
                         "Cache-Control": "public, max-age=3600, s-maxage=86400",
-                        "Link": '</.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc"',
+                        "Link": '</.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc", </.well-known/poppy.json>; rel="service-desc"',
+                    },
+                });
+            }
+            if (pathname === "/.well-known/poppy.json" || pathname === "/.well-known/poppy.json/" || pathname === "/.well-known/poppy" || pathname === "/.well-known/poppy/") {
+                return new Response(${JSON.stringify(poppyContent)}, {
+                    status: 200,
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Access-Control-Allow-Origin": "*",
+                        "Cache-Control": "public, max-age=3600, s-maxage=86400",
                     },
                 });
             }
@@ -117,7 +129,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                         hitHeaders.set("CF-Worker-Cache", "HIT");
                         hitHeaders.set("X-Cache-Status", "HIT");
                         if ((pathname === "/" || pathname === "") && !hitHeaders.has("Link")) {
-                            hitHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc"');
+                            hitHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc", </.well-known/poppy.json>; rel="service-desc"');
                         }
                         return new Response(match.body, {
                             status: match.status,
@@ -161,7 +173,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                     mdHeaders.set("Vary", "Accept, Accept-Encoding");
                     mdHeaders.set("x-markdown-tokens", String(tokens));
                     mdHeaders.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
-                    mdHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc"');
+                    mdHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc", </.well-known/poppy.json>; rel="service-desc"');
                     mdHeaders.delete("Content-Encoding");
                     mdHeaders.delete("Content-Length");
                     mdHeaders.delete("ETag");
@@ -232,7 +244,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
 
             if ((pathname === "/" || pathname === "") && !serverResponse.headers.has("Link")) {
                 const finalHeaders = new Headers(serverResponse.headers);
-                finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc"');
+                finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc", </.well-known/poppy.json>; rel="service-desc"');
                 finalHeaders.set("Vary", "Accept, Accept-Encoding");
                 return new Response(serverResponse.body, {
                     status: serverResponse.status,

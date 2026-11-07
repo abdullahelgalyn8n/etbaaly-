@@ -1,0 +1,28 @@
+{
+  "protocol_version": "0.1",
+  "organization": {
+    "name": "إطبعلي | Etbaaly",
+    "domain": "etbaaly.azagency.online",
+    "logo_uri": "https://etbaaly.azagency.online/favicon.svg"
+  },
+  "auth": {
+    "issuer": "https://etbaaly.azagency.online",
+    "scopes": {
+      "api:read": "View products, order tracking status, and public catalog",
+      "api:write": "Create quote requests, custom specifications, and orders"
+    }
+  },
+  "apis": [
+    {
+      "type": "openapi",
+      "url": "https://etbaaly.azagency.online/openapi.json",
+      "description": "Etbaaly custom printing, packaging manufacturing, quotes, orders, and logistics API"
+    },
+    {
+      "type": "mcp",
+      "url": "https://etbaaly.azagency.online/api/mcp",
+      "description": "Etbaaly Model Context Protocol server for printing and packaging services"
+    }
+  ],
+  "web": {}
+}

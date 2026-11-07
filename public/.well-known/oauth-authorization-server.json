@@ -45,6 +45,12 @@
     "ar",
     "en"
   ],
+  "poppy_domains": [
+    "etbaaly.azagency.online"
+  ],
+  "protected_resources": [
+    "https://etbaaly.azagency.online"
+  ],
   "agent_auth": {
     "skill": "https://etbaaly.azagency.online/auth.md",
     "register_uri": "https://etbaaly.azagency.online/register",

@@ -39,6 +39,12 @@
   "code_challenge_methods_supported": [
     "S256"
   ],
+  "poppy_domains": [
+    "etbaaly.azagency.online"
+  ],
+  "protected_resources": [
+    "https://etbaaly.azagency.online"
+  ],
   "subject_types_supported": [
     "public"
   ],

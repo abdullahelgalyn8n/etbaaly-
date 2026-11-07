@@ -173,6 +173,27 @@ const apiCatalog = {
         },
       ],
     },
+    {
+      anchor: "https://etbaaly.azagency.online/.well-known/poppy.json",
+      "service-desc": [
+        {
+          href: "https://etbaaly.azagency.online/.well-known/poppy.json",
+          type: "application/json",
+        },
+      ],
+      "service-doc": [
+        {
+          href: "https://personalagentprotocol.org/docs/spec",
+          type: "text/html",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
+    },
   ],
 };
 
