@@ -1,0 +1,36 @@
+{
+  "x402Version": 2,
+  "name": "إطبعلي | Etbaaly Agent Payment Gateway",
+  "description": "Agent-native HTTP micropayments for Etbaaly printing and packaging manufacturing APIs",
+  "facilitator": "https://api.cdp.coinbase.com/platform/v2/x402",
+  "payTo": "0x0113c23eF5d3269F39b03F80905e32B945398d5a",
+  "networks": [
+    "eip155:8453"
+  ],
+  "tokens": [
+    {
+      "symbol": "USDC",
+      "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "network": "eip155:8453",
+      "decimals": 6
+    }
+  ],
+  "resources": [
+    {
+      "url": "https://etbaaly.azagency.online/api",
+      "price": "$0.01",
+      "scheme": "exact",
+      "network": "eip155:8453",
+      "token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "payTo": "0x0113c23eF5d3269F39b03F80905e32B945398d5a"
+    },
+    {
+      "url": "https://etbaaly.azagency.online/api/v1",
+      "price": "$0.01",
+      "scheme": "exact",
+      "network": "eip155:8453",
+      "token": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "payTo": "0x0113c23eF5d3269F39b03F80905e32B945398d5a"
+    }
+  ]
+}

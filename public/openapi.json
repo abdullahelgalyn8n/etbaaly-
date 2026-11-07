@@ -20,7 +20,104 @@
       "description": "Production Server"
     }
   ],
+  "x-service-info": {
+    "name": "Etbaaly Agent Commerce",
+    "description": "Commercial printing and packaging manufacturing agent API",
+    "categories": ["e-commerce", "printing", "manufacturing", "business"]
+  },
   "paths": {
+    "/api/v1": {
+      "get": {
+        "summary": "Agent Gateway v1",
+        "description": "Agent-native commercial gateway protected by x402 and MPP micropayment protocols.",
+        "operationId": "getAgentGatewayV1",
+        "responses": {
+          "200": {
+            "description": "Payment successful - access granted to commercial API."
+          },
+          "402": {
+            "description": "Payment Required via x402 or MPP protocol."
+          }
+        },
+        "x-payment-info": {
+          "intent": "charge",
+          "method": "tempo",
+          "amount": "0.01",
+          "currency": "USD",
+          "description": "Agent micro-charge for commercial print & packaging API gateway access",
+          "offers": [
+            {
+              "intent": "charge",
+              "method": "tempo",
+              "amount": "0.01",
+              "currency": "USD"
+            },
+            {
+              "intent": "charge",
+              "method": "stripe",
+              "amount": "0.01",
+              "currency": "USD"
+            },
+            {
+              "intent": "charge",
+              "method": "x402:exact",
+              "scheme": "exact",
+              "network": "eip155:8453",
+              "amount": "0.01",
+              "currency": "USDC",
+              "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+              "recipient": "0x0113c23eF5d3269F39b03F80905e32B945398d5a"
+            }
+          ]
+        }
+      }
+    },
+    "/api": {
+      "get": {
+        "summary": "Agent Gateway Root",
+        "description": "Agent-native commercial gateway protected by x402 and MPP micropayment protocols.",
+        "operationId": "getAgentGatewayRoot",
+        "responses": {
+          "200": {
+            "description": "Payment successful - access granted to commercial API."
+          },
+          "402": {
+            "description": "Payment Required via x402 or MPP protocol."
+          }
+        },
+        "x-payment-info": {
+          "intent": "charge",
+          "method": "tempo",
+          "amount": "0.01",
+          "currency": "USD",
+          "description": "Agent micro-charge for commercial print & packaging API gateway access",
+          "offers": [
+            {
+              "intent": "charge",
+              "method": "tempo",
+              "amount": "0.01",
+              "currency": "USD"
+            },
+            {
+              "intent": "charge",
+              "method": "stripe",
+              "amount": "0.01",
+              "currency": "USD"
+            },
+            {
+              "intent": "charge",
+              "method": "x402:exact",
+              "scheme": "exact",
+              "network": "eip155:8453",
+              "amount": "0.01",
+              "currency": "USDC",
+              "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+              "recipient": "0x0113c23eF5d3269F39b03F80905e32B945398d5a"
+            }
+          ]
+        }
+      }
+    },
     "/api/products": {
       "get": {
         "summary": "List products",
@@ -353,6 +450,29 @@
             "description": "Invalid OAuth 2.0 request or unsupported grant type."
           }
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "description": "OAuth 2.0 / OIDC authentication for agents",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://etbaaly.azagency.online/api/auth/token",
+            "scopes": {
+              "api:read": "Read access to public catalog, quotes, and tracking",
+              "api:write": "Create quotes and place orders"
+            }
+          }
+        }
+      },
+      "paymentAuth": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "Payment authorization header for MPP (Machine Payment Protocol) and x402 micropayments"
       }
     }
   }

@@ -6,6 +6,8 @@ const authMdPath = path.resolve("public/auth.md");
 const authMdContent = fs.existsSync(authMdPath) ? fs.readFileSync(authMdPath, "utf-8") : "# auth.md\n";
 const poppyPath = path.resolve("public/.well-known/poppy.json");
 const poppyContent = fs.existsSync(poppyPath) ? fs.readFileSync(poppyPath, "utf-8") : "{}";
+const x402Path = path.resolve("public/.well-known/x402.json");
+const x402Content = fs.existsSync(x402Path) ? fs.readFileSync(x402Path, "utf-8") : "{}";
 
 if (!fs.existsSync(workerPath)) {
   console.log("No .open-next/worker.js found to patch. Skipping.");
@@ -88,6 +90,61 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                         "Cache-Control": "public, max-age=3600, s-maxage=86400",
                     },
                 });
+            }
+            if (pathname === "/.well-known/x402.json" || pathname === "/.well-known/x402.json/" || pathname === "/.well-known/x402" || pathname === "/.well-known/x402/") {
+                return new Response(${JSON.stringify(x402Content)}, {
+                    status: 200,
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Access-Control-Allow-Origin": "*",
+                        "Cache-Control": "public, max-age=3600, s-maxage=86400",
+                    },
+                });
+            }
+            if (pathname === "/api" || pathname === "/api/" || pathname === "/api/v1" || pathname === "/api/v1/") {
+                const paymentSig = request.headers.get("payment-signature") || request.headers.get("PAYMENT-SIGNATURE") || request.headers.get("x-payment-signature");
+                if (!paymentSig) {
+                    const x402Payload = {
+                        x402Version: 2,
+                        error: "PAYMENT-SIGNATURE header is required",
+                        resource: {
+                            url: "https://etbaaly.azagency.online" + pathname,
+                            description: "Etbaaly AI agent commercial printing and packaging manufacturing API gateway",
+                            mimeType: "application/json"
+                        },
+                        accepts: [
+                            {
+                                scheme: "exact",
+                                network: "eip155:8453",
+                                amount: "10000",
+                                asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                                payTo: "0x0113c23eF5d3269F39b03F80905e32B945398d5a",
+                                maxTimeoutSeconds: 60,
+                                price: "$0.01",
+                                maxAmountRequired: "10000",
+                                resource: "https://etbaaly.azagency.online" + pathname,
+                                description: "Etbaaly AI agent commercial printing and packaging manufacturing API gateway",
+                                token: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                                facilitator: "https://api.cdp.coinbase.com/platform/v2/x402"
+                            }
+                        ]
+                    };
+                    const base64Payload = btoa(JSON.stringify(x402Payload));
+                    return new Response(JSON.stringify(x402Payload, null, 2), {
+                        status: 402,
+                        statusText: "Payment Required",
+                        headers: {
+                            "Content-Type": "application/json; charset=utf-8",
+                            "Access-Control-Allow-Origin": "*",
+                            "Access-Control-Allow-Methods": "GET, POST, OPTIONS, HEAD",
+                            "Access-Control-Allow-Headers": "Content-Type, Authorization, payment-signature, PAYMENT-SIGNATURE, x-payment-signature",
+                            "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, payment-required, WWW-Authenticate, PAYMENT-RESPONSE",
+                            "PAYMENT-REQUIRED": base64Payload,
+                            "WWW-Authenticate": "x402",
+                            "Cache-Control": "no-store",
+                        }
+                    });
+                }
             }
             const isBypassed =
                 pathname.startsWith("/admin") ||

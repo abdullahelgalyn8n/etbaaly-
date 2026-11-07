@@ -194,6 +194,27 @@ const apiCatalog = {
         },
       ],
     },
+    {
+      anchor: "https://etbaaly.azagency.online/api",
+      "service-desc": [
+        {
+          href: "https://etbaaly.azagency.online/openapi.json",
+          type: "application/json",
+        },
+      ],
+      "service-doc": [
+        {
+          href: "https://docs.x402.org",
+          type: "text/html",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
+    },
   ],
 };
 
