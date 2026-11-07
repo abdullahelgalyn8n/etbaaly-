@@ -8,6 +8,14 @@ if (!fs.existsSync(workerPath)) {
   process.exit(0);
 }
 
+// Copy markdown converter to .open-next/markdown.mjs
+const markdownConverterSource = path.resolve("scripts/markdown-converter.mjs");
+const markdownConverterDest = path.resolve(".open-next/markdown.mjs");
+if (fs.existsSync(markdownConverterSource)) {
+  fs.copyFileSync(markdownConverterSource, markdownConverterDest);
+  console.log("Successfully copied scripts/markdown-converter.mjs to .open-next/markdown.mjs!");
+}
+
 function dedupeNextEnv() {
   const nextEnvPath = path.resolve(".open-next/cloudflare/next-env.mjs");
   if (fs.existsSync(nextEnvPath)) {
@@ -70,6 +78,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 : null;
 
             const isRsc = request.headers.get("rsc") === "1" || url.searchParams.has("_rsc");
+            const isMarkdown = (request.headers.get("accept") || "").includes("text/markdown");
 
             const BUILD_ID = "${buildId}";
             const cacheKeyUrl = new URL(request.url);
@@ -79,6 +88,11 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 cacheKeyUrl.searchParams.set("__cf_rsc", "1");
             } else {
                 cacheKeyUrl.searchParams.delete("__cf_rsc");
+            }
+            if (isMarkdown) {
+                cacheKeyUrl.searchParams.set("__cf_md", "1");
+            } else {
+                cacheKeyUrl.searchParams.delete("__cf_md");
             }
             const cacheKey = new Request(cacheKeyUrl.toString(), { method: "GET" });
 
@@ -121,13 +135,64 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
             const { handler } = await import("./server-functions/default/handler.mjs");
             const serverResponse = await handler(effectiveReq, env, ctx, request.signal);
 
+            if (isMarkdown && serverResponse && serverResponse.ok && (serverResponse.headers.get("content-type") || "").includes("text/html")) {
+                try {
+                    // @ts-expect-error: resolved by wrangler build
+                    const { htmlToMarkdown } = await import("./markdown.mjs");
+                    const html = await serverResponse.text();
+                    const markdown = htmlToMarkdown(html);
+                    const tokens = Math.ceil(markdown.length / 4);
+
+                    const mdHeaders = new Headers(serverResponse.headers);
+                    mdHeaders.set("Content-Type", "text/markdown; charset=utf-8");
+                    mdHeaders.set("Vary", "Accept, Accept-Encoding");
+                    mdHeaders.set("x-markdown-tokens", String(tokens));
+                    mdHeaders.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
+                    mdHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"');
+                    mdHeaders.delete("Content-Encoding");
+                    mdHeaders.delete("Content-Length");
+                    mdHeaders.delete("ETag");
+
+                    const isApi = pathname.startsWith("/api/");
+                    const browserMaxAge = isApi ? 60 : 3600;
+                    const edgeMaxAge = isApi ? 600 : 86400;
+                    mdHeaders.set("Cache-Control", \`public, max-age=\${browserMaxAge}, s-maxage=\${edgeMaxAge}, must-revalidate\`);
+                    mdHeaders.set("Cloudflare-CDN-Cache-Control", \`max-age=\${edgeMaxAge}\`);
+                    mdHeaders.set("CF-Worker-Cache", "HIT");
+                    mdHeaders.set("X-Cache-Status", "HIT");
+
+                    const mdResponse = new Response(markdown, {
+                        status: serverResponse.status,
+                        statusText: serverResponse.statusText,
+                        headers: mdHeaders,
+                    });
+
+                    if (cache) {
+                        try {
+                            const toCache = mdResponse.clone();
+                            if (ctx && typeof ctx.waitUntil === "function") {
+                                ctx.waitUntil(cache.put(cacheKey, toCache));
+                            } else {
+                                await cache.put(cacheKey, toCache);
+                            }
+                        } catch {
+                            // Ignore cache put errors
+                        }
+                    }
+
+                    return mdResponse;
+                } catch {
+                    // Ignore conversion error and fall back to normal response
+                }
+            }
+
             if (cache && serverResponse && serverResponse.ok && serverResponse.status === 200) {
                 try {
                     const cloned = serverResponse.clone();
                     const cacheHeaders = new Headers(cloned.headers);
                     // Cloudflare Cache API: remove Vary so cache.match(cacheKey) matches reliably
                     cacheHeaders.delete("Vary");
-                    cacheHeaders.set("Vary", "Accept-Encoding");
+                    cacheHeaders.set("Vary", "Accept, Accept-Encoding");
 
                     const isApi = pathname.startsWith("/api/");
                     const browserMaxAge = isApi ? 60 : (isRsc ? 300 : 3600);
@@ -155,6 +220,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
             if ((pathname === "/" || pathname === "") && !serverResponse.headers.has("Link")) {
                 const finalHeaders = new Headers(serverResponse.headers);
                 finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"');
+                finalHeaders.set("Vary", "Accept, Accept-Encoding");
                 return new Response(serverResponse.body, {
                     status: serverResponse.status,
                     statusText: serverResponse.statusText,
@@ -171,7 +237,7 @@ if (!content.includes(targetStr)) {
 
 content = content.replace(targetStr, replacement);
 fs.writeFileSync(workerPath, content, "utf-8");
-console.log("Successfully patched .open-next/worker.js with Cloudflare Edge Cache!");
+console.log("Successfully patched .open-next/worker.js with Cloudflare Edge Cache and Markdown for Agents!");
 
 // Fix duplicate exports in .open-next/cloudflare/next-env.mjs if generated by OpenNext
 const nextEnvPath = path.resolve(".open-next/cloudflare/next-env.mjs");
