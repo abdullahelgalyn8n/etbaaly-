@@ -61,7 +61,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Link",
-            value: '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"',
+            value: '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server"',
           },
         ],
       },
@@ -203,6 +203,40 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/.well-known/oauth-authorization-server",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/json; charset=utf-8",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
+        source: "/.well-known/openid-configuration",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/json; charset=utf-8",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
         source: "/.well-known/api-catalog",
         headers: [
           {
@@ -253,7 +287,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Link",
-            value: '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"',
+            value: '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server"',
           },
         ],
       },

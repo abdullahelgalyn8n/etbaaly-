@@ -131,6 +131,27 @@ const apiCatalog = {
         },
       ],
     },
+    {
+      anchor: "https://etbaaly.azagency.online/api/auth/token",
+      "service-desc": [
+        {
+          href: "https://etbaaly.azagency.online/openapi.json",
+          type: "application/json",
+        },
+      ],
+      "service-doc": [
+        {
+          href: "https://etbaaly.azagency.online/.well-known/oauth-authorization-server",
+          type: "application/json",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
+    },
   ],
 };
 

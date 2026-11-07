@@ -104,7 +104,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                         hitHeaders.set("CF-Worker-Cache", "HIT");
                         hitHeaders.set("X-Cache-Status", "HIT");
                         if ((pathname === "/" || pathname === "") && !hitHeaders.has("Link")) {
-                            hitHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"');
+                            hitHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server"');
                         }
                         return new Response(match.body, {
                             status: match.status,
@@ -148,7 +148,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                     mdHeaders.set("Vary", "Accept, Accept-Encoding");
                     mdHeaders.set("x-markdown-tokens", String(tokens));
                     mdHeaders.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
-                    mdHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"');
+                    mdHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server"');
                     mdHeaders.delete("Content-Encoding");
                     mdHeaders.delete("Content-Length");
                     mdHeaders.delete("ETag");
@@ -219,7 +219,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
 
             if ((pathname === "/" || pathname === "") && !serverResponse.headers.has("Link")) {
                 const finalHeaders = new Headers(serverResponse.headers);
-                finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"');
+                finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server"');
                 finalHeaders.set("Vary", "Accept, Accept-Encoding");
                 return new Response(serverResponse.body, {
                     status: serverResponse.status,

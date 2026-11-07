@@ -295,6 +295,65 @@
           }
         }
       }
+    },
+    "/api/auth/token": {
+      "post": {
+        "summary": "OAuth 2.0 Token Endpoint",
+        "description": "Issues access tokens for authorized agents or clients using standard grant types (client_credentials, authorization_code, refresh_token).",
+        "operationId": "oauthToken",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": ["grant_type"],
+                "properties": {
+                  "grant_type": { "type": "string", "enum": ["client_credentials", "authorization_code", "refresh_token"] },
+                  "client_id": { "type": "string" },
+                  "client_secret": { "type": "string" },
+                  "code": { "type": "string" },
+                  "scope": { "type": "string", "default": "api:read" }
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["grant_type"],
+                "properties": {
+                  "grant_type": { "type": "string", "enum": ["client_credentials", "authorization_code", "refresh_token"] },
+                  "client_id": { "type": "string" },
+                  "client_secret": { "type": "string" },
+                  "code": { "type": "string" },
+                  "scope": { "type": "string", "default": "api:read" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token issued successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": { "type": "string" },
+                    "token_type": { "type": "string", "example": "Bearer" },
+                    "expires_in": { "type": "integer", "example": 3600 },
+                    "scope": { "type": "string", "example": "api:read" }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid OAuth 2.0 request or unsupported grant type."
+          }
+        }
+      }
     }
   }
 }
