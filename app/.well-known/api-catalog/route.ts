@@ -19,6 +19,12 @@ const apiCatalog = {
           type: "text/plain",
         },
       ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
     },
     {
       anchor: "https://etbaaly.azagency.online/api/posts",
@@ -32,6 +38,12 @@ const apiCatalog = {
         {
           href: "https://etbaaly.azagency.online/llms.txt",
           type: "text/plain",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
         },
       ],
     },
@@ -49,6 +61,12 @@ const apiCatalog = {
           type: "text/html",
         },
       ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
     },
     {
       anchor: "https://etbaaly.azagency.online/api/quotes",
@@ -64,6 +82,12 @@ const apiCatalog = {
           type: "text/plain",
         },
       ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
     },
     {
       anchor: "https://etbaaly.azagency.online/api/shipping",
@@ -77,6 +101,33 @@ const apiCatalog = {
         {
           href: "https://etbaaly.azagency.online/llms.txt",
           type: "text/plain",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
+    },
+    {
+      anchor: "https://etbaaly.azagency.online/api/health",
+      "service-desc": [
+        {
+          href: "https://etbaaly.azagency.online/openapi.json",
+          type: "application/json",
+        },
+      ],
+      "service-doc": [
+        {
+          href: "https://etbaaly.azagency.online/llms.txt",
+          type: "text/plain",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
         },
       ],
     },

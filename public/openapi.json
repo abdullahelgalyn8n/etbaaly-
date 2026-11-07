@@ -270,6 +270,31 @@
           }
         }
       }
+    },
+    "/api/health": {
+      "get": {
+        "summary": "API health and status check",
+        "description": "Returns operational status, uptime, and service health per RFC 8631 / RFC 9727 status relation.",
+        "operationId": "getHealth",
+        "responses": {
+          "200": {
+            "description": "Service is healthy and fully operational.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "pass" },
+                    "healthy": { "type": "boolean", "example": true },
+                    "service": { "type": "string", "example": "etbaaly-api" },
+                    "timestamp": { "type": "string", "format": "date-time" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
