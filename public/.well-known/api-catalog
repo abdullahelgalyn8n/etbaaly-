@@ -1,0 +1,79 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://etbaaly.azagency.online/api/products",
+      "service-desc": [
+        {
+          "href": "https://etbaaly.azagency.online/openapi.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://etbaaly.azagency.online/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "anchor": "https://etbaaly.azagency.online/api/posts",
+      "service-desc": [
+        {
+          "href": "https://etbaaly.azagency.online/openapi.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://etbaaly.azagency.online/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "anchor": "https://etbaaly.azagency.online/api/orders/track",
+      "service-desc": [
+        {
+          "href": "https://etbaaly.azagency.online/openapi.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://etbaaly.azagency.online/track",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://etbaaly.azagency.online/api/quotes",
+      "service-desc": [
+        {
+          "href": "https://etbaaly.azagency.online/openapi.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://etbaaly.azagency.online/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "anchor": "https://etbaaly.azagency.online/api/shipping",
+      "service-desc": [
+        {
+          "href": "https://etbaaly.azagency.online/openapi.json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://etbaaly.azagency.online/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    }
+  ]
+}

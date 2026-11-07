@@ -59,6 +59,10 @@ const nextConfig: NextConfig = {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
           },
+          {
+            key: "Link",
+            value: '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"',
+          },
         ],
       },
       {
@@ -199,6 +203,40 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/.well-known/api-catalog",
+        headers: [
+          {
+            key: "Content-Type",
+            value: 'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"',
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
+        source: "/openapi.json",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/json; charset=utf-8",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
         source: "/",
         headers: [
           {
@@ -212,6 +250,10 @@ const nextConfig: NextConfig = {
           {
             key: "Cloudflare-CDN-Cache-Control",
             value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+          {
+            key: "Link",
+            value: '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"',
           },
         ],
       },

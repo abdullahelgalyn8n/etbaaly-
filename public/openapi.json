@@ -1,0 +1,275 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "إطبعلي | Etbaaly Printing & Packaging API",
+    "version": "1.0.0",
+    "description": "Public API for Etbaaly (إطبعلي), powered by A.Z Agency. Provides machine-readable access to products, blog articles, order tracking, quotes, and shipping rates for custom printing, packaging manufacturing, and print-on-demand services in Egypt and the MENA region.",
+    "contact": {
+      "name": "Etbaaly Support",
+      "url": "https://etbaaly.azagency.online/contact",
+      "email": "print@azagency.online"
+    },
+    "license": {
+      "name": "Proprietary",
+      "url": "https://etbaaly.azagency.online/terms"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://etbaaly.azagency.online",
+      "description": "Production Server"
+    }
+  ],
+  "paths": {
+    "/api/products": {
+      "get": {
+        "summary": "List products",
+        "description": "Retrieve the catalog of custom printing products, packaging boxes, stickers, apparel, and promotional items.",
+        "operationId": "getProducts",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "Filter products by category slug (e.g. stickers, packaging-boxes, apparel, corporate-stationery, or all).",
+            "schema": {
+              "type": "string",
+              "default": "all"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved products catalog.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "count": { "type": "integer" },
+                    "products": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "name": { "type": "string" },
+                          "slug": { "type": "string" },
+                          "category": { "type": "string" },
+                          "price": { "type": "number" },
+                          "description": { "type": "string" },
+                          "imageUrl": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/api/posts": {
+      "get": {
+        "summary": "List blog posts and printing guides",
+        "description": "Retrieve articles, printing technical guides, and packaging advice with optional category, search, and pagination parameters.",
+        "operationId": "getPosts",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "description": "Lookup a single post by its URL slug.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "Filter posts by category.",
+            "schema": { "type": "string", "default": "all" }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "description": "Search keyword matching title, excerpt, or content.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "Page number for pagination.",
+            "schema": { "type": "integer", "default": 1 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Number of articles per page.",
+            "schema": { "type": "integer", "default": 10 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of articles or single article details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "posts": { "type": "array" },
+                    "pagination": { "type": "object" },
+                    "stats": { "type": "object" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Article not found when requested by slug."
+          }
+        }
+      }
+    },
+    "/api/orders/track": {
+      "get": {
+        "summary": "Track print order status",
+        "description": "Get real-time tracking information, production milestone progress, and shipping updates for an order.",
+        "operationId": "trackOrder",
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "query",
+            "required": true,
+            "description": "The unique order number (e.g. ETB-12345).",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "required": false,
+            "description": "Customer phone number verification.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order tracking details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "order": { "type": "object" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Order not found."
+          }
+        }
+      }
+    },
+    "/api/shipping": {
+      "post": {
+        "summary": "Calculate shipping rates",
+        "description": "Compute shipping cost and estimated delivery time across Egypt's 27 governorates.",
+        "operationId": "calculateShipping",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["governorate"],
+                "properties": {
+                  "governorate": {
+                    "type": "string",
+                    "description": "Name of the Egyptian governorate (in Arabic or English, e.g. Cairo, Giza, Alexandria)."
+                  },
+                  "subtotal": {
+                    "type": "number",
+                    "description": "Cart subtotal to check for free shipping eligibility."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Shipping rate calculation result.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "cost": { "type": "number" },
+                    "estimatedDays": { "type": "string" },
+                    "freeShipping": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/quotes": {
+      "post": {
+        "summary": "Request custom printing quote",
+        "description": "Submit a request for quote for custom packaging boxes, offset printing runs, or bespoke corporate merchandise.",
+        "operationId": "submitQuote",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "phone", "serviceType"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "phone": { "type": "string" },
+                  "email": { "type": "string" },
+                  "company": { "type": "string" },
+                  "serviceType": { "type": "string" },
+                  "quantity": { "type": "integer" },
+                  "specifications": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Quote request received successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "quoteId": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

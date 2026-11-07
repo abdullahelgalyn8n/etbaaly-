@@ -131,6 +131,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="api-catalog" href="/.well-known/api-catalog" />
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
+        <link rel="service-desc" href="/openapi.json" type="application/json" />
         <OrganizationSchema />
         <noscript>
           <img

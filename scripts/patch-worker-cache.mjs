@@ -89,6 +89,9 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                         const hitHeaders = new Headers(match.headers);
                         hitHeaders.set("CF-Worker-Cache", "HIT");
                         hitHeaders.set("X-Cache-Status", "HIT");
+                        if ((pathname === "/" || pathname === "") && !hitHeaders.has("Link")) {
+                            hitHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"');
+                        }
                         return new Response(match.body, {
                             status: match.status,
                             statusText: match.statusText,
@@ -147,6 +150,16 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 } catch {
                     // Ignore cache put errors
                 }
+            }
+
+            if ((pathname === "/" || pathname === "") && !serverResponse.headers.has("Link")) {
+                const finalHeaders = new Headers(serverResponse.headers);
+                finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc"');
+                return new Response(serverResponse.body, {
+                    status: serverResponse.status,
+                    statusText: serverResponse.statusText,
+                    headers: finalHeaders,
+                });
             }
 
             return serverResponse;`;
