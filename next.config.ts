@@ -203,6 +203,32 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/.well-known/agent-skills/:path*",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
+        source: "/.well-known/skills/:path*",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
         source: "/.well-known/mcp/server-card.json",
         headers: [
           {

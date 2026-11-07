@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "print-order-tracking",
+      "type": "skill-md",
+      "description": "Real-time tracking of custom printing runs, packaging box manufacturing, and domestic courier delivery across Egypt.",
+      "url": "https://etbaaly.azagency.online/.well-known/agent-skills/print-order-tracking/SKILL.md",
+      "digest": "sha256:f9e990f550eab040cfe058a3e2c7d3b215cb778326d4559c775bc041ba03b01a"
+    },
+    {
+      "name": "packaging-quote-calculator",
+      "type": "skill-md",
+      "description": "Request manufacturing estimates and submit custom packaging specifications (rigid boxes, corrugated cartons, duplex boxes, paper bags).",
+      "url": "https://etbaaly.azagency.online/.well-known/agent-skills/packaging-quote-calculator/SKILL.md",
+      "digest": "sha256:72270f2188583026c9d431fa3cc0a8e66f6ebae41e8903c89e190dcb7c48b307"
+    },
+    {
+      "name": "product-catalog-discovery",
+      "type": "skill-md",
+      "description": "Browse and inspect custom printing products, packaging categories, corporate gifts, and apparel.",
+      "url": "https://etbaaly.azagency.online/.well-known/agent-skills/product-catalog-discovery/SKILL.md",
+      "digest": "sha256:ade15cb053c9da7e848fcd9a8d3765a0ae1588b380ccda9d316e64847461318d"
+    }
+  ]
+}
