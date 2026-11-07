@@ -18,6 +18,7 @@ export const oauthConfig = {
     "authorization_code",
     "client_credentials",
     "refresh_token",
+    "urn:ietf:params:oauth:grant-type:jwt-bearer",
   ],
   token_endpoint_auth_methods_supported: [
     "client_secret_basic",
@@ -28,6 +29,31 @@ export const oauthConfig = {
   code_challenge_methods_supported: ["S256"],
   service_documentation: "https://etbaaly.azagency.online/llms.txt",
   ui_locales_supported: ["ar", "en"],
+  agent_auth: {
+    skill: "https://etbaaly.azagency.online/auth.md",
+    register_uri: "https://etbaaly.azagency.online/register",
+    identity_endpoint: "https://etbaaly.azagency.online/api/auth/token",
+    claim_endpoint: "https://etbaaly.azagency.online/login",
+    claim_uri: "https://etbaaly.azagency.online/login",
+    revocation_uri: "https://etbaaly.azagency.online/api/auth/logout",
+    identity_types_supported: ["identity_assertion", "anonymous"],
+    identity_assertion: {
+      assertion_types_supported: [
+        "urn:ietf:params:oauth:token-type:id-jag",
+        "verified_email",
+      ],
+      credential_types_supported: ["bearer_token"],
+      claim_uri: "https://etbaaly.azagency.online/login",
+      revocation_uri: "https://etbaaly.azagency.online/api/auth/logout",
+    },
+    anonymous: {
+      credential_types_supported: ["bearer_token"],
+      claim_uri: "https://etbaaly.azagency.online/login",
+    },
+    events_supported: [
+      "https://schemas.workos.com/events/agent/auth/identity/assertion/revoked",
+    ],
+  },
 };
 
 const headers: HeadersInit = {

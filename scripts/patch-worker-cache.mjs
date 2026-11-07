@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const workerPath = path.resolve(".open-next/worker.js");
+const authMdPath = path.resolve("public/auth.md");
+const authMdContent = fs.existsSync(authMdPath) ? fs.readFileSync(authMdPath, "utf-8") : "# auth.md\n";
 
 if (!fs.existsSync(workerPath)) {
   console.log("No .open-next/worker.js found to patch. Skipping.");
@@ -64,6 +66,17 @@ const targetStr = `            // - \`Request\`s are handled by the Next server
 const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge Cache for High Performance & Zero Resource Limit Exceeded ---
             const isGet = request.method === "GET";
             const pathname = url.pathname;
+            if (pathname === "/auth.md" || pathname === "/auth.md/") {
+                return new Response(${JSON.stringify(authMdContent)}, {
+                    status: 200,
+                    headers: {
+                        "Content-Type": "text/markdown; charset=utf-8",
+                        "Access-Control-Allow-Origin": "*",
+                        "Cache-Control": "public, max-age=3600, s-maxage=86400",
+                        "Link": '</.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource"',
+                    },
+                });
+            }
             const isBypassed =
                 pathname.startsWith("/admin") ||
                 pathname.startsWith("/api/admin") ||
