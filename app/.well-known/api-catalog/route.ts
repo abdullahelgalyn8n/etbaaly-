@@ -152,6 +152,27 @@ const apiCatalog = {
         },
       ],
     },
+    {
+      anchor: "https://etbaaly.azagency.online/api/mcp",
+      "service-desc": [
+        {
+          href: "https://etbaaly.azagency.online/.well-known/mcp/server-card.json",
+          type: "application/json",
+        },
+      ],
+      "service-doc": [
+        {
+          href: "https://etbaaly.azagency.online/llms.txt",
+          type: "text/plain",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
+    },
   ],
 };
 

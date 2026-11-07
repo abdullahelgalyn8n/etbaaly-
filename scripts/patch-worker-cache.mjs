@@ -73,7 +73,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                         "Content-Type": "text/markdown; charset=utf-8",
                         "Access-Control-Allow-Origin": "*",
                         "Cache-Control": "public, max-age=3600, s-maxage=86400",
-                        "Link": '</.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource"',
+                        "Link": '</.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc"',
                     },
                 });
             }
@@ -117,7 +117,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                         hitHeaders.set("CF-Worker-Cache", "HIT");
                         hitHeaders.set("X-Cache-Status", "HIT");
                         if ((pathname === "/" || pathname === "") && !hitHeaders.has("Link")) {
-                            hitHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource"');
+                            hitHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc"');
                         }
                         return new Response(match.body, {
                             status: match.status,
@@ -161,7 +161,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                     mdHeaders.set("Vary", "Accept, Accept-Encoding");
                     mdHeaders.set("x-markdown-tokens", String(tokens));
                     mdHeaders.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
-                    mdHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource"');
+                    mdHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc"');
                     mdHeaders.delete("Content-Encoding");
                     mdHeaders.delete("Content-Length");
                     mdHeaders.delete("ETag");
@@ -232,7 +232,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
 
             if ((pathname === "/" || pathname === "") && !serverResponse.headers.has("Link")) {
                 const finalHeaders = new Headers(serverResponse.headers);
-                finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource"');
+                finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc"');
                 finalHeaders.set("Vary", "Accept, Accept-Encoding");
                 return new Response(serverResponse.body, {
                     status: serverResponse.status,

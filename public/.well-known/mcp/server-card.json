@@ -1,0 +1,96 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.json",
+  "name": "etbaaly-mcp-server",
+  "title": "إطبعلي | Etbaaly MCP Server",
+  "description": "Model Context Protocol (MCP) server for Etbaaly printing, packaging boxes manufacturing, merchandise customization, and order tracking in Egypt & MENA region.",
+  "version": "1.0.0",
+  "websiteUrl": "https://etbaaly.azagency.online",
+  "serverInfo": {
+    "name": "etbaaly-mcp-server",
+    "version": "1.0.0"
+  },
+  "endpoint": "https://etbaaly.azagency.online/api/mcp",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://etbaaly.azagency.online/api/mcp"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://etbaaly.azagency.online/api/mcp",
+      "supportedProtocolVersions": [
+        "2024-11-05",
+        "2024-10-07"
+      ]
+    },
+    {
+      "type": "sse",
+      "url": "https://etbaaly.azagency.online/api/mcp"
+    }
+  ],
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    }
+  },
+  "tools": [
+    {
+      "name": "get_products",
+      "description": "Retrieve catalog of packaging boxes, custom stickers, corporate gifts, and apparel.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Category slug (e.g., packaging-boxes, stickers, apparel, corporate-stationery, or all)."
+          }
+        }
+      }
+    },
+    {
+      "name": "track_order",
+      "description": "Track custom printing and packaging manufacturing status in real time by order or tracking number.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["trackingCode"],
+        "properties": {
+          "trackingCode": {
+            "type": "string",
+            "description": "Tracking number or order identifier (e.g. ETB-12345)."
+          }
+        }
+      }
+    },
+    {
+      "name": "request_quote",
+      "description": "Submit a quotation request for custom carton manufacturing, offset printing, or bespoke branded boxes.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name", "phone", "serviceType"],
+        "properties": {
+          "name": { "type": "string" },
+          "phone": { "type": "string" },
+          "serviceType": { "type": "string" },
+          "quantity": { "type": "integer" }
+        }
+      }
+    },
+    {
+      "name": "get_shipping_rates",
+      "description": "Calculate domestic shipping rates and delivery estimates across Egyptian governorates.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "governorate": { "type": "string" }
+        }
+      }
+    }
+  ]
+}

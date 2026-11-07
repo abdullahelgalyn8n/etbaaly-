@@ -203,6 +203,40 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/.well-known/mcp/server-card.json",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/json; charset=utf-8",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
+        source: "/.well-known/mcp.json",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/json; charset=utf-8",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
         source: "/auth.md",
         headers: [
           {
