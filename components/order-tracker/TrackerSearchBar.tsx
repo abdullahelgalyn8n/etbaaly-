@@ -75,13 +75,19 @@ export function TrackerSearchBar({
       )}
 
       {/* Main Search Input Form */}
-      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-3">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col sm:flex-row items-center gap-3"
+        toolname="track-order"
+        tooldescription="Track custom printing and packaging manufacturing status in real time"
+      >
         <div className="relative w-full flex-1">
           <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
           <input
             type="text"
             value={searchCode}
             onChange={(e) => setSearchCode(e.target.value)}
+            toolparamdescription="Order tracking code (e.g. ETB-8841 or DEMO-BOX)"
             placeholder={
               isAuthenticated
                 ? "اكتب كود طلبك (مثال: ETB-8841)..."
