@@ -215,6 +215,27 @@ const apiCatalog = {
         },
       ],
     },
+    {
+      anchor: "https://etbaaly.azagency.online/.well-known/ucp",
+      "service-desc": [
+        {
+          href: "https://etbaaly.azagency.online/.well-known/ucp",
+          type: "application/json",
+        },
+      ],
+      "service-doc": [
+        {
+          href: "https://ucp.dev/specification/overview/",
+          type: "text/html",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
+    },
   ],
 };
 

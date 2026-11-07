@@ -1,0 +1,115 @@
+{
+  "protocol_version": "2026-08-25",
+  "version": "2026-08-25",
+  "services": {
+    "dev.ucp.shopping": [
+      {
+        "version": "2026-08-25",
+        "spec": "https://ucp.dev/2026-08-25/specification/overview/",
+        "transport": "rest",
+        "endpoint": "https://etbaaly.azagency.online/api",
+        "schema": "https://ucp.dev/2026-08-25/services/shopping/rest.openapi.json"
+      },
+      {
+        "version": "2026-08-25",
+        "spec": "https://ucp.dev/2026-08-25/specification/overview/",
+        "transport": "mcp",
+        "endpoint": "https://etbaaly.azagency.online/api/mcp",
+        "schema": "https://ucp.dev/2026-08-25/services/shopping/mcp.openrpc.json"
+      }
+    ]
+  },
+  "capabilities": {
+    "dev.ucp.shopping.checkout": [
+      {
+        "version": "2026-08-25",
+        "spec": "https://ucp.dev/2026-08-25/specification/shopping/checkout",
+        "schema": "https://ucp.dev/2026-08-25/schemas/shopping/checkout.json"
+      }
+    ],
+    "dev.ucp.shopping.fulfillment": [
+      {
+        "version": "2026-08-25",
+        "spec": "https://ucp.dev/2026-08-25/specification/shopping/extensions/fulfillment",
+        "schema": "https://ucp.dev/2026-08-25/schemas/shopping/fulfillment.json",
+        "extends": "dev.ucp.shopping.checkout"
+      }
+    ],
+    "dev.ucp.shopping.discount": [
+      {
+        "version": "2026-08-25",
+        "spec": "https://ucp.dev/2026-08-25/specification/shopping/extensions/discount",
+        "schema": "https://ucp.dev/2026-08-25/schemas/shopping/discount.json",
+        "extends": "dev.ucp.shopping.checkout"
+      }
+    ],
+    "dev.ucp.shopping.order": [
+      {
+        "version": "2026-08-25",
+        "spec": "https://ucp.dev/2026-08-25/specification/shopping/order",
+        "schema": "https://ucp.dev/2026-08-25/schemas/shopping/order.json"
+      }
+    ]
+  },
+  "endpoints": {
+    "api": "https://etbaaly.azagency.online/api",
+    "checkout": "https://etbaaly.azagency.online/api/quotes",
+    "orders": "https://etbaaly.azagency.online/api/orders/track",
+    "products": "https://etbaaly.azagency.online/api/products",
+    "shipping": "https://etbaaly.azagency.online/api/shipping",
+    "mcp": "https://etbaaly.azagency.online/api/mcp"
+  },
+  "ucp": {
+    "version": "2026-08-25",
+    "services": {
+      "dev.ucp.shopping": [
+        {
+          "version": "2026-08-25",
+          "spec": "https://ucp.dev/2026-08-25/specification/overview/",
+          "transport": "rest",
+          "endpoint": "https://etbaaly.azagency.online/api",
+          "schema": "https://ucp.dev/2026-08-25/services/shopping/rest.openapi.json"
+        },
+        {
+          "version": "2026-08-25",
+          "spec": "https://ucp.dev/2026-08-25/specification/overview/",
+          "transport": "mcp",
+          "endpoint": "https://etbaaly.azagency.online/api/mcp",
+          "schema": "https://ucp.dev/2026-08-25/services/shopping/mcp.openrpc.json"
+        }
+      ]
+    },
+    "capabilities": {
+      "dev.ucp.shopping.checkout": [
+        {
+          "version": "2026-08-25",
+          "spec": "https://ucp.dev/2026-08-25/specification/shopping/checkout",
+          "schema": "https://ucp.dev/2026-08-25/schemas/shopping/checkout.json"
+        }
+      ],
+      "dev.ucp.shopping.fulfillment": [
+        {
+          "version": "2026-08-25",
+          "spec": "https://ucp.dev/2026-08-25/specification/shopping/extensions/fulfillment",
+          "schema": "https://ucp.dev/2026-08-25/schemas/shopping/fulfillment.json",
+          "extends": "dev.ucp.shopping.checkout"
+        }
+      ],
+      "dev.ucp.shopping.discount": [
+        {
+          "version": "2026-08-25",
+          "spec": "https://ucp.dev/2026-08-25/specification/shopping/extensions/discount",
+          "schema": "https://ucp.dev/2026-08-25/schemas/shopping/discount.json",
+          "extends": "dev.ucp.shopping.checkout"
+        }
+      ],
+      "dev.ucp.shopping.order": [
+        {
+          "version": "2026-08-25",
+          "spec": "https://ucp.dev/2026-08-25/specification/shopping/order",
+          "schema": "https://ucp.dev/2026-08-25/schemas/shopping/order.json"
+        }
+      ]
+    }
+  }
+}
