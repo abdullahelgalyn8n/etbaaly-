@@ -136,6 +136,7 @@ export default function RootLayout({
         <link rel="service-desc" href="/openapi.json" type="application/json" />
         <link rel="oauth-authorization-server" href="/.well-known/oauth-authorization-server" type="application/json" />
         <link rel="openid-configuration" href="/.well-known/openid-configuration" type="application/json" />
+        <link rel="oauth-protected-resource" href="/.well-known/oauth-protected-resource" type="application/json" />
         <OrganizationSchema />
         <noscript>
           <img

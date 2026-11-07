@@ -167,7 +167,12 @@ export function guardAdminRoute(req: Request | NextRequest): NextResponse | null
         success: false,
         error: auth.error || "غير مصرح لك بالوصول. يرجى تسجيل الدخول كمسؤول.",
       },
-      { status: 401 }
+      {
+        status: 401,
+        headers: {
+          "WWW-Authenticate": 'Bearer realm="etbaaly", resource_metadata="https://etbaaly.azagency.online/.well-known/oauth-protected-resource"',
+        },
+      }
     );
   }
   return null;

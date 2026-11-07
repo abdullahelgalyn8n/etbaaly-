@@ -1,0 +1,19 @@
+{
+  "resource": "https://etbaaly.azagency.online",
+  "authorization_servers": [
+    "https://etbaaly.azagency.online"
+  ],
+  "scopes_supported": [
+    "openid",
+    "profile",
+    "email",
+    "api:read",
+    "api:write"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_name": "إطبعلي | Etbaaly API",
+  "resource_documentation": "https://etbaaly.azagency.online/llms.txt",
+  "jwks_uri": "https://etbaaly.azagency.online/.well-known/jwks.json"
+}
