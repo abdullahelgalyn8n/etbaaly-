@@ -236,6 +236,27 @@ const apiCatalog = {
         },
       ],
     },
+    {
+      anchor: "https://etbaaly.azagency.online/.well-known/acp.json",
+      "service-desc": [
+        {
+          href: "https://etbaaly.azagency.online/.well-known/acp.json",
+          type: "application/json",
+        },
+      ],
+      "service-doc": [
+        {
+          href: "https://agenticcommerce.dev",
+          type: "text/html",
+        },
+      ],
+      status: [
+        {
+          href: "https://etbaaly.azagency.online/api/health",
+          type: "application/json",
+        },
+      ],
+    },
   ],
 };
 

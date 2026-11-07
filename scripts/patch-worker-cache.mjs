@@ -10,6 +10,8 @@ const x402Path = path.resolve("public/.well-known/x402.json");
 const x402Content = fs.existsSync(x402Path) ? fs.readFileSync(x402Path, "utf-8") : "{}";
 const ucpPath = path.resolve("public/.well-known/ucp.json");
 const ucpContent = fs.existsSync(ucpPath) ? fs.readFileSync(ucpPath, "utf-8") : "{}";
+const acpPath = path.resolve("public/.well-known/acp.json");
+const acpContent = fs.existsSync(acpPath) ? fs.readFileSync(acpPath, "utf-8") : "{}";
 
 if (!fs.existsSync(workerPath)) {
   console.log("No .open-next/worker.js found to patch. Skipping.");
@@ -105,6 +107,16 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
             }
             if (pathname === "/.well-known/ucp" || pathname === "/.well-known/ucp/" || pathname === "/.well-known/ucp.json" || pathname === "/.well-known/ucp.json/") {
                 return new Response(${JSON.stringify(ucpContent)}, {
+                    status: 200,
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Access-Control-Allow-Origin": "*",
+                        "Cache-Control": "public, max-age=3600, s-maxage=86400",
+                    },
+                });
+            }
+            if (pathname === "/.well-known/acp.json" || pathname === "/.well-known/acp.json/" || pathname === "/.well-known/acp" || pathname === "/.well-known/acp/") {
+                return new Response(${JSON.stringify(acpContent)}, {
                     status: 200,
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
