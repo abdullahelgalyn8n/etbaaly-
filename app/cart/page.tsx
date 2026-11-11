@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl, siteConfig } from "@/data/siteConfig";
 import NumericQuantityInput from "@/components/ui/NumericQuantityInput";
 
 type CheckoutStep = "cart" | "checkout" | "success";
@@ -235,7 +235,7 @@ export default function CartPage() {
 الإجمالي المستحق: ${completedOrder.total_price} ج.م
 طريقة الدفع: ${paymentMethod}
 أود تأكيد الشحن الفوري ومتابعة خط الإنتاج.`;
-      return `${siteConfig.social.whatsapp}?text=${encodeURIComponent(msg)}`;
+      return getWhatsAppUrl(msg);
     }
 
     const itemsSummary = items
@@ -252,7 +252,7 @@ ${discountAmount > 0 ? `الخصم: -${discountAmount} ج.م\n` : ""}الشحن:
 الإجمالي النهائي: ${totalPrice} ج.م
 الرجاء تأكيد استلام الطلب وبدء التنفيذ فوراً.`;
 
-    return `${siteConfig.social.whatsapp}?text=${encodeURIComponent(msg)}`;
+    return getWhatsAppUrl(msg);
   };
 
   return (

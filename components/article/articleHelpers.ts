@@ -16,6 +16,39 @@ export function extractFaqsFromContent(content: string) {
 }
 
 export function generateArticleSchema(post: BlogPost, isNews: boolean) {
+  const isFounderAuthor =
+    post.author.includes("عبد الله") ||
+    post.author.includes("الجلي") ||
+    post.author.toLowerCase().includes("abdullah");
+
+  const authorSchema = isFounderAuthor
+    ? {
+        "@type": "Person",
+        "@id": `${siteConfig.url}/#founder`,
+        "name": post.author,
+        "url": `${siteConfig.url}/about/`,
+        "jobTitle": "مؤسس A.Z Agency واستشاري السيو التقني والنمو الرقمي",
+        "image": `${siteConfig.url}/images/ICON-LOGO-SITE.webp`,
+        "sameAs": [
+          "https://github.com/abdullahelgalyn8n",
+          siteConfig.social.facebook,
+          siteConfig.social.instagram,
+          siteConfig.social.whatsapp,
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "@id": `${siteConfig.url}/#organization`,
+          "name": "A.Z Agency",
+          "url": siteConfig.url,
+        },
+      }
+    : {
+        "@type": "Organization",
+        "@id": `${siteConfig.url}/#organization`,
+        "name": post.author,
+        "url": `${siteConfig.url}/about/`,
+      };
+
   return {
     "@context": "https://schema.org",
     "@type": isNews ? "NewsArticle" : "BlogPosting",
@@ -26,26 +59,7 @@ export function generateArticleSchema(post: BlogPost, isNews: boolean) {
     "dateModified": post.publishedTime || `${post.date}T09:00:00+03:00`,
     "inLanguage": "ar",
     "keywords": post.tags.join(", "),
-    "author": {
-      "@type": "Person",
-      "@id": `${siteConfig.url}/#founder`,
-      "name": post.author,
-      "url": `${siteConfig.url}/about/`,
-      "jobTitle": "مؤسس A.Z Agency واستشاري السيو التقني والنمو الرقمي",
-      "image": `${siteConfig.url}/images/ICON-LOGO-SITE.webp`,
-      "sameAs": [
-        "https://github.com/abdullahelgalyn8n",
-        siteConfig.social.facebook,
-        siteConfig.social.instagram,
-        siteConfig.social.whatsapp,
-      ],
-      "worksFor": {
-        "@type": "Organization",
-        "@id": `${siteConfig.url}/#organization`,
-        "name": "A.Z Agency",
-        "url": siteConfig.url,
-      },
-    },
+    "author": authorSchema,
     "publisher": {
       "@type": "Organization",
       "@id": `${siteConfig.url}/#organization`,

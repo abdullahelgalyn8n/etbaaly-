@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { AdminProduct, ProductColor } from "@/lib/db";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
 import ProductGallery from "./ProductGallery";
 import ProductInfoOrder from "./ProductInfoOrder";
@@ -88,7 +88,7 @@ export default function ProductStudioDetailView({
 - الكمية: ${quantity} قطعة
 - السعر الإجمالي: ${totalPrice} ج.م
 الرجاء تأكيد الطلب وتفاصيل التوصيل.`;
-    return `${siteConfig.social.whatsapp}?text=${encodeURIComponent(msg)}`;
+    return getWhatsAppUrl(msg);
   }, [product.title, selectedColor.name, quantity, totalPrice]);
 
   return (

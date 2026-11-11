@@ -12,7 +12,7 @@ export default function BlogPage() {
     <div className="space-y-16 pb-20">
       <BreadcrumbSchema
         items={[
-          { name: "الرئيسية", url: siteConfig.url },
+          { name: "الرئيسية", url: `${siteConfig.url}/` },
           { name: "المدونة", url: `${siteConfig.url}/blog/` },
         ]}
       />

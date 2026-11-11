@@ -19,7 +19,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { AdminProduct, ProductColor } from "@/lib/db";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 import { useAuth } from "@/context/AuthContext";
 
 interface ProductDirectCheckoutModalProps {
@@ -140,7 +140,7 @@ export default function ProductDirectCheckoutModal({
 
   // WhatsApp payment follow-up message
   const whatsappPaymentUrl = () => {
-    if (!orderResult) return siteConfig.social.whatsapp;
+    if (!orderResult) return getWhatsAppUrl();
     const msg = `مرحباً إطبعلي، لقد قمت بتسجيل طلب جديد من الموقع بنجاح:
 📌 رقم الطلب (Order ID): ${orderResult.tracking_code}
 🛍️ المنتج: ${product.title}
@@ -153,7 +153,7 @@ export default function ProductDirectCheckoutModal({
 ${notes ? `📝 ملاحظات: ${notes}` : ""}
 
 أود تأكيد خطة الدفع (إنستاباي / فودافون كاش / فيزا / تحويل بنكي) وتأكيد الشحن فوراً.`;
-    return `${siteConfig.social.whatsapp}?text=${encodeURIComponent(msg)}`;
+    return getWhatsAppUrl(msg);
   };
 
   return (

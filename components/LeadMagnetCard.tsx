@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Download, CheckCircle2, ShieldCheck, Sparkles, Send } from "lucide-react";
 import { trackEvent } from "@/lib/fpixel";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
 interface LeadMagnetProps {
   categoryTag?: string;
@@ -196,9 +196,9 @@ export default function LeadMagnetCard({ categoryTag = "all", sourceArticle = ""
             </p>
             <div className="pt-2">
               <a
-                href={`${siteConfig.social.whatsapp}?text=${encodeURIComponent(
+                href={getWhatsAppUrl(
                   `مرحبًا إطبعلي، قمت بتحميل (${magnet.title}) وأرغب في استشارة تسعير / عينات لشركتي.`
-                )}`}
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-md"

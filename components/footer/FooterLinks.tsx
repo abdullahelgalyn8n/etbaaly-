@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { servicesData } from "@/data/servicesData";
+import DashboardNavButton from "@/components/DashboardNavButton";
 
 export default function FooterLinks() {
   return (
@@ -60,13 +61,12 @@ export default function FooterLinks() {
             </Link>
           </li>
           <li>
-            <Link
-              href="/dashboard/"
-              className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
+            <DashboardNavButton
+              className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group cursor-pointer"
             >
               <Calculator className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
               <span>حاسبة أسعار ومقايسات الشركات</span>
-            </Link>
+            </DashboardNavButton>
           </li>
           <li>
             <Link
@@ -78,13 +78,12 @@ export default function FooterLinks() {
             </Link>
           </li>
           <li>
-            <Link
-              href="/dashboard/"
-              className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group"
+            <DashboardNavButton
+              className="hover:text-[#c93b41] dark:hover:text-white transition-colors flex items-center gap-1 group cursor-pointer"
             >
               <ArrowUpLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#c93b41]" />
               <span>بوابة الشركات والفواتير</span>
-            </Link>
+            </DashboardNavButton>
           </li>
         </ul>
       </div>

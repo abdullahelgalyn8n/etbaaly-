@@ -8,11 +8,13 @@ import { initialAdminProducts } from "@/lib/db/seed";
 
 export const dynamic = "force-static";
 
+const SITE_LAST_MODIFIED = "2026-11-11T00:00:00.000Z";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
 
   const staticPages = [
-    "",
+    "/",
     "/about/",
     "/services/",
     "/offers/",
@@ -26,10 +28,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/policy/",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
+    lastModified: SITE_LAST_MODIFIED,
     changeFrequency: "weekly" as const,
     priority:
-      route === ""
+      route === "/"
         ? 1.0
         : route === "/products/" || route === "/offers/"
         ? 0.95
@@ -40,14 +42,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const servicePages = servicesData.map((service) => ({
     url: `${baseUrl}/services/${service.slug}/`,
-    lastModified: new Date().toISOString(),
+    lastModified: SITE_LAST_MODIFIED,
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
 
   const offerPages = offersData.map((offer) => ({
     url: `${baseUrl}/offers/${offer.slug}/`,
-    lastModified: new Date().toISOString(),
+    lastModified: SITE_LAST_MODIFIED,
     changeFrequency: "weekly" as const,
     priority: 0.95,
   }));
@@ -63,14 +65,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${baseUrl}/products/${product.slug || product.id}/`,
     lastModified: product.updatedAt
       ? new Date(product.updatedAt).toISOString()
-      : new Date().toISOString(),
+      : SITE_LAST_MODIFIED,
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
 
   const blogPages = blogPostsData.map((post) => ({
     url: `${baseUrl}/${post.slug}/`,
-    lastModified: post.date,
+    lastModified: post.publishedTime
+      ? new Date(post.publishedTime).toISOString()
+      : post.date
+      ? new Date(post.date).toISOString()
+      : SITE_LAST_MODIFIED,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

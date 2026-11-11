@@ -22,6 +22,7 @@ import { siteConfig } from "@/data/siteConfig";
 import { servicesData } from "@/data/servicesData";
 import { BreadcrumbSchema } from "@/components/JsonLd";
 import ServiceCard from "@/components/ServiceCard";
+import DashboardNavButton from "@/components/DashboardNavButton";
 
 export const metadata: Metadata = {
   title: "خدمات الطباعة والتغليف الفاخر | إطبعلي - Etbaaly",
@@ -46,7 +47,7 @@ export default function ServicesPage() {
     <div className="space-y-20 pb-20">
       <BreadcrumbSchema
         items={[
-          { name: "الرئيسية", url: siteConfig.url },
+          { name: "الرئيسية", url: `${siteConfig.url}/` },
           { name: "خدمات الطباعة والتغليف", url: `${siteConfig.url}/services/` },
         ]}
       />
@@ -82,7 +83,15 @@ export default function ServicesPage() {
       </section>
 
       {/* Core Services Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <h2 className="text-xl sm:text-3xl font-black text-slate-950 dark:text-white">
+            أقسام الطباعة التجارية والتغليف المتخصصة
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
+            استعرض كافة خطوط الإنتاج والتغليف المتاحة لدينا مع المواصفات والمخرجات وسابقة الأعمال.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {servicesData.map((service) => (
             <ServiceCard key={service.id} service={service} />
@@ -92,7 +101,10 @@ export default function ServicesPage() {
 
       {/* Quick Action Tools Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-slate-50 dark:bg-[#242424] border border-slate-200 dark:border-white/[0.08] p-8 sm:p-12 shadow-xl">
+        <div className="rounded-3xl bg-slate-50 dark:bg-[#242424] border border-slate-200 dark:border-white/[0.08] p-8 sm:p-12 shadow-xl space-y-8">
+          <h2 className="text-xl sm:text-2xl font-black text-slate-950 dark:text-white text-center">
+            أدوات التسعير وتتبع الإنتاج وفحص الملفات
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-right">
             <div className="space-y-2">
               <div className="w-10 h-10 rounded-xl bg-red-500/10 text-[#c93b41] flex items-center justify-center mx-auto md:mx-0">
@@ -102,9 +114,9 @@ export default function ServicesPage() {
               <p className="text-xs text-slate-600 dark:text-slate-300">
                 احسب تكلفة الكميات وسعر القطعة مع خصم تلقائي للكميات الكبيرة في ثوانٍ.
               </p>
-              <Link href="/dashboard/" className="inline-block text-xs font-bold text-[#c93b41] hover:underline pt-1">
+              <DashboardNavButton className="inline-block text-xs font-bold text-[#c93b41] hover:underline pt-1 cursor-pointer">
                 فتح حاسبة المقايسات ➔
-              </Link>
+              </DashboardNavButton>
             </div>
 
             <div className="space-y-2">

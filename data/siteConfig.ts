@@ -6,6 +6,16 @@ const intlPhone = cleanPhone.startsWith("20")
   ? `2${cleanPhone}`
   : `20${cleanPhone}`;
 
+const whatsappBaseUrl =
+  process.env.NEXT_PUBLIC_WHATSAPP_URL ||
+  `https://api.whatsapp.com/send/?phone=${intlPhone}`;
+
+export function getWhatsAppUrl(text?: string): string {
+  if (!text) return siteConfig.social.whatsapp;
+  const separator = siteConfig.social.whatsapp.includes("?") ? "&" : "?";
+  return `${siteConfig.social.whatsapp}${separator}text=${encodeURIComponent(text)}`;
+}
+
 export const siteConfig = {
   name: "إطبعلي | Etbaaly - مطابع وحلول طباعة وتغليف متكاملة (A.Z Agency)",
   shortName: "إطبعلي | Etbaaly",
@@ -16,7 +26,7 @@ export const siteConfig = {
   email: "print@azagency.online",
   address: "القاهرة، جمهورية مصر العربية | شحن وتوصيل فوري لكافة المحافظات",
   social: {
-    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_URL || `https://wa.me/${intlPhone}`,
+    whatsapp: whatsappBaseUrl,
     facebook: "https://www.facebook.com/azagency.eg",
     instagram: "https://www.instagram.com/azagency.eg",
     linkedin: "https://linkedin.com",

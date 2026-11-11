@@ -48,6 +48,7 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
             className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-[#111215] border border-slate-200 dark:border-white/[0.08] flex items-center justify-center group-hover:scale-105 group-hover:border-[#c93b41]/40 transition-all shadow-sm"
           >
             {iconMap[service.iconName] || <Package className="w-6 h-6 text-[#c93b41]" />}
+            <span className="sr-only">تفاصيل خدمة {service.title}</span>
           </Link>
           <span className="text-[11px] font-bold px-3 py-1 rounded-full badge-crimson">
             {service.metrics}

@@ -1,17 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 import { trackEvent } from "@/lib/fpixel";
+
+const ETBAALY_SERVICE_OPTIONS = [
+  { value: "packaging-boxes", label: "علب الكرتون وتغليف المنتجات (Custom Packaging)" },
+  { value: "offset-commercial", label: "طباعة الأوفست التجارية والكميات الكبيرة" },
+  { value: "corporate-stationery", label: "المطبوعات المكتبية وبروفايل الشركات" },
+  { value: "paper-bags", label: "الأكياس الورقية والقماشية المخصصة" },
+  { value: "stickers-labels", label: "الستيكرات والليبل المقصوص داي-كت" },
+  { value: "displays-uniforms", label: "مطبوعات المعارض، الرول أب، واليونيفورم" },
+  { value: "laser-signage-gifts", label: "تجهيزات المقرات، اليافطات، وهدايا الليزر" },
+  { value: "outdoor-cladding-signage", label: "واجهات الكلادينج والحروف البارزة 3D" },
+  { value: "hoodies-printing-private-label", label: "طباعة الهوديز وتصنيع الملابس للغير" },
+  { value: "sample-box", label: "طلب بوكس عينات الخامات والتشطيبات (Sample Box)" },
+  { value: "consulting", label: "استشارة تسعير ومواصفات إنتاج مخصصة" },
+] as const;
+
+const VALID_SERVICE_VALUES = new Set<string>(ETBAALY_SERVICE_OPTIONS.map((opt) => opt.value));
+
+const subscribePopState = (cb: () => void) => {
+  window.addEventListener("popstate", cb);
+  return () => window.removeEventListener("popstate", cb);
+};
+
+const getServiceFromUrl = () => {
+  const params = new URLSearchParams(window.location.search);
+  const serviceParam = params.get("service") || params.get("type");
+  return serviceParam && VALID_SERVICE_VALUES.has(serviceParam)
+    ? serviceParam
+    : "packaging-boxes";
+};
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [userService, setUserService] = useState<string | null>(null);
+  const urlService = useSyncExternalStore(subscribePopState, getServiceFromUrl, () => "packaging-boxes");
+  const selectedService = userService ?? urlService;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "motion-graphics",
     message: "",
   });
 
@@ -20,14 +51,14 @@ export default function ContactForm() {
     setStatus("submitting");
 
     trackEvent("Lead", {
-      service: formData.service,
+      service: selectedService,
       content_name: "Contact Form Submission",
     });
 
     setTimeout(() => {
       setStatus("success");
-      const text = `طلب استشارة جديد من منصة إطبعلي (Etbaaly):\n- الاسم: ${formData.name}\n- البريد: ${formData.email}\n- الهاتف: ${formData.phone}\n- الخدمة المطلوبة: ${formData.service}\n- التفاصيل: ${formData.message}`;
-      window.open(`${siteConfig.social.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
+      const text = `طلب تسعير واستشارة طباعة جديد من منصة إطبعلي (Etbaaly):\n- الاسم: ${formData.name}\n- البريد: ${formData.email}\n- الهاتف: ${formData.phone}\n- القسم المطلوب: ${selectedService}\n- التفاصيل: ${formData.message}`;
+      window.open(getWhatsAppUrl(text), "_blank");
     }, 800);
   };
 
@@ -106,30 +137,29 @@ export default function ContactForm() {
               <select
                 id="contact-service"
                 aria-label="نوع الخدمة المطلوبة"
-                value={formData.service}
-                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                value={selectedService}
+                onChange={(e) => setUserService(e.target.value)}
                 className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-[#0c0e12] border border-slate-200 dark:border-[#1f2533] text-slate-950 dark:text-white focus:outline-none focus:border-[#c8232c] focus:ring-1 focus:ring-[#c8232c] text-sm transition-all font-medium"
               >
-                <option value="motion-graphics">موشن جرافيك وإنتاج مرئي</option>
-                <option value="branding-print">تصميم هوية بصرية ومطبوعات</option>
-                <option value="technical-seo">تحسين SEO تقني و AEO</option>
-                <option value="modern-web">تطوير منصات ومواقع Next.js الفائقة</option>
-                <option value="ai-automation">أتمتة الأعمال والذكاء الاصطناعي (n8n)</option>
-                <option value="consulting">استشارة تقنية وإبداعية متكاملة</option>
+                {ETBAALY_SERVICE_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
 
           <div className="space-y-2">
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-              تفاصيل المشروع أو الحملة <span className="text-[#c8232c]">*</span>
+              مواصفات الطلب والكمية <span className="text-[#c8232c]">*</span>
             </label>
             <textarea
               rows={4}
               required
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="اكتب نبذة عن أهداف مشروعك، نوع الفيديو أو المطبوعات أو الموقع المطلوب..."
+              placeholder="اكتب الكمية المطلوبة، المقاسات، نوع الورق أو الكرتون، وأي تشطيبات مثل السلوفان أو البصمة..."
               className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-[#0c0e12] border border-slate-200 dark:border-[#1f2533] text-slate-950 dark:text-white placeholder-slate-400 focus:outline-none focus:border-[#c8232c] focus:ring-1 focus:ring-[#c8232c] text-sm transition-all resize-none font-medium"
             />
           </div>

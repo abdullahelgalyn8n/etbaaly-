@@ -49,6 +49,21 @@ function dedupeNextEnv() {
 
 dedupeNextEnv();
 
+function populateStaticAssetsCache() {
+  const sourceCacheDir = path.resolve(".open-next/cache");
+  const targetCacheDir = path.resolve(".open-next/assets/cdn-cgi/_next_cache");
+  if (!fs.existsSync(sourceCacheDir)) {
+    console.log("No .open-next/cache directory found to copy into static assets.");
+    return;
+  }
+  fs.rmSync(targetCacheDir, { recursive: true, force: true });
+  fs.mkdirSync(path.dirname(targetCacheDir), { recursive: true });
+  fs.cpSync(sourceCacheDir, targetCacheDir, { recursive: true, force: true });
+  console.log("Successfully copied .open-next/cache to .open-next/assets/cdn-cgi/_next_cache!");
+}
+
+populateStaticAssetsCache();
+
 let buildId = "v1";
 const buildIdPath = path.resolve(".open-next/assets/BUILD_ID");
 if (fs.existsSync(buildIdPath)) {
@@ -72,6 +87,15 @@ const targetStr = `            // - \`Request\`s are handled by the Next server
             return handler(reqOrResp, env, ctx, request.signal);`;
 
 const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge Cache for High Performance & Zero Resource Limit Exceeded ---
+            const DEFAULT_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://connect.facebook.net https://www.googletagmanager.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self' https://challenges.cloudflare.com https://www.facebook.com; connect-src 'self' https: wss: https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self' https://www.facebook.com; frame-ancestors 'self';";
+            const applySecurityHeaders = (headers) => {
+                if (!headers.has("Content-Security-Policy")) headers.set("Content-Security-Policy", DEFAULT_CSP);
+                if (!headers.has("X-Content-Type-Options")) headers.set("X-Content-Type-Options", "nosniff");
+                if (!headers.has("X-Frame-Options")) headers.set("X-Frame-Options", "SAMEORIGIN");
+                if (!headers.has("Referrer-Policy")) headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+                if (!headers.has("Permissions-Policy")) headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+                if (!headers.has("Strict-Transport-Security")) headers.set("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
+            };
             const isGet = request.method === "GET";
             const pathname = url.pathname;
             if (pathname === "/auth.md" || pathname === "/auth.md/") {
@@ -207,6 +231,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                     const match = await cache.match(cacheKey);
                     if (match) {
                         const hitHeaders = new Headers(match.headers);
+                        applySecurityHeaders(hitHeaders);
                         hitHeaders.set("CF-Worker-Cache", "HIT");
                         hitHeaders.set("X-Cache-Status", "HIT");
                         if ((pathname === "/" || pathname === "") && !hitHeaders.has("Link")) {
@@ -225,21 +250,26 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
 
             // - \`Request\`s are handled by the Next server
             const reqOrResp = await middlewareHandler(request, env, ctx);
+            let serverResponse;
             if (reqOrResp instanceof Response) {
-                return reqOrResp;
-            }
-            // Normalize API URLs with missing trailing slash for Next.js trailingSlash: true
-            let effectiveReq = reqOrResp;
-            if (effectiveReq instanceof Request) {
-                const reqUrl = new URL(effectiveReq.url);
-                if (reqUrl.pathname.startsWith("/api/") && !reqUrl.pathname.endsWith("/")) {
-                    reqUrl.pathname = \`\${reqUrl.pathname}/\`;
-                    effectiveReq = new Request(reqUrl.toString(), effectiveReq);
+                if (reqOrResp.status !== 200) {
+                    return reqOrResp;
                 }
+                serverResponse = reqOrResp;
+            } else {
+                // Normalize API URLs with missing trailing slash for Next.js trailingSlash: true
+                let effectiveReq = reqOrResp;
+                if (effectiveReq instanceof Request) {
+                    const reqUrl = new URL(effectiveReq.url);
+                    if (reqUrl.pathname.startsWith("/api/") && !reqUrl.pathname.endsWith("/")) {
+                        reqUrl.pathname = \`\${reqUrl.pathname}/\`;
+                        effectiveReq = new Request(reqUrl.toString(), effectiveReq);
+                    }
+                }
+                // @ts-expect-error: resolved by wrangler build
+                const { handler } = await import("./server-functions/default/handler.mjs");
+                serverResponse = await handler(effectiveReq, env, ctx, request.signal);
             }
-            // @ts-expect-error: resolved by wrangler build
-            const { handler } = await import("./server-functions/default/handler.mjs");
-            const serverResponse = await handler(effectiveReq, env, ctx, request.signal);
 
             if (isMarkdown && serverResponse && serverResponse.ok && (serverResponse.headers.get("content-type") || "").includes("text/html")) {
                 try {
@@ -250,6 +280,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                     const tokens = Math.ceil(markdown.length / 4);
 
                     const mdHeaders = new Headers(serverResponse.headers);
+                    applySecurityHeaders(mdHeaders);
                     mdHeaders.set("Content-Type", "text/markdown; charset=utf-8");
                     mdHeaders.set("Vary", "Accept, Accept-Encoding");
                     mdHeaders.set("x-markdown-tokens", String(tokens));
@@ -296,6 +327,7 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 try {
                     const cloned = serverResponse.clone();
                     const cacheHeaders = new Headers(cloned.headers);
+                    applySecurityHeaders(cacheHeaders);
                     // Cloudflare Cache API: remove Vary so cache.match(cacheKey) matches reliably
                     cacheHeaders.delete("Vary");
                     cacheHeaders.set("Vary", "Accept, Accept-Encoding");
@@ -323,10 +355,15 @@ const replacement = `            // --- CF_EDGE_CACHE_ENABLED: Cloudflare Edge C
                 }
             }
 
-            if ((pathname === "/" || pathname === "") && !serverResponse.headers.has("Link")) {
+            const needsRootLink = (pathname === "/" || pathname === "") && !serverResponse.headers.has("Link");
+            const needsSecurity = !serverResponse.headers.has("Content-Security-Policy") || !serverResponse.headers.has("X-Frame-Options") || !serverResponse.headers.has("Referrer-Policy");
+            if (needsRootLink || needsSecurity) {
                 const finalHeaders = new Headers(serverResponse.headers);
-                finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc", </.well-known/poppy.json>; rel="service-desc"');
-                finalHeaders.set("Vary", "Accept, Accept-Encoding");
+                applySecurityHeaders(finalHeaders);
+                if (needsRootLink) {
+                    finalHeaders.set("Link", '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </openapi.json>; rel="service-desc", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </.well-known/mcp/server-card.json>; rel="service-desc", </.well-known/agent-skills/index.json>; rel="service-desc", </.well-known/poppy.json>; rel="service-desc"');
+                    finalHeaders.set("Vary", "Accept, Accept-Encoding");
+                }
                 return new Response(serverResponse.body, {
                     status: serverResponse.status,
                     statusText: serverResponse.statusText,

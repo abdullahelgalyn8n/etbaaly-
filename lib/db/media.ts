@@ -107,7 +107,7 @@ export async function saveMediaAsset(asset: Partial<MediaAsset>) {
   const id = asset.id || `media-${Date.now()}`;
   const record: MediaAsset = {
     id,
-    url: asset.url || `/images/placeholder.webp`,
+    url: asset.url || `/images/ICON-LOGO-SITE.webp`,
     storageType: asset.storageType || "local",
     filename: asset.filename || "image.webp",
     altText: asset.altText || "",

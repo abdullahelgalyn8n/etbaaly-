@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: Props) {
       )}
       <BreadcrumbSchema
         items={[
-          { name: "الرئيسية", url: siteConfig.url },
+          { name: "الرئيسية", url: `${siteConfig.url}/` },
           { name: "المدونة", url: `${siteConfig.url}/blog/` },
           { name: post.title, url: `${siteConfig.url}/${post.slug}/` },
         ]}

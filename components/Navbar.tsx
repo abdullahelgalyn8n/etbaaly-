@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 import ThemeToggle from "@/components/ThemeToggle";
 import BrandLogo from "@/components/BrandLogo";
 import { useAuth } from "@/context/AuthContext";
@@ -56,9 +56,9 @@ export default function Navbar() {
     { name: "تواصل معنا", href: "/contact/" },
   ];
 
-  const whatsappInstantPrintUrl = `${siteConfig.social.whatsapp}?text=${encodeURIComponent(
+  const whatsappInstantPrintUrl = getWhatsAppUrl(
     "مرحباً، أرغب في الاستفسار عن خدمة إطبع صورتك فوراً وإرسال الصورة للطباعة."
-  )}`;
+  );
 
   return (
     <header

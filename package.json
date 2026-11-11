@@ -12,7 +12,8 @@
     "cf:typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "indexnow": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",

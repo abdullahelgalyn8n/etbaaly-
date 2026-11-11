@@ -19,10 +19,10 @@ import {
   Truck,
   HelpCircle,
 } from "lucide-react";
-import { siteConfig } from "@/data/siteConfig";
+import { siteConfig, getWhatsAppUrl } from "@/data/siteConfig";
 import { offersData, getOfferBySlug } from "@/data/offersData";
 import { servicesData } from "@/data/servicesData";
-import { BreadcrumbSchema, OfferProductSchema } from "@/components/JsonLd";
+import { BreadcrumbSchema, OfferProductSchema, FAQSchema } from "@/components/JsonLd";
 import BrandedImage from "@/components/BrandedImage";
 
 export const dynamic = "force-static";
@@ -79,17 +79,16 @@ export default async function OfferDetailPage({ params }: Props) {
   // Other offers
   const otherOffers = offersData.filter((o) => o.id !== offer.id).slice(0, 3);
 
-  const waMessage = encodeURIComponent(
+  const waUrl = getWhatsAppUrl(
     `مرحباً إطبعلي، أرغب في طلب "${offer.title}" (سعر العرض: ${offer.discountedPrice}) - رابط العرض: ${siteConfig.url}/offers/${offer.slug}/`
   );
-  const waUrl = `${siteConfig.social.whatsapp}?text=${waMessage}`;
 
   return (
     <div className="space-y-16 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Schemas */}
       <BreadcrumbSchema
         items={[
-          { name: "الرئيسية", url: siteConfig.url },
+          { name: "الرئيسية", url: `${siteConfig.url}/` },
           { name: "العروض والباقات", url: `${siteConfig.url}/offers/` },
           { name: offer.title, url: `${siteConfig.url}/offers/${offer.slug}/` },
         ]}
@@ -104,6 +103,7 @@ export default async function OfferDetailPage({ params }: Props) {
         }}
         url={`${siteConfig.url}/offers/${offer.slug}/`}
       />
+      {offer.faqs && offer.faqs.length > 0 && <FAQSchema items={offer.faqs} />}
 
       {/* Navigation Breadcrumb / Back Link */}
       <div className="pt-4 flex items-center justify-between flex-wrap gap-2">

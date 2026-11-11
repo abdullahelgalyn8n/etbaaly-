@@ -3,17 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { Sparkles, ArrowLeft, CheckCircle, ShieldCheck, Clock, MessageCircle, Layers } from "lucide-react";
 import { OfferItem } from "@/data/offersData";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
 interface OfferCardProps {
   offer: OfferItem;
 }
 
 export default function OfferCard({ offer }: OfferCardProps) {
-  const waMessage = encodeURIComponent(
+  const waUrl = getWhatsAppUrl(
     `مرحباً إطبعلي، أود حجز والاستفسار عن "${offer.title}" (كود: ${offer.id}) بسعر العرض ${offer.discountedPrice}.`
   );
-  const waUrl = `${siteConfig.social.whatsapp}?text=${waMessage}`;
 
   return (
     <article

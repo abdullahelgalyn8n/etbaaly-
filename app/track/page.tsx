@@ -53,7 +53,11 @@ export default function TrackPage() {
       </Suspense>
 
       {/* Why Our Tracking & Delivery Quality */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+      <section aria-labelledby="track-quality-heading" className="pt-6 space-y-6">
+        <h2 id="track-quality-heading" className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white text-center">
+          معايير الجودة والالتزام في تتبع وتنفيذ طلبات إطبعلي
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="p-6 rounded-2xl bg-white dark:bg-[#242424] border border-slate-200 dark:border-white/[0.08] text-center space-y-2.5 shadow-sm">
           <div className="w-12 h-12 rounded-xl bg-red-500/10 text-[#c93b41] flex items-center justify-center mx-auto">
             <Clock className="w-6 h-6" />
@@ -79,11 +83,12 @@ export default function TrackPage() {
             <Truck className="w-6 h-6" />
           </div>
           <h3 className="text-sm font-bold text-slate-900 dark:text-white">شحن وتوصيل مصفح</h3>
-          <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            أسطول شحن وتوصيل مخصص يغطي القاهرة وكافة المحافظات مع تغليف واقي مقاوم للرطوبة.
-          </p>
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              أسطول شحن وتوصيل مخصص يغطي القاهرة وكافة المحافظات مع تغليف واقي مقاوم للرطوبة.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

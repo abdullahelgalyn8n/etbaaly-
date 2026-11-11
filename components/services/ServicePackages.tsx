@@ -3,7 +3,7 @@
 import React from "react";
 import { Sparkles, Check, ArrowLeft, ShieldCheck, Clock, Zap, MessageCircle } from "lucide-react";
 import { ServicePackage } from "@/data/servicesData";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 
 interface Props {
   packages: ServicePackage[];
@@ -31,10 +31,9 @@ export default function ServicePackages({ packages, serviceTitle }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
         {packages.map((pkg) => {
           const isPopular = !!pkg.popular;
-          const waMessage = encodeURIComponent(
+          const waUrl = getWhatsAppUrl(
             `مرحباً مطابع إطبعلي، أود الاستفسار وطلب "${pkg.name}" ضمن خدمة ${serviceTitle} (الكمية: ${pkg.quantityRange}).`
           );
-          const waUrl = `${siteConfig.social.whatsapp}?text=${waMessage}`;
 
           return (
             <div

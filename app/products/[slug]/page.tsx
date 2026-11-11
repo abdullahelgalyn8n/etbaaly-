@@ -77,19 +77,80 @@ export default async function ProductDetailPage({ params }: Props) {
   const allProducts = await getAdminProducts("published");
   const related = allProducts.filter((p) => p.id !== product.id && p.slug !== product.slug);
 
+  const productUrl = `${siteConfig.url}/products/${product.slug || product.id}/`;
+  const rawImage =
+    product.image ||
+    product.colors?.[0]?.images?.[0] ||
+    "/images/ICON-LOGO-SITE.webp";
+  const productImage = rawImage.startsWith("http")
+    ? rawImage
+    : `${siteConfig.url}${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
+  const activePrice = product.salePrice ?? product.basePrice;
+
   // Product Schema
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": `${productUrl}#product`,
     name: product.title,
     description: product.description,
+    image: productImage,
+    sku: product.sku || product.id,
+    brand: {
+      "@type": "Brand",
+      name: "إطبعلي | Etbaaly",
+    },
     category: product.category,
     offers: {
       "@type": "Offer",
-      price: product.basePrice,
+      price: activePrice,
       priceCurrency: "EGP",
-      availability: "https://schema.org/InStock",
-      url: `${siteConfig.url}/products/${product.slug || product.id}/`,
+      priceValidUntil: "2026-12-31",
+      availability:
+        product.stockStatus === "outofstock"
+          ? "https://schema.org/OutOfStock"
+          : "https://schema.org/InStock",
+      url: productUrl,
+      seller: {
+        "@type": "Organization",
+        "@id": `${siteConfig.url}/#organization`,
+        name: "إطبعلي | Etbaaly - A.Z Agency",
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "EG",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 14,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn",
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: "0",
+          currency: "EGP",
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "EG",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 1,
+            maxValue: 3,
+            unitCode: "DAY",
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 1,
+            maxValue: 5,
+            unitCode: "DAY",
+          },
+        },
+      },
     },
     aggregateRating: {
       "@type": "AggregateRating",

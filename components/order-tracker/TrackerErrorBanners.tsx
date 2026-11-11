@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { Lock, Sparkles, ShieldAlert, PhoneCall, PackageX, Info } from "lucide-react";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
+import DashboardNavButton from "@/components/DashboardNavButton";
 
 interface TrackerErrorBannersProps {
   errorInfo: {
@@ -84,12 +84,12 @@ export function TrackerErrorBanners({
           <div className="pt-2 border-t border-red-200 dark:border-red-900/40 flex flex-wrap items-center justify-between gap-3 text-xs">
             <div className="text-slate-600 dark:text-slate-400">
               يمكنك استعراض ومتابعة طلباتك المعتمدة من خلال{" "}
-              <Link href="/dashboard" className="font-bold text-[#c93b41] hover:underline">
+              <DashboardNavButton className="font-bold text-[#c93b41] hover:underline cursor-pointer">
                 بوابة العميل (/dashboard)
-              </Link>
+              </DashboardNavButton>
             </div>
             <a
-              href={`${siteConfig.social.whatsapp}?text=${encodeURIComponent("مرحباً، لدي استفسار حول كود تتبع طلبي")}`}
+              href={getWhatsAppUrl("مرحباً، لدي استفسار حول كود تتبع طلبي")}
               target="_blank"
               rel="noopener noreferrer"
               className="px-3.5 py-1.5 rounded-lg bg-red-100 hover:bg-red-200 dark:bg-red-900/40 dark:hover:bg-red-900/60 text-red-800 dark:text-red-200 font-bold flex items-center gap-1.5 transition-colors"

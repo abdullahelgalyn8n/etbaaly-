@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useMemo } from "react";
 import { COUNTRY_META, CountryMeta, DEFAULT_COUNTRY_CODE } from "@/data/countryMeta";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl as buildDirectWhatsAppUrl } from "@/data/siteConfig";
 
 interface CountryContextType {
   countryCode: string;
@@ -102,7 +102,7 @@ export function CountryProvider({ children }: { children: React.ReactNode }) {
     const baseMsg =
       customMessage ||
       `مرحباً A.Z Agency، أود الاستفسار عن باقات وخدمات الوكالة المتاحة في ${currentCountry.name}.`;
-    return `${siteConfig.social.whatsapp}?text=${encodeURIComponent(baseMsg)}`;
+    return buildDirectWhatsAppUrl(baseMsg);
   };
 
   return (
@@ -133,7 +133,7 @@ export function useCountry() {
         const baseMsg =
           customMsg ||
           `مرحباً A.Z Agency، أود الاستفسار عن باقات وخدمات الوكالة المتاحة في ${defaultCountry.name}.`;
-        return `${siteConfig.social.whatsapp}?text=${encodeURIComponent(baseMsg)}`;
+        return buildDirectWhatsAppUrl(baseMsg);
       },
     };
   }

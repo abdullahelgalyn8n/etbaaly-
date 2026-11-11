@@ -11,7 +11,7 @@ import {
   X,
   ChevronDown,
 } from "lucide-react";
-import { siteConfig } from "@/data/siteConfig";
+import { getWhatsAppUrl } from "@/data/siteConfig";
 import StickerMuleVisualCategoryBar from "@/components/StickerMuleVisualCategoryBar";
 import type { GalleryProductItem } from "@/lib/db/galleryProducts";
 
@@ -354,9 +354,9 @@ export default function PODProductsGallery({ initialProducts = [] }: Props) {
                     <span>طلب المنتج ➔</span>
                   </Link>
                   <a
-                    href={`${siteConfig.social.whatsapp}?text=${encodeURIComponent(
+                    href={getWhatsAppUrl(
                       `مرحباً إطبعلي، أود الاستفسار وطلب منتج: ${product.title}`
-                    )}`}
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-xl bg-slate-100 dark:bg-[#16171b] hover:bg-emerald-50 dark:hover:bg-emerald-950/40 text-slate-700 dark:text-slate-300 hover:text-emerald-600 border border-slate-200 dark:border-white/[0.08] transition-colors"
